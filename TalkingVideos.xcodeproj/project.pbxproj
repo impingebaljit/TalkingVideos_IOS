@@ -1,0 +1,814 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		14C7CE3541A198A65E591777 /* Pods_TalkingVideosTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8FB2E0F4D9D04A8B7951CEC7 /* Pods_TalkingVideosTests.framework */; };
+		65680A3E2658140FE95EB241 /* Pods_TalkingVideos_TalkingVideosUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E8457B812EF22188DE21C2CD /* Pods_TalkingVideos_TalkingVideosUITests.framework */; };
+		A5B968F02D7E9B7900CEC10B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5B968EF2D7E9B7900CEC10B /* AppDelegate.swift */; };
+		A5B968F22D7E9B7900CEC10B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5B968F12D7E9B7900CEC10B /* SceneDelegate.swift */; };
+		A5B968F42D7E9B7900CEC10B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5B968F32D7E9B7900CEC10B /* ViewController.swift */; };
+		A5B968F72D7E9B7900CEC10B /* Base in Resources */ = {isa = PBXBuildFile; fileRef = A5B968F62D7E9B7900CEC10B /* Base */; };
+		A5B968F92D7E9B8100CEC10B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A5B968F82D7E9B8100CEC10B /* Assets.xcassets */; };
+		A5B968FC2D7E9B8100CEC10B /* Base in Resources */ = {isa = PBXBuildFile; fileRef = A5B968FB2D7E9B8100CEC10B /* Base */; };
+		A5B969072D7E9B8100CEC10B /* TalkingVideosTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5B969062D7E9B8100CEC10B /* TalkingVideosTests.swift */; };
+		A5B969112D7E9B8100CEC10B /* TalkingVideosUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5B969102D7E9B8100CEC10B /* TalkingVideosUITests.swift */; };
+		A5B969132D7E9B8100CEC10B /* TalkingVideosUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5B969122D7E9B8100CEC10B /* TalkingVideosUITestsLaunchTests.swift */; };
+		A5B969202D7E9CFF00CEC10B /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5B9691F2D7E9CFF00CEC10B /* NetworkService.swift */; };
+		A5B9692B2D7E9D3600CEC10B /* ApisSuffix.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5B969212D7E9D3600CEC10B /* ApisSuffix.swift */; };
+		A5B9692C2D7E9D3600CEC10B /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5B969222D7E9D3600CEC10B /* Constant.swift */; };
+		A5B9692D2D7E9D3600CEC10B /* CustomLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5B969232D7E9D3600CEC10B /* CustomLoader.swift */; };
+		A5B9692E2D7E9D3600CEC10B /* DateTimePickerClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5B969242D7E9D3600CEC10B /* DateTimePickerClass.swift */; };
+		A5B9692F2D7E9D3600CEC10B /* DateUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5B969252D7E9D3600CEC10B /* DateUtility.swift */; };
+		A5B969302D7E9D3700CEC10B /* ExtensionClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5B969262D7E9D3600CEC10B /* ExtensionClass.swift */; };
+		A5B969312D7E9D3700CEC10B /* FloatingPlaceholderTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5B969272D7E9D3600CEC10B /* FloatingPlaceholderTextField.swift */; };
+		A5B969322D7E9D3700CEC10B /* KeyChainHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5B969282D7E9D3600CEC10B /* KeyChainHelper.swift */; };
+		A5B969332D7E9D3700CEC10B /* SingletonClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5B969292D7E9D3600CEC10B /* SingletonClass.swift */; };
+		BF22D9C3B48F852EFA5BE781 /* Pods_TalkingVideos.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F51D098CA3E841C538809C01 /* Pods_TalkingVideos.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		A5B969032D7E9B8100CEC10B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A5B968E42D7E9B7900CEC10B /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = A5B968EB2D7E9B7900CEC10B;
+			remoteInfo = TalkingVideos;
+		};
+		A5B9690D2D7E9B8100CEC10B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A5B968E42D7E9B7900CEC10B /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = A5B968EB2D7E9B7900CEC10B;
+			remoteInfo = TalkingVideos;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		2B90513CE2AD0E2E2AA33B52 /* Pods-TalkingVideosTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TalkingVideosTests.debug.xcconfig"; path = "Target Support Files/Pods-TalkingVideosTests/Pods-TalkingVideosTests.debug.xcconfig"; sourceTree = "<group>"; };
+		8FB2E0F4D9D04A8B7951CEC7 /* Pods_TalkingVideosTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TalkingVideosTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A5B968EC2D7E9B7900CEC10B /* TalkingVideos.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TalkingVideos.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		A5B968EF2D7E9B7900CEC10B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		A5B968F12D7E9B7900CEC10B /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		A5B968F32D7E9B7900CEC10B /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		A5B968F62D7E9B7900CEC10B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		A5B968F82D7E9B8100CEC10B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		A5B968FB2D7E9B8100CEC10B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		A5B968FD2D7E9B8100CEC10B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A5B969022D7E9B8100CEC10B /* TalkingVideosTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TalkingVideosTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		A5B969062D7E9B8100CEC10B /* TalkingVideosTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TalkingVideosTests.swift; sourceTree = "<group>"; };
+		A5B9690C2D7E9B8100CEC10B /* TalkingVideosUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TalkingVideosUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		A5B969102D7E9B8100CEC10B /* TalkingVideosUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TalkingVideosUITests.swift; sourceTree = "<group>"; };
+		A5B969122D7E9B8100CEC10B /* TalkingVideosUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TalkingVideosUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		A5B9691F2D7E9CFF00CEC10B /* NetworkService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
+		A5B969212D7E9D3600CEC10B /* ApisSuffix.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApisSuffix.swift; sourceTree = "<group>"; };
+		A5B969222D7E9D3600CEC10B /* Constant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
+		A5B969232D7E9D3600CEC10B /* CustomLoader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomLoader.swift; sourceTree = "<group>"; };
+		A5B969242D7E9D3600CEC10B /* DateTimePickerClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateTimePickerClass.swift; sourceTree = "<group>"; };
+		A5B969252D7E9D3600CEC10B /* DateUtility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateUtility.swift; sourceTree = "<group>"; };
+		A5B969262D7E9D3600CEC10B /* ExtensionClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExtensionClass.swift; sourceTree = "<group>"; };
+		A5B969272D7E9D3600CEC10B /* FloatingPlaceholderTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FloatingPlaceholderTextField.swift; sourceTree = "<group>"; };
+		A5B969282D7E9D3600CEC10B /* KeyChainHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyChainHelper.swift; sourceTree = "<group>"; };
+		A5B969292D7E9D3600CEC10B /* SingletonClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SingletonClass.swift; sourceTree = "<group>"; };
+		C88EA11D549D9801D5E5D377 /* Pods-TalkingVideos-TalkingVideosUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TalkingVideos-TalkingVideosUITests.debug.xcconfig"; path = "Target Support Files/Pods-TalkingVideos-TalkingVideosUITests/Pods-TalkingVideos-TalkingVideosUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		C9EAD26C00ACA6C4392A25EB /* Pods-TalkingVideos-TalkingVideosUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TalkingVideos-TalkingVideosUITests.release.xcconfig"; path = "Target Support Files/Pods-TalkingVideos-TalkingVideosUITests/Pods-TalkingVideos-TalkingVideosUITests.release.xcconfig"; sourceTree = "<group>"; };
+		DBDACA82E5F8771EDFB2852C /* Pods-TalkingVideosTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TalkingVideosTests.release.xcconfig"; path = "Target Support Files/Pods-TalkingVideosTests/Pods-TalkingVideosTests.release.xcconfig"; sourceTree = "<group>"; };
+		E7C25594B9D6EA4AA4DB9249 /* Pods-TalkingVideos.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TalkingVideos.debug.xcconfig"; path = "Target Support Files/Pods-TalkingVideos/Pods-TalkingVideos.debug.xcconfig"; sourceTree = "<group>"; };
+		E8457B812EF22188DE21C2CD /* Pods_TalkingVideos_TalkingVideosUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TalkingVideos_TalkingVideosUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E94EFDA774CE5EB773E3AB95 /* Pods-TalkingVideos.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TalkingVideos.release.xcconfig"; path = "Target Support Files/Pods-TalkingVideos/Pods-TalkingVideos.release.xcconfig"; sourceTree = "<group>"; };
+		F51D098CA3E841C538809C01 /* Pods_TalkingVideos.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TalkingVideos.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		A5B968E92D7E9B7900CEC10B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BF22D9C3B48F852EFA5BE781 /* Pods_TalkingVideos.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A5B968FF2D7E9B8100CEC10B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				14C7CE3541A198A65E591777 /* Pods_TalkingVideosTests.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A5B969092D7E9B8100CEC10B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				65680A3E2658140FE95EB241 /* Pods_TalkingVideos_TalkingVideosUITests.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		7CB07D4FDAD303633FBA3361 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				E7C25594B9D6EA4AA4DB9249 /* Pods-TalkingVideos.debug.xcconfig */,
+				E94EFDA774CE5EB773E3AB95 /* Pods-TalkingVideos.release.xcconfig */,
+				C88EA11D549D9801D5E5D377 /* Pods-TalkingVideos-TalkingVideosUITests.debug.xcconfig */,
+				C9EAD26C00ACA6C4392A25EB /* Pods-TalkingVideos-TalkingVideosUITests.release.xcconfig */,
+				2B90513CE2AD0E2E2AA33B52 /* Pods-TalkingVideosTests.debug.xcconfig */,
+				DBDACA82E5F8771EDFB2852C /* Pods-TalkingVideosTests.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		A5B968E32D7E9B7900CEC10B = {
+			isa = PBXGroup;
+			children = (
+				A5B968EE2D7E9B7900CEC10B /* TalkingVideos */,
+				A5B969052D7E9B8100CEC10B /* TalkingVideosTests */,
+				A5B9690F2D7E9B8100CEC10B /* TalkingVideosUITests */,
+				A5B968ED2D7E9B7900CEC10B /* Products */,
+				7CB07D4FDAD303633FBA3361 /* Pods */,
+				CF999E1F3BAC670794ED64F7 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		A5B968ED2D7E9B7900CEC10B /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				A5B968EC2D7E9B7900CEC10B /* TalkingVideos.app */,
+				A5B969022D7E9B8100CEC10B /* TalkingVideosTests.xctest */,
+				A5B9690C2D7E9B8100CEC10B /* TalkingVideosUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		A5B968EE2D7E9B7900CEC10B /* TalkingVideos */ = {
+			isa = PBXGroup;
+			children = (
+				A5B968EF2D7E9B7900CEC10B /* AppDelegate.swift */,
+				A5B968F12D7E9B7900CEC10B /* SceneDelegate.swift */,
+				A5B9691F2D7E9CFF00CEC10B /* NetworkService.swift */,
+				A5B968F32D7E9B7900CEC10B /* ViewController.swift */,
+				A5B9692A2D7E9D3600CEC10B /* Helper */,
+				A5B968F52D7E9B7900CEC10B /* Main.storyboard */,
+				A5B968F82D7E9B8100CEC10B /* Assets.xcassets */,
+				A5B968FA2D7E9B8100CEC10B /* LaunchScreen.storyboard */,
+				A5B968FD2D7E9B8100CEC10B /* Info.plist */,
+			);
+			path = TalkingVideos;
+			sourceTree = "<group>";
+		};
+		A5B969052D7E9B8100CEC10B /* TalkingVideosTests */ = {
+			isa = PBXGroup;
+			children = (
+				A5B969062D7E9B8100CEC10B /* TalkingVideosTests.swift */,
+			);
+			path = TalkingVideosTests;
+			sourceTree = "<group>";
+		};
+		A5B9690F2D7E9B8100CEC10B /* TalkingVideosUITests */ = {
+			isa = PBXGroup;
+			children = (
+				A5B969102D7E9B8100CEC10B /* TalkingVideosUITests.swift */,
+				A5B969122D7E9B8100CEC10B /* TalkingVideosUITestsLaunchTests.swift */,
+			);
+			path = TalkingVideosUITests;
+			sourceTree = "<group>";
+		};
+		A5B9692A2D7E9D3600CEC10B /* Helper */ = {
+			isa = PBXGroup;
+			children = (
+				A5B969212D7E9D3600CEC10B /* ApisSuffix.swift */,
+				A5B969222D7E9D3600CEC10B /* Constant.swift */,
+				A5B969232D7E9D3600CEC10B /* CustomLoader.swift */,
+				A5B969242D7E9D3600CEC10B /* DateTimePickerClass.swift */,
+				A5B969252D7E9D3600CEC10B /* DateUtility.swift */,
+				A5B969262D7E9D3600CEC10B /* ExtensionClass.swift */,
+				A5B969272D7E9D3600CEC10B /* FloatingPlaceholderTextField.swift */,
+				A5B969282D7E9D3600CEC10B /* KeyChainHelper.swift */,
+				A5B969292D7E9D3600CEC10B /* SingletonClass.swift */,
+			);
+			path = Helper;
+			sourceTree = "<group>";
+		};
+		CF999E1F3BAC670794ED64F7 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				F51D098CA3E841C538809C01 /* Pods_TalkingVideos.framework */,
+				E8457B812EF22188DE21C2CD /* Pods_TalkingVideos_TalkingVideosUITests.framework */,
+				8FB2E0F4D9D04A8B7951CEC7 /* Pods_TalkingVideosTests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		A5B968EB2D7E9B7900CEC10B /* TalkingVideos */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A5B969162D7E9B8100CEC10B /* Build configuration list for PBXNativeTarget "TalkingVideos" */;
+			buildPhases = (
+				31B4EF4CB4A965FF3CED7B3E /* [CP] Check Pods Manifest.lock */,
+				A5B968E82D7E9B7900CEC10B /* Sources */,
+				A5B968E92D7E9B7900CEC10B /* Frameworks */,
+				A5B968EA2D7E9B7900CEC10B /* Resources */,
+				981D80E23ABACE410450271B /* [CP] Embed Pods Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = TalkingVideos;
+			productName = TalkingVideos;
+			productReference = A5B968EC2D7E9B7900CEC10B /* TalkingVideos.app */;
+			productType = "com.apple.product-type.application";
+		};
+		A5B969012D7E9B8100CEC10B /* TalkingVideosTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A5B969192D7E9B8100CEC10B /* Build configuration list for PBXNativeTarget "TalkingVideosTests" */;
+			buildPhases = (
+				D37EBA667FD05C064023427C /* [CP] Check Pods Manifest.lock */,
+				A5B968FE2D7E9B8100CEC10B /* Sources */,
+				A5B968FF2D7E9B8100CEC10B /* Frameworks */,
+				A5B969002D7E9B8100CEC10B /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				A5B969042D7E9B8100CEC10B /* PBXTargetDependency */,
+			);
+			name = TalkingVideosTests;
+			productName = TalkingVideosTests;
+			productReference = A5B969022D7E9B8100CEC10B /* TalkingVideosTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		A5B9690B2D7E9B8100CEC10B /* TalkingVideosUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A5B9691C2D7E9B8100CEC10B /* Build configuration list for PBXNativeTarget "TalkingVideosUITests" */;
+			buildPhases = (
+				7D4C30F17D3392E6D99EB3C9 /* [CP] Check Pods Manifest.lock */,
+				A5B969082D7E9B8100CEC10B /* Sources */,
+				A5B969092D7E9B8100CEC10B /* Frameworks */,
+				A5B9690A2D7E9B8100CEC10B /* Resources */,
+				DA0A4E59CF487BA8A286119C /* [CP] Embed Pods Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				A5B9690E2D7E9B8100CEC10B /* PBXTargetDependency */,
+			);
+			name = TalkingVideosUITests;
+			productName = TalkingVideosUITests;
+			productReference = A5B9690C2D7E9B8100CEC10B /* TalkingVideosUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		A5B968E42D7E9B7900CEC10B /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1540;
+				LastUpgradeCheck = 1540;
+				TargetAttributes = {
+					A5B968EB2D7E9B7900CEC10B = {
+						CreatedOnToolsVersion = 15.4;
+					};
+					A5B969012D7E9B8100CEC10B = {
+						CreatedOnToolsVersion = 15.4;
+						TestTargetID = A5B968EB2D7E9B7900CEC10B;
+					};
+					A5B9690B2D7E9B8100CEC10B = {
+						CreatedOnToolsVersion = 15.4;
+						TestTargetID = A5B968EB2D7E9B7900CEC10B;
+					};
+				};
+			};
+			buildConfigurationList = A5B968E72D7E9B7900CEC10B /* Build configuration list for PBXProject "TalkingVideos" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = A5B968E32D7E9B7900CEC10B;
+			productRefGroup = A5B968ED2D7E9B7900CEC10B /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				A5B968EB2D7E9B7900CEC10B /* TalkingVideos */,
+				A5B969012D7E9B8100CEC10B /* TalkingVideosTests */,
+				A5B9690B2D7E9B8100CEC10B /* TalkingVideosUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		A5B968EA2D7E9B7900CEC10B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A5B968F92D7E9B8100CEC10B /* Assets.xcassets in Resources */,
+				A5B968FC2D7E9B8100CEC10B /* Base in Resources */,
+				A5B968F72D7E9B7900CEC10B /* Base in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A5B969002D7E9B8100CEC10B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A5B9690A2D7E9B8100CEC10B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		31B4EF4CB4A965FF3CED7B3E /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-TalkingVideos-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		7D4C30F17D3392E6D99EB3C9 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-TalkingVideos-TalkingVideosUITests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		981D80E23ABACE410450271B /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-TalkingVideos/Pods-TalkingVideos-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-TalkingVideos/Pods-TalkingVideos-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-TalkingVideos/Pods-TalkingVideos-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D37EBA667FD05C064023427C /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-TalkingVideosTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		DA0A4E59CF487BA8A286119C /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-TalkingVideos-TalkingVideosUITests/Pods-TalkingVideos-TalkingVideosUITests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-TalkingVideos-TalkingVideosUITests/Pods-TalkingVideos-TalkingVideosUITests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-TalkingVideos-TalkingVideosUITests/Pods-TalkingVideos-TalkingVideosUITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		A5B968E82D7E9B7900CEC10B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A5B969302D7E9D3700CEC10B /* ExtensionClass.swift in Sources */,
+				A5B9692B2D7E9D3600CEC10B /* ApisSuffix.swift in Sources */,
+				A5B968F42D7E9B7900CEC10B /* ViewController.swift in Sources */,
+				A5B969322D7E9D3700CEC10B /* KeyChainHelper.swift in Sources */,
+				A5B969312D7E9D3700CEC10B /* FloatingPlaceholderTextField.swift in Sources */,
+				A5B968F02D7E9B7900CEC10B /* AppDelegate.swift in Sources */,
+				A5B969202D7E9CFF00CEC10B /* NetworkService.swift in Sources */,
+				A5B968F22D7E9B7900CEC10B /* SceneDelegate.swift in Sources */,
+				A5B969332D7E9D3700CEC10B /* SingletonClass.swift in Sources */,
+				A5B9692E2D7E9D3600CEC10B /* DateTimePickerClass.swift in Sources */,
+				A5B9692D2D7E9D3600CEC10B /* CustomLoader.swift in Sources */,
+				A5B9692F2D7E9D3600CEC10B /* DateUtility.swift in Sources */,
+				A5B9692C2D7E9D3600CEC10B /* Constant.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A5B968FE2D7E9B8100CEC10B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A5B969072D7E9B8100CEC10B /* TalkingVideosTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A5B969082D7E9B8100CEC10B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A5B969112D7E9B8100CEC10B /* TalkingVideosUITests.swift in Sources */,
+				A5B969132D7E9B8100CEC10B /* TalkingVideosUITestsLaunchTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		A5B969042D7E9B8100CEC10B /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = A5B968EB2D7E9B7900CEC10B /* TalkingVideos */;
+			targetProxy = A5B969032D7E9B8100CEC10B /* PBXContainerItemProxy */;
+		};
+		A5B9690E2D7E9B8100CEC10B /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = A5B968EB2D7E9B7900CEC10B /* TalkingVideos */;
+			targetProxy = A5B9690D2D7E9B8100CEC10B /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		A5B968F52D7E9B7900CEC10B /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A5B968F62D7E9B7900CEC10B /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		A5B968FA2D7E9B8100CEC10B /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A5B968FB2D7E9B8100CEC10B /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		A5B969142D7E9B8100CEC10B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.5;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		A5B969152D7E9B8100CEC10B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.5;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		A5B969172D7E9B8100CEC10B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = E7C25594B9D6EA4AA4DB9249 /* Pods-TalkingVideos.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = KFC8C487BF;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = TalkingVideos/Info.plist;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.impinge.TalkingVideos;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Debug;
+		};
+		A5B969182D7E9B8100CEC10B /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = E94EFDA774CE5EB773E3AB95 /* Pods-TalkingVideos.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = KFC8C487BF;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = TalkingVideos/Info.plist;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.impinge.TalkingVideos;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Release;
+		};
+		A5B9691A2D7E9B8100CEC10B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2B90513CE2AD0E2E2AA33B52 /* Pods-TalkingVideosTests.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = KFC8C487BF;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.5;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.impinge.TalkingVideosTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/TalkingVideos.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/TalkingVideos";
+			};
+			name = Debug;
+		};
+		A5B9691B2D7E9B8100CEC10B /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = DBDACA82E5F8771EDFB2852C /* Pods-TalkingVideosTests.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = KFC8C487BF;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.5;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.impinge.TalkingVideosTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/TalkingVideos.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/TalkingVideos";
+			};
+			name = Release;
+		};
+		A5B9691D2D7E9B8100CEC10B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = C88EA11D549D9801D5E5D377 /* Pods-TalkingVideos-TalkingVideosUITests.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = KFC8C487BF;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.impinge.TalkingVideosUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = TalkingVideos;
+			};
+			name = Debug;
+		};
+		A5B9691E2D7E9B8100CEC10B /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = C9EAD26C00ACA6C4392A25EB /* Pods-TalkingVideos-TalkingVideosUITests.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = KFC8C487BF;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.impinge.TalkingVideosUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = TalkingVideos;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		A5B968E72D7E9B7900CEC10B /* Build configuration list for PBXProject "TalkingVideos" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A5B969142D7E9B8100CEC10B /* Debug */,
+				A5B969152D7E9B8100CEC10B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A5B969162D7E9B8100CEC10B /* Build configuration list for PBXNativeTarget "TalkingVideos" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A5B969172D7E9B8100CEC10B /* Debug */,
+				A5B969182D7E9B8100CEC10B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A5B969192D7E9B8100CEC10B /* Build configuration list for PBXNativeTarget "TalkingVideosTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A5B9691A2D7E9B8100CEC10B /* Debug */,
+				A5B9691B2D7E9B8100CEC10B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A5B9691C2D7E9B8100CEC10B /* Build configuration list for PBXNativeTarget "TalkingVideosUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A5B9691D2D7E9B8100CEC10B /* Debug */,
+				A5B9691E2D7E9B8100CEC10B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = A5B968E42D7E9B7900CEC10B /* Project object */;
+}
