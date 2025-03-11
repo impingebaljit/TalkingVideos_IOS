@@ -9,6 +9,10 @@
 /* Begin PBXBuildFile section */
 		14C7CE3541A198A65E591777 /* Pods_TalkingVideosTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8FB2E0F4D9D04A8B7951CEC7 /* Pods_TalkingVideosTests.framework */; };
 		65680A3E2658140FE95EB241 /* Pods_TalkingVideos_TalkingVideosUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E8457B812EF22188DE21C2CD /* Pods_TalkingVideos_TalkingVideosUITests.framework */; };
+		A54CAC402D7EF377008BA05E /* SignInVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A54CAC3C2D7EF377008BA05E /* SignInVC.swift */; };
+		A54CAC412D7EF377008BA05E /* SignInViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A54CAC3D2D7EF377008BA05E /* SignInViewModel.swift */; };
+		A54CAC422D7EF377008BA05E /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = A54CAC3E2D7EF377008BA05E /* User.swift */; };
+		A54CAC442D7EF440008BA05E /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A54CAC432D7EF440008BA05E /* AuthService.swift */; };
 		A5B968F02D7E9B7900CEC10B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5B968EF2D7E9B7900CEC10B /* AppDelegate.swift */; };
 		A5B968F22D7E9B7900CEC10B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5B968F12D7E9B7900CEC10B /* SceneDelegate.swift */; };
 		A5B968F42D7E9B7900CEC10B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5B968F32D7E9B7900CEC10B /* ViewController.swift */; };
@@ -51,6 +55,10 @@
 /* Begin PBXFileReference section */
 		2B90513CE2AD0E2E2AA33B52 /* Pods-TalkingVideosTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TalkingVideosTests.debug.xcconfig"; path = "Target Support Files/Pods-TalkingVideosTests/Pods-TalkingVideosTests.debug.xcconfig"; sourceTree = "<group>"; };
 		8FB2E0F4D9D04A8B7951CEC7 /* Pods_TalkingVideosTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TalkingVideosTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A54CAC3C2D7EF377008BA05E /* SignInVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignInVC.swift; sourceTree = "<group>"; };
+		A54CAC3D2D7EF377008BA05E /* SignInViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignInViewModel.swift; sourceTree = "<group>"; };
+		A54CAC3E2D7EF377008BA05E /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		A54CAC432D7EF440008BA05E /* AuthService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
 		A5B968EC2D7E9B7900CEC10B /* TalkingVideos.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TalkingVideos.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A5B968EF2D7E9B7900CEC10B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A5B968F12D7E9B7900CEC10B /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -124,6 +132,25 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		A54CAC3F2D7EF377008BA05E /* SignIn */ = {
+			isa = PBXGroup;
+			children = (
+				A54CAC3C2D7EF377008BA05E /* SignInVC.swift */,
+				A54CAC3D2D7EF377008BA05E /* SignInViewModel.swift */,
+				A54CAC3E2D7EF377008BA05E /* User.swift */,
+			);
+			path = SignIn;
+			sourceTree = "<group>";
+		};
+		A54CAC452D7EF447008BA05E /* NetworkClass */ = {
+			isa = PBXGroup;
+			children = (
+				A5B9691F2D7E9CFF00CEC10B /* NetworkService.swift */,
+				A54CAC432D7EF440008BA05E /* AuthService.swift */,
+			);
+			path = NetworkClass;
+			sourceTree = "<group>";
+		};
 		A5B968E32D7E9B7900CEC10B = {
 			isa = PBXGroup;
 			children = (
@@ -151,8 +178,9 @@
 			children = (
 				A5B968EF2D7E9B7900CEC10B /* AppDelegate.swift */,
 				A5B968F12D7E9B7900CEC10B /* SceneDelegate.swift */,
-				A5B9691F2D7E9CFF00CEC10B /* NetworkService.swift */,
+				A54CAC452D7EF447008BA05E /* NetworkClass */,
 				A5B968F32D7E9B7900CEC10B /* ViewController.swift */,
+				A54CAC3F2D7EF377008BA05E /* SignIn */,
 				A5B9692A2D7E9D3600CEC10B /* Helper */,
 				A5B968F52D7E9B7900CEC10B /* Main.storyboard */,
 				A5B968F82D7E9B8100CEC10B /* Assets.xcassets */,
@@ -448,6 +476,8 @@
 				A5B9692B2D7E9D3600CEC10B /* ApisSuffix.swift in Sources */,
 				A5B968F42D7E9B7900CEC10B /* ViewController.swift in Sources */,
 				A5B969322D7E9D3700CEC10B /* KeyChainHelper.swift in Sources */,
+				A54CAC422D7EF377008BA05E /* User.swift in Sources */,
+				A54CAC402D7EF377008BA05E /* SignInVC.swift in Sources */,
 				A5B969312D7E9D3700CEC10B /* FloatingPlaceholderTextField.swift in Sources */,
 				A5B968F02D7E9B7900CEC10B /* AppDelegate.swift in Sources */,
 				A5B969202D7E9CFF00CEC10B /* NetworkService.swift in Sources */,
@@ -456,7 +486,9 @@
 				A5B9692E2D7E9D3600CEC10B /* DateTimePickerClass.swift in Sources */,
 				A5B9692D2D7E9D3600CEC10B /* CustomLoader.swift in Sources */,
 				A5B9692F2D7E9D3600CEC10B /* DateUtility.swift in Sources */,
+				A54CAC442D7EF440008BA05E /* AuthService.swift in Sources */,
 				A5B9692C2D7E9D3600CEC10B /* Constant.swift in Sources */,
+				A54CAC412D7EF377008BA05E /* SignInViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
