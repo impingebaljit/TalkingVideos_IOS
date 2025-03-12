@@ -13,6 +13,12 @@
 		A54CAC412D7EF377008BA05E /* SignInViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A54CAC3D2D7EF377008BA05E /* SignInViewModel.swift */; };
 		A54CAC422D7EF377008BA05E /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = A54CAC3E2D7EF377008BA05E /* User.swift */; };
 		A54CAC442D7EF440008BA05E /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A54CAC432D7EF440008BA05E /* AuthService.swift */; };
+		A54F38822D8157F000A53B85 /* DashboardVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A54F38812D8157F000A53B85 /* DashboardVC.swift */; };
+		A5549A382D817F8000793519 /* AICreatorsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5549A372D817F8000793519 /* AICreatorsVC.swift */; };
+		A5549A3E2D81807700793519 /* SignUpVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5549A3D2D81807700793519 /* SignUpVC.swift */; };
+		A5549A412D81809700793519 /* ForgotPasswordVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5549A402D81809700793519 /* ForgotPasswordVC.swift */; };
+		A5549A432D8180A800793519 /* ResetPasswordVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5549A422D8180A800793519 /* ResetPasswordVC.swift */; };
+		A5549A462D81836F00793519 /* ProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5549A452D81836F00793519 /* ProfileVC.swift */; };
 		A5B968F02D7E9B7900CEC10B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5B968EF2D7E9B7900CEC10B /* AppDelegate.swift */; };
 		A5B968F22D7E9B7900CEC10B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5B968F12D7E9B7900CEC10B /* SceneDelegate.swift */; };
 		A5B968F42D7E9B7900CEC10B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5B968F32D7E9B7900CEC10B /* ViewController.swift */; };
@@ -32,6 +38,7 @@
 		A5B969312D7E9D3700CEC10B /* FloatingPlaceholderTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5B969272D7E9D3600CEC10B /* FloatingPlaceholderTextField.swift */; };
 		A5B969322D7E9D3700CEC10B /* KeyChainHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5B969282D7E9D3600CEC10B /* KeyChainHelper.swift */; };
 		A5B969332D7E9D3700CEC10B /* SingletonClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5B969292D7E9D3600CEC10B /* SingletonClass.swift */; };
+		A5BA0C9D2D816C4800FD642B /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5BA0C9C2D816C4800FD642B /* TabBarController.swift */; };
 		BF22D9C3B48F852EFA5BE781 /* Pods_TalkingVideos.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F51D098CA3E841C538809C01 /* Pods_TalkingVideos.framework */; };
 /* End PBXBuildFile section */
 
@@ -59,6 +66,12 @@
 		A54CAC3D2D7EF377008BA05E /* SignInViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignInViewModel.swift; sourceTree = "<group>"; };
 		A54CAC3E2D7EF377008BA05E /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		A54CAC432D7EF440008BA05E /* AuthService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
+		A54F38812D8157F000A53B85 /* DashboardVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardVC.swift; sourceTree = "<group>"; };
+		A5549A372D817F8000793519 /* AICreatorsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AICreatorsVC.swift; sourceTree = "<group>"; };
+		A5549A3D2D81807700793519 /* SignUpVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpVC.swift; sourceTree = "<group>"; };
+		A5549A402D81809700793519 /* ForgotPasswordVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordVC.swift; sourceTree = "<group>"; };
+		A5549A422D8180A800793519 /* ResetPasswordVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetPasswordVC.swift; sourceTree = "<group>"; };
+		A5549A452D81836F00793519 /* ProfileVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileVC.swift; sourceTree = "<group>"; };
 		A5B968EC2D7E9B7900CEC10B /* TalkingVideos.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TalkingVideos.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A5B968EF2D7E9B7900CEC10B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A5B968F12D7E9B7900CEC10B /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -82,6 +95,7 @@
 		A5B969272D7E9D3600CEC10B /* FloatingPlaceholderTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FloatingPlaceholderTextField.swift; sourceTree = "<group>"; };
 		A5B969282D7E9D3600CEC10B /* KeyChainHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyChainHelper.swift; sourceTree = "<group>"; };
 		A5B969292D7E9D3600CEC10B /* SingletonClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SingletonClass.swift; sourceTree = "<group>"; };
+		A5BA0C9C2D816C4800FD642B /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		C88EA11D549D9801D5E5D377 /* Pods-TalkingVideos-TalkingVideosUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TalkingVideos-TalkingVideosUITests.debug.xcconfig"; path = "Target Support Files/Pods-TalkingVideos-TalkingVideosUITests/Pods-TalkingVideos-TalkingVideosUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		C9EAD26C00ACA6C4392A25EB /* Pods-TalkingVideos-TalkingVideosUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TalkingVideos-TalkingVideosUITests.release.xcconfig"; path = "Target Support Files/Pods-TalkingVideos-TalkingVideosUITests/Pods-TalkingVideos-TalkingVideosUITests.release.xcconfig"; sourceTree = "<group>"; };
 		DBDACA82E5F8771EDFB2852C /* Pods-TalkingVideosTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TalkingVideosTests.release.xcconfig"; path = "Target Support Files/Pods-TalkingVideosTests/Pods-TalkingVideosTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -151,6 +165,55 @@
 			path = NetworkClass;
 			sourceTree = "<group>";
 		};
+		A5549A392D81802900793519 /* TabBar */ = {
+			isa = PBXGroup;
+			children = (
+				A5BA0C9C2D816C4800FD642B /* TabBarController.swift */,
+			);
+			path = TabBar;
+			sourceTree = "<group>";
+		};
+		A5549A3A2D81803C00793519 /* AICreatorsVC */ = {
+			isa = PBXGroup;
+			children = (
+				A5549A372D817F8000793519 /* AICreatorsVC.swift */,
+				A5549A452D81836F00793519 /* ProfileVC.swift */,
+			);
+			path = AICreatorsVC;
+			sourceTree = "<group>";
+		};
+		A5549A3B2D81804D00793519 /* DashboardVC */ = {
+			isa = PBXGroup;
+			children = (
+				A54F38812D8157F000A53B85 /* DashboardVC.swift */,
+			);
+			path = DashboardVC;
+			sourceTree = "<group>";
+		};
+		A5549A3C2D81805D00793519 /* SignUP */ = {
+			isa = PBXGroup;
+			children = (
+				A5549A3D2D81807700793519 /* SignUpVC.swift */,
+			);
+			path = SignUP;
+			sourceTree = "<group>";
+		};
+		A5549A3F2D81808000793519 /* ForgotPasswordVC */ = {
+			isa = PBXGroup;
+			children = (
+				A5549A402D81809700793519 /* ForgotPasswordVC.swift */,
+			);
+			path = ForgotPasswordVC;
+			sourceTree = "<group>";
+		};
+		A5549A442D8180AC00793519 /* ResetPasswordVC */ = {
+			isa = PBXGroup;
+			children = (
+				A5549A422D8180A800793519 /* ResetPasswordVC.swift */,
+			);
+			path = ResetPasswordVC;
+			sourceTree = "<group>";
+		};
 		A5B968E32D7E9B7900CEC10B = {
 			isa = PBXGroup;
 			children = (
@@ -180,6 +243,12 @@
 				A5B968F12D7E9B7900CEC10B /* SceneDelegate.swift */,
 				A54CAC452D7EF447008BA05E /* NetworkClass */,
 				A5B968F32D7E9B7900CEC10B /* ViewController.swift */,
+				A5549A392D81802900793519 /* TabBar */,
+				A5549A3A2D81803C00793519 /* AICreatorsVC */,
+				A5549A3B2D81804D00793519 /* DashboardVC */,
+				A5549A442D8180AC00793519 /* ResetPasswordVC */,
+				A5549A3F2D81808000793519 /* ForgotPasswordVC */,
+				A5549A3C2D81805D00793519 /* SignUP */,
 				A54CAC3F2D7EF377008BA05E /* SignIn */,
 				A5B9692A2D7E9D3600CEC10B /* Helper */,
 				A5B968F52D7E9B7900CEC10B /* Main.storyboard */,
@@ -473,18 +542,25 @@
 			buildActionMask = 2147483647;
 			files = (
 				A5B969302D7E9D3700CEC10B /* ExtensionClass.swift in Sources */,
+				A5549A432D8180A800793519 /* ResetPasswordVC.swift in Sources */,
 				A5B9692B2D7E9D3600CEC10B /* ApisSuffix.swift in Sources */,
 				A5B968F42D7E9B7900CEC10B /* ViewController.swift in Sources */,
 				A5B969322D7E9D3700CEC10B /* KeyChainHelper.swift in Sources */,
 				A54CAC422D7EF377008BA05E /* User.swift in Sources */,
 				A54CAC402D7EF377008BA05E /* SignInVC.swift in Sources */,
 				A5B969312D7E9D3700CEC10B /* FloatingPlaceholderTextField.swift in Sources */,
+				A5549A3E2D81807700793519 /* SignUpVC.swift in Sources */,
 				A5B968F02D7E9B7900CEC10B /* AppDelegate.swift in Sources */,
 				A5B969202D7E9CFF00CEC10B /* NetworkService.swift in Sources */,
 				A5B968F22D7E9B7900CEC10B /* SceneDelegate.swift in Sources */,
+				A5549A462D81836F00793519 /* ProfileVC.swift in Sources */,
+				A5BA0C9D2D816C4800FD642B /* TabBarController.swift in Sources */,
+				A5549A382D817F8000793519 /* AICreatorsVC.swift in Sources */,
 				A5B969332D7E9D3700CEC10B /* SingletonClass.swift in Sources */,
+				A5549A412D81809700793519 /* ForgotPasswordVC.swift in Sources */,
 				A5B9692E2D7E9D3600CEC10B /* DateTimePickerClass.swift in Sources */,
 				A5B9692D2D7E9D3600CEC10B /* CustomLoader.swift in Sources */,
+				A54F38822D8157F000A53B85 /* DashboardVC.swift in Sources */,
 				A5B9692F2D7E9D3600CEC10B /* DateUtility.swift in Sources */,
 				A54CAC442D7EF440008BA05E /* AuthService.swift in Sources */,
 				A5B9692C2D7E9D3600CEC10B /* Constant.swift in Sources */,
@@ -674,6 +750,7 @@
 				DEVELOPMENT_TEAM = KFC8C487BF;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = TalkingVideos/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "UGC Creator";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -703,6 +780,7 @@
 				DEVELOPMENT_TEAM = KFC8C487BF;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = TalkingVideos/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "UGC Creator";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
