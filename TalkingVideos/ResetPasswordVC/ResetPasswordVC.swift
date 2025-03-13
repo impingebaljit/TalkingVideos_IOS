@@ -9,6 +9,9 @@ import UIKit
 
 class ResetPasswordVC: UIViewController {
 
+    @IBOutlet weak var tf_EnterNewPassw: UITextField!
+    
+    @IBOutlet weak var tf_ConfirmPassw: UITextField!
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -17,14 +20,7 @@ class ResetPasswordVC: UIViewController {
     }
     
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    @IBAction func acn_Submit(_ sender: Any) {
     }
-    */
-
+    
 }

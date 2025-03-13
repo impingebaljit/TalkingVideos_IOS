@@ -10,6 +10,7 @@ pod 'Alamofire', '~> 4.9'
 pod 'AlamofireImage', '~> 3.5'
 pod 'SwiftyJSON'
 pod 'SDWebImage'
+pod 'IQKeyboardToolbarManager'
 
   # Pods for TalkingVideos
 

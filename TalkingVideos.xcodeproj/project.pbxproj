@@ -19,6 +19,8 @@
 		A5549A412D81809700793519 /* ForgotPasswordVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5549A402D81809700793519 /* ForgotPasswordVC.swift */; };
 		A5549A432D8180A800793519 /* ResetPasswordVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5549A422D8180A800793519 /* ResetPasswordVC.swift */; };
 		A5549A462D81836F00793519 /* ProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5549A452D81836F00793519 /* ProfileVC.swift */; };
+		A5549A482D82B65700793519 /* SignUpViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5549A472D82B65700793519 /* SignUpViewModel.swift */; };
+		A5549A4A2D82B94D00793519 /* ForgotPasswordViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5549A492D82B94D00793519 /* ForgotPasswordViewModel.swift */; };
 		A5B968F02D7E9B7900CEC10B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5B968EF2D7E9B7900CEC10B /* AppDelegate.swift */; };
 		A5B968F22D7E9B7900CEC10B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5B968F12D7E9B7900CEC10B /* SceneDelegate.swift */; };
 		A5B968F42D7E9B7900CEC10B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5B968F32D7E9B7900CEC10B /* ViewController.swift */; };
@@ -72,6 +74,8 @@
 		A5549A402D81809700793519 /* ForgotPasswordVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordVC.swift; sourceTree = "<group>"; };
 		A5549A422D8180A800793519 /* ResetPasswordVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetPasswordVC.swift; sourceTree = "<group>"; };
 		A5549A452D81836F00793519 /* ProfileVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileVC.swift; sourceTree = "<group>"; };
+		A5549A472D82B65700793519 /* SignUpViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewModel.swift; sourceTree = "<group>"; };
+		A5549A492D82B94D00793519 /* ForgotPasswordViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordViewModel.swift; sourceTree = "<group>"; };
 		A5B968EC2D7E9B7900CEC10B /* TalkingVideos.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TalkingVideos.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A5B968EF2D7E9B7900CEC10B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A5B968F12D7E9B7900CEC10B /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -194,6 +198,7 @@
 			isa = PBXGroup;
 			children = (
 				A5549A3D2D81807700793519 /* SignUpVC.swift */,
+				A5549A472D82B65700793519 /* SignUpViewModel.swift */,
 			);
 			path = SignUP;
 			sourceTree = "<group>";
@@ -202,6 +207,7 @@
 			isa = PBXGroup;
 			children = (
 				A5549A402D81809700793519 /* ForgotPasswordVC.swift */,
+				A5549A492D82B94D00793519 /* ForgotPasswordViewModel.swift */,
 			);
 			path = ForgotPasswordVC;
 			sourceTree = "<group>";
@@ -547,6 +553,7 @@
 				A5B968F42D7E9B7900CEC10B /* ViewController.swift in Sources */,
 				A5B969322D7E9D3700CEC10B /* KeyChainHelper.swift in Sources */,
 				A54CAC422D7EF377008BA05E /* User.swift in Sources */,
+				A5549A4A2D82B94D00793519 /* ForgotPasswordViewModel.swift in Sources */,
 				A54CAC402D7EF377008BA05E /* SignInVC.swift in Sources */,
 				A5B969312D7E9D3700CEC10B /* FloatingPlaceholderTextField.swift in Sources */,
 				A5549A3E2D81807700793519 /* SignUpVC.swift in Sources */,
@@ -563,6 +570,7 @@
 				A54F38822D8157F000A53B85 /* DashboardVC.swift in Sources */,
 				A5B9692F2D7E9D3600CEC10B /* DateUtility.swift in Sources */,
 				A54CAC442D7EF440008BA05E /* AuthService.swift in Sources */,
+				A5549A482D82B65700793519 /* SignUpViewModel.swift in Sources */,
 				A5B9692C2D7E9D3600CEC10B /* Constant.swift in Sources */,
 				A54CAC412D7EF377008BA05E /* SignInViewModel.swift in Sources */,
 			);

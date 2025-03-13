@@ -78,12 +78,23 @@ class TabBarController: UITabBar {
 //                   navController.modalPresentationStyle = .fullScreen
 //                   parentVC.present(navController, animated: true, completion: nil)
            
-           let storyboard = UIStoryboard(name: "Main", bundle: nil)
-           let loginViewController = storyboard.instantiateViewController(withIdentifier: "AICreatorsVC") as! AICreatorsVC
-           let navigationController = UINavigationController(rootViewController: loginViewController)
+//           let storyboard = UIStoryboard(name: "Main", bundle: nil)
+//           let loginViewController = storyboard.instantiateViewController(withIdentifier: "AICreatorsVC") as! AICreatorsVC
+//           let navigationController = UINavigationController(rootViewController: loginViewController)
+//           
+//           window?.rootViewController = navigationController
+//           window?.makeKeyAndVisible()
            
-           window?.rootViewController = navigationController
-           window?.makeKeyAndVisible()
+           
+           guard let parentVC = self.findViewController() else { return }
+
+                  let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                  if let aiCreatorsVC = storyboard.instantiateViewController(withIdentifier: "AICreatorsVC") as? AICreatorsVC {
+                      let navController = UINavigationController(rootViewController: aiCreatorsVC)
+                      navController.modalPresentationStyle = .pageSheet
+                      parentVC.present(navController, animated: true, completion: nil)
+                  }
+           
        }
     override func didMoveToWindow() {
         super.didMoveToWindow()
