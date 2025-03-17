@@ -11,7 +11,7 @@
 		65680A3E2658140FE95EB241 /* Pods_TalkingVideos_TalkingVideosUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E8457B812EF22188DE21C2CD /* Pods_TalkingVideos_TalkingVideosUITests.framework */; };
 		A54CAC402D7EF377008BA05E /* SignInVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A54CAC3C2D7EF377008BA05E /* SignInVC.swift */; };
 		A54CAC412D7EF377008BA05E /* SignInViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A54CAC3D2D7EF377008BA05E /* SignInViewModel.swift */; };
-		A54CAC422D7EF377008BA05E /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = A54CAC3E2D7EF377008BA05E /* User.swift */; };
+		A54CAC422D7EF377008BA05E /* SignInModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A54CAC3E2D7EF377008BA05E /* SignInModel.swift */; };
 		A54CAC442D7EF440008BA05E /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A54CAC432D7EF440008BA05E /* AuthService.swift */; };
 		A54F38822D8157F000A53B85 /* DashboardVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A54F38812D8157F000A53B85 /* DashboardVC.swift */; };
 		A5549A382D817F8000793519 /* AICreatorsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5549A372D817F8000793519 /* AICreatorsVC.swift */; };
@@ -41,6 +41,10 @@
 		A5B969322D7E9D3700CEC10B /* KeyChainHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5B969282D7E9D3600CEC10B /* KeyChainHelper.swift */; };
 		A5B969332D7E9D3700CEC10B /* SingletonClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5B969292D7E9D3600CEC10B /* SingletonClass.swift */; };
 		A5BA0C9D2D816C4800FD642B /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5BA0C9C2D816C4800FD642B /* TabBarController.swift */; };
+		A5C0D44A2D87ED2B001056E6 /* SignUpModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5C0D4492D87ED2B001056E6 /* SignUpModel.swift */; };
+		A5C0D44C2D8803FA001056E6 /* ForgotPassModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5C0D44B2D8803FA001056E6 /* ForgotPassModel.swift */; };
+		A5C0D44E2D882505001056E6 /* ResetPassModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5C0D44D2D882505001056E6 /* ResetPassModel.swift */; };
+		A5C0D4502D88253F001056E6 /* ResetPassViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5C0D44F2D88253F001056E6 /* ResetPassViewModel.swift */; };
 		BF22D9C3B48F852EFA5BE781 /* Pods_TalkingVideos.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F51D098CA3E841C538809C01 /* Pods_TalkingVideos.framework */; };
 /* End PBXBuildFile section */
 
@@ -66,7 +70,7 @@
 		8FB2E0F4D9D04A8B7951CEC7 /* Pods_TalkingVideosTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TalkingVideosTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A54CAC3C2D7EF377008BA05E /* SignInVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignInVC.swift; sourceTree = "<group>"; };
 		A54CAC3D2D7EF377008BA05E /* SignInViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignInViewModel.swift; sourceTree = "<group>"; };
-		A54CAC3E2D7EF377008BA05E /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		A54CAC3E2D7EF377008BA05E /* SignInModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignInModel.swift; sourceTree = "<group>"; };
 		A54CAC432D7EF440008BA05E /* AuthService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
 		A54F38812D8157F000A53B85 /* DashboardVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardVC.swift; sourceTree = "<group>"; };
 		A5549A372D817F8000793519 /* AICreatorsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AICreatorsVC.swift; sourceTree = "<group>"; };
@@ -100,6 +104,10 @@
 		A5B969282D7E9D3600CEC10B /* KeyChainHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyChainHelper.swift; sourceTree = "<group>"; };
 		A5B969292D7E9D3600CEC10B /* SingletonClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SingletonClass.swift; sourceTree = "<group>"; };
 		A5BA0C9C2D816C4800FD642B /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
+		A5C0D4492D87ED2B001056E6 /* SignUpModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpModel.swift; sourceTree = "<group>"; };
+		A5C0D44B2D8803FA001056E6 /* ForgotPassModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPassModel.swift; sourceTree = "<group>"; };
+		A5C0D44D2D882505001056E6 /* ResetPassModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetPassModel.swift; sourceTree = "<group>"; };
+		A5C0D44F2D88253F001056E6 /* ResetPassViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetPassViewModel.swift; sourceTree = "<group>"; };
 		C88EA11D549D9801D5E5D377 /* Pods-TalkingVideos-TalkingVideosUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TalkingVideos-TalkingVideosUITests.debug.xcconfig"; path = "Target Support Files/Pods-TalkingVideos-TalkingVideosUITests/Pods-TalkingVideos-TalkingVideosUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		C9EAD26C00ACA6C4392A25EB /* Pods-TalkingVideos-TalkingVideosUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TalkingVideos-TalkingVideosUITests.release.xcconfig"; path = "Target Support Files/Pods-TalkingVideos-TalkingVideosUITests/Pods-TalkingVideos-TalkingVideosUITests.release.xcconfig"; sourceTree = "<group>"; };
 		DBDACA82E5F8771EDFB2852C /* Pods-TalkingVideosTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TalkingVideosTests.release.xcconfig"; path = "Target Support Files/Pods-TalkingVideosTests/Pods-TalkingVideosTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -155,7 +163,7 @@
 			children = (
 				A54CAC3C2D7EF377008BA05E /* SignInVC.swift */,
 				A54CAC3D2D7EF377008BA05E /* SignInViewModel.swift */,
-				A54CAC3E2D7EF377008BA05E /* User.swift */,
+				A54CAC3E2D7EF377008BA05E /* SignInModel.swift */,
 			);
 			path = SignIn;
 			sourceTree = "<group>";
@@ -199,6 +207,7 @@
 			children = (
 				A5549A3D2D81807700793519 /* SignUpVC.swift */,
 				A5549A472D82B65700793519 /* SignUpViewModel.swift */,
+				A5C0D4492D87ED2B001056E6 /* SignUpModel.swift */,
 			);
 			path = SignUP;
 			sourceTree = "<group>";
@@ -208,6 +217,7 @@
 			children = (
 				A5549A402D81809700793519 /* ForgotPasswordVC.swift */,
 				A5549A492D82B94D00793519 /* ForgotPasswordViewModel.swift */,
+				A5C0D44B2D8803FA001056E6 /* ForgotPassModel.swift */,
 			);
 			path = ForgotPasswordVC;
 			sourceTree = "<group>";
@@ -216,6 +226,8 @@
 			isa = PBXGroup;
 			children = (
 				A5549A422D8180A800793519 /* ResetPasswordVC.swift */,
+				A5C0D44D2D882505001056E6 /* ResetPassModel.swift */,
+				A5C0D44F2D88253F001056E6 /* ResetPassViewModel.swift */,
 			);
 			path = ResetPasswordVC;
 			sourceTree = "<group>";
@@ -550,15 +562,19 @@
 				A5B969302D7E9D3700CEC10B /* ExtensionClass.swift in Sources */,
 				A5549A432D8180A800793519 /* ResetPasswordVC.swift in Sources */,
 				A5B9692B2D7E9D3600CEC10B /* ApisSuffix.swift in Sources */,
+				A5C0D4502D88253F001056E6 /* ResetPassViewModel.swift in Sources */,
+				A5C0D44A2D87ED2B001056E6 /* SignUpModel.swift in Sources */,
 				A5B968F42D7E9B7900CEC10B /* ViewController.swift in Sources */,
 				A5B969322D7E9D3700CEC10B /* KeyChainHelper.swift in Sources */,
-				A54CAC422D7EF377008BA05E /* User.swift in Sources */,
+				A54CAC422D7EF377008BA05E /* SignInModel.swift in Sources */,
 				A5549A4A2D82B94D00793519 /* ForgotPasswordViewModel.swift in Sources */,
 				A54CAC402D7EF377008BA05E /* SignInVC.swift in Sources */,
 				A5B969312D7E9D3700CEC10B /* FloatingPlaceholderTextField.swift in Sources */,
 				A5549A3E2D81807700793519 /* SignUpVC.swift in Sources */,
 				A5B968F02D7E9B7900CEC10B /* AppDelegate.swift in Sources */,
 				A5B969202D7E9CFF00CEC10B /* NetworkService.swift in Sources */,
+				A5C0D44C2D8803FA001056E6 /* ForgotPassModel.swift in Sources */,
+				A5C0D44E2D882505001056E6 /* ResetPassModel.swift in Sources */,
 				A5B968F22D7E9B7900CEC10B /* SceneDelegate.swift in Sources */,
 				A5549A462D81836F00793519 /* ProfileVC.swift in Sources */,
 				A5BA0C9D2D816C4800FD642B /* TabBarController.swift in Sources */,

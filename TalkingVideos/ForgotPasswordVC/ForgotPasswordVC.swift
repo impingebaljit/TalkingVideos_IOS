@@ -6,18 +6,22 @@
 //
 
 import UIKit
+import AuthenticationServices
 
 class ForgotPasswordVC: UIViewController {
 
     @IBOutlet weak var tf_Email: UITextField!
-    private let viewModel = ForgotPasswordViewModel()
-    
+   
+    var viewModel: ForgotPasswordViewModel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
         self.navigationItem.hidesBackButton = true
+        
+        let authService = AuthService() // Assuming AuthService is implemented
+        viewModel = ForgotPasswordViewModel(authService: authService)
         
         setupBindings()
     }
@@ -34,16 +38,52 @@ class ForgotPasswordVC: UIViewController {
     
     @IBAction func acn_Send(_ sender: Any) {
         
-//        guard let email = tf_Email.text else { return }
-//
-//               if let errorMessage = viewModel.validateEmail(email) {
-//                   showAlert(errorMessage)
-//                   return
-//               }
-//
-//               viewModel.resetPassword(email: email)
+
+        
+        // Submit Action
+       
+            guard let email = tf_Email.text, !email.isEmpty else {
+                self.showAlert(title: "Error", message: "Please enter a valid email.")
+                return
+            }
+            
+            // Call the Forgot Password API
+        self.sendPasswordResetRequest(email: email)
+        
+        
+        
     }
     
+    
+    private func sendPasswordResetRequest(email: String) {
+        // Show the loader while the request is being processed
+       // CustomLoader.shared.showLoader()
+
+        viewModel.forgotPassword(email: email) { [weak self] success, errorMessage in
+            // Ensure UI updates happen on the main thread
+            DispatchQueue.main.async {
+                CustomLoader.shared.hideLoader()
+
+                if success {
+                    self?.showAlert(title: "Success", message: "Password reset link sent successfully.") {
+                        self?.navigateToLoginVC() // Navigate to LoginVC
+                    }
+                } else {
+                    let error = errorMessage ?? "Failed to send password reset link. Please try again."
+                    self?.showAlert(title: "Error", message: error)
+                }
+            }
+        }
+    }
+
+    private func navigateToLoginVC() {
+        // Navigate to LoginVC
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        if let dashboardVC = storyboard.instantiateViewController(withIdentifier: "SignInVC") as? SignInVC {
+            let navController = UINavigationController(rootViewController: dashboardVC)
+            self.present(navController, animated: false, completion: nil)
+        }
+    }
     private func showAlert(_ message: String) {
           let alert = UIAlertController(title: "Message", message: message, preferredStyle: .alert)
           alert.addAction(UIAlertAction(title: "OK", style: .default))

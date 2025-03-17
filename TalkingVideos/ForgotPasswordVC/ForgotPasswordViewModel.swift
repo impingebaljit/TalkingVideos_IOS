@@ -6,11 +6,19 @@
 //
 
 import UIKit
+import AuthenticationServices
 
 class ForgotPasswordViewModel {
 
     var onPasswordResetSuccess: (() -> Void)?
     var onPasswordResetFailure: ((String) -> Void)?
+    private let authService: AuthService
+    
+    
+    // Dependency Injection
+    init(authService: AuthService) {
+        self.authService = authService
+    }
 
     func validateEmail(_ email: String) -> String? {
         if email.isEmpty {
@@ -29,18 +37,38 @@ class ForgotPasswordViewModel {
         return NSPredicate(format: "SELF MATCHES %@", emailRegex).evaluate(with: email)
     }
 
-    func resetPassword(email: String) {
-        // Simulate an API call (replace with real API request)
-        DispatchQueue.global().asyncAfter(deadline: .now() + 2) {
-            if email == "test@example.com" {
+    
+    func forgotPassword(email: String, completion: @escaping (Bool, String?) -> Void) {
+        // Validate input field
+        guard !email.isEmpty else {
+            completion(false, "Email is required.")
+            return
+        }
+
+        // Validate email format
+        guard isValidEmail(email) else {
+            completion(false, "Invalid email format.")
+            return
+        }
+
+        // Perform the forgot password request asynchronously
+        DispatchQueue.global().async { [weak self] in
+            guard let self = self else { return }
+
+            authService.forgotPassword(email: email) { result in
                 DispatchQueue.main.async {
-                    self.onPasswordResetFailure?("Email not registered")
-                }
-            } else {
-                DispatchQueue.main.async {
-                    self.onPasswordResetSuccess?()
+                    switch result {
+                    case .success(let response):
+                        print("✅ Password reset successful: \(response.message)")
+                        completion(true, response.message) // Send success message
+
+                    case .failure(let error):
+                        print("❌ Forgot password failed: \(error.localizedDescription)")
+                        completion(false, error.localizedDescription) // Return error message
+                    }
                 }
             }
         }
     }
+
 }

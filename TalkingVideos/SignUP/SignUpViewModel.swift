@@ -11,6 +11,22 @@ import Foundation
 import AuthenticationServices
 
 class SignUpViewModel: NSObject {
+    
+    private let authService: AuthService
+    
+    var signUp: SignUpModel?
+    
+   
+    
+    // Inputs
+    var name: String = ""
+    var email: String = ""
+    var password: String = ""
+
+    // Dependency Injection
+    init(authService: AuthService) {
+        self.authService = authService
+    }
 
     var onAppleSignInSuccess: ((String, String) -> Void)?
     var onAppleSignInFailure: ((String) -> Void)?
@@ -29,21 +45,50 @@ class SignUpViewModel: NSObject {
         return NSPredicate(format: "SELF MATCHES %@", emailRegex).evaluate(with: email)
     }
 
+//    private func isValidPassword(_ password: String) -> Bool {
+//        let passwordRegex = "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d).{6,}$"
+//        return NSPredicate(format: "SELF MATCHES %@", passwordRegex).evaluate(with: password)
+//    }
+    
     private func isValidPassword(_ password: String) -> Bool {
-        let passwordRegex = "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d).{6,}$"
-        return NSPredicate(format: "SELF MATCHES %@", passwordRegex).evaluate(with: password)
+        return password.count >= 6
     }
 
-    func signUp(user: User, completion: @escaping (Bool, String?) -> Void) {
-        // Simulated API call (Replace with real network request)
-        DispatchQueue.global().asyncAfter(deadline: .now() + 2) {
-            if user.email == "test@example.com" {
-                completion(false, "User already exists")
-            } else {
-                completion(true, nil) // Success
+    func signUp(name: String, email: String, password: String, completion: @escaping (Bool, String?) -> Void) {
+        // Validate input fields
+        guard !name.isEmpty, !email.isEmpty, !password.isEmpty else {
+            completion(false, "Name, email, and password are required.")
+            return
+        }
+
+        // Validate email and password format
+        guard isValidEmail(email), isValidPassword(password) else {
+            completion(false, "Invalid email or password format.")
+            return
+        }
+
+        // Perform sign-up asynchronously
+        DispatchQueue.global().async { [weak self] in
+            guard let self = self else { return }
+
+            authService.signUp(name: name, email: email, password: password) { result in
+                DispatchQueue.main.async {
+                    switch result {
+                    case .success(let user):
+                        // Handle successful authentication
+                        print("User successfully signed up with ID: \(user)")
+                        //self.user = user
+                        completion(true, nil)
+
+                    case .failure(let error):
+                        // Handle authentication failure
+                        completion(false, error.localizedDescription)
+                    }
+                }
             }
         }
     }
+
 
     func handleAppleSignIn() {
         let request = ASAuthorizationAppleIDProvider().createRequest()

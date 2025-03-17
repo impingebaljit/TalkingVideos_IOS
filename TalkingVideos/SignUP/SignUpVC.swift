@@ -15,11 +15,17 @@ class SignUpVC: UIViewController {
     @IBOutlet weak var tf_Email: UITextField!
     
     @IBOutlet weak var tf_Password: UITextField!
-    private let viewModel = SignUpViewModel()
+  
+    var viewModel: SignUpViewModel!
+    
+    var userToParse: SignUpModel?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupBindings()
+       // setupBindings()
+        
+        let authService = AuthService() // Assuming AuthService is implemented
+        viewModel = SignUpViewModel(authService: authService)
        
     }
     
@@ -34,25 +40,49 @@ class SignUpVC: UIViewController {
                 self?.showAlert("Apple Sign-In Error: \(error)")
             }
         }
-    @IBAction func acn_SignUp(_ sender: Any) {
-        guard let name = tf_Name.text, let email = tf_Email.text, let password = tf_Password.text else { return }
+    @IBAction func acn_SignUp(_ sender: Any)  {
+        guard let name = tf_Name.text, !name.isEmpty,
+              let email = tf_Email.text, !email.isEmpty,
+              let password = tf_Password.text, !password.isEmpty else {
+            showAlert("All fields are required.")
+            return
+        }
+        
+        // Validate using ViewModel's method
+        if let errorMessage = viewModel.validateFields(name: name, email: email, password: password) {
+            showAlert(errorMessage)
+            return
+        }
 
-               if let errorMessage = viewModel.validateFields(name: name, email: email, password: password) {
-                   showAlert(errorMessage)
-                   return
-               }
+        // Call the sign-up function
+        viewModel.signUp(name: name, email: email, password: password) { [weak self] success, message in
+            guard let self = self else { return }
 
-               let user = User(name: name, email: email, password: password)
-               viewModel.signUp(user: user) { [weak self] success, error in
-                   if success {
-                       self?.showAlert("User registered successfully")
-                   } else {
-                       self?.showAlert(error ?? "Unknown error")
-                   }
-               }
+            if success {
+                // Show success alert and navigate after dismissal
+                            let alert = UIAlertController(title: "Success", message: "You have signed up successfully!", preferredStyle: .alert)
+                            alert.addAction(UIAlertAction(title: "OK", style: .default) { _ in
+                                // Navigate to DashboardVC after user acknowledges the alert
+                                let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                                if let dashboardVC = storyboard.instantiateViewController(withIdentifier: "DashboardVC") as? DashboardVC {
+                                    let navController = UINavigationController(rootViewController: dashboardVC)
+                                    self.present(navController, animated: true, completion: nil)
+                                }
+                            })
+                            self.present(alert, animated: true, completion: nil)
+                
+            } else {
+                print("❌ Sign-up failed: \(message ?? "Unknown error")")
+                self.showAlert(message ?? "Sign-up failed. Please try again.")
+            }
+        }
     }
+
     
     @IBAction func acn_Login(_ sender: Any) {
+//        if let dashboardVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "SignInVC") as? SignInVC {
+//            self.navigationController?.pushViewController(dashboardVC, animated: true)
+//        }
     }
     
     @IBAction func acn_SignUpwithApple(_ sender: Any) {
@@ -77,3 +107,15 @@ extension SignUpVC: ASAuthorizationControllerPresentationContextProviding {
     }
 }
 
+// //Helper extension to find the parent view controller
+//extension UIView {
+//    func findViewController() -> UIViewController? {
+//        if let nextResponder = next as? UIViewController {
+//            return nextResponder
+//        } else if let nextResponder = next as? UIView {
+//            return nextResponder.findViewController()
+//        } else {
+//            return nil
+//        }
+//    }
+//}

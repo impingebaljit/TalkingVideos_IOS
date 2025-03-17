@@ -16,22 +16,15 @@ import UIKit
 import Foundation
 
 struct API {
-    static let baseURL = "https://bluelight.urtestsite.com/"
+    static let baseURL = "https://ugcreels.urtestsite.com/"
     
     struct Endpoints {
-        static let signIn = "api/loggedIn"
-        static let forgotPassword = "api/send-reset-password-email"
-        static let incidentReport = "api/incidents"
+        static let signUp = "api/auth/register"
+        static let signIn = "api/auth/login"
+        static let forgotPassword = "api/auth/forgot-password"
+        static let resetPassword = "api/auth/reset-password"
         static let getincidentReportUpdateComment = "api/getComments"
-        static let getIncidentPersonToContact = "api/getIncidentPersonToContact"
-        static let getIncidentActions = "api/getIncidentActions"
-        static let getSeizuresIncident = "api/getIncidentSeizure"
-        static let getAttachmentsIncident = "api/getIncidentAttachment"
-        static let addComment = "api/addComment"
-        static let addPersonToContact = "api/addPersonToContact"
-        static let addAction = "api/addAddAction"
-        static let addSeizure = "api/addSeizure"
-        static let addAttachment = "api/addAttachment"
+        
         // Add more endpoints as needed
    
     
