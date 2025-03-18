@@ -12,6 +12,7 @@ class AICreatorsVC: UIViewController {
         override func viewDidLoad() {
             super.viewDidLoad()
            // view.backgroundColor = UIColor(red: 16/255, green: 9/255, blue: 25/255, alpha: 1.0)
+            self.navigationItem.hidesBackButton = true
 
         //  setupUI()
         }
