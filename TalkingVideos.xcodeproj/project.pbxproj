@@ -47,6 +47,8 @@
 		A5C0D4502D88253F001056E6 /* ResetPassViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5C0D44F2D88253F001056E6 /* ResetPassViewModel.swift */; };
 		A5C0D4522D894921001056E6 /* AICreatorVideoListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5C0D4512D894921001056E6 /* AICreatorVideoListVC.swift */; };
 		A5C0D4542D897C27001056E6 /* CreatorVideoOptionsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5C0D4532D897C27001056E6 /* CreatorVideoOptionsVC.swift */; };
+		A5C0D4572D8ABBF1001056E6 /* AICreatorVideoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5C0D4562D8ABBF1001056E6 /* AICreatorVideoModel.swift */; };
+		A5C0D4592D8ABCD7001056E6 /* AICreatorVideoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5C0D4582D8ABCD7001056E6 /* AICreatorVideoViewModel.swift */; };
 		BF22D9C3B48F852EFA5BE781 /* Pods_TalkingVideos.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F51D098CA3E841C538809C01 /* Pods_TalkingVideos.framework */; };
 /* End PBXBuildFile section */
 
@@ -112,6 +114,8 @@
 		A5C0D44F2D88253F001056E6 /* ResetPassViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetPassViewModel.swift; sourceTree = "<group>"; };
 		A5C0D4512D894921001056E6 /* AICreatorVideoListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AICreatorVideoListVC.swift; sourceTree = "<group>"; };
 		A5C0D4532D897C27001056E6 /* CreatorVideoOptionsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreatorVideoOptionsVC.swift; sourceTree = "<group>"; };
+		A5C0D4562D8ABBF1001056E6 /* AICreatorVideoModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AICreatorVideoModel.swift; sourceTree = "<group>"; };
+		A5C0D4582D8ABCD7001056E6 /* AICreatorVideoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AICreatorVideoViewModel.swift; sourceTree = "<group>"; };
 		C88EA11D549D9801D5E5D377 /* Pods-TalkingVideos-TalkingVideosUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TalkingVideos-TalkingVideosUITests.debug.xcconfig"; path = "Target Support Files/Pods-TalkingVideos-TalkingVideosUITests/Pods-TalkingVideos-TalkingVideosUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		C9EAD26C00ACA6C4392A25EB /* Pods-TalkingVideos-TalkingVideosUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TalkingVideos-TalkingVideosUITests.release.xcconfig"; path = "Target Support Files/Pods-TalkingVideos-TalkingVideosUITests/Pods-TalkingVideos-TalkingVideosUITests.release.xcconfig"; sourceTree = "<group>"; };
 		DBDACA82E5F8771EDFB2852C /* Pods-TalkingVideosTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TalkingVideosTests.release.xcconfig"; path = "Target Support Files/Pods-TalkingVideosTests/Pods-TalkingVideosTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -194,7 +198,7 @@
 			children = (
 				A5549A372D817F8000793519 /* AICreatorsVC.swift */,
 				A5C0D4532D897C27001056E6 /* CreatorVideoOptionsVC.swift */,
-				A5C0D4512D894921001056E6 /* AICreatorVideoListVC.swift */,
+				A5C0D4552D8ABBC9001056E6 /* AICreatorVideoList */,
 				A5549A452D81836F00793519 /* ProfileVC.swift */,
 			);
 			path = AICreatorsVC;
@@ -314,6 +318,16 @@
 				A5B969292D7E9D3600CEC10B /* SingletonClass.swift */,
 			);
 			path = Helper;
+			sourceTree = "<group>";
+		};
+		A5C0D4552D8ABBC9001056E6 /* AICreatorVideoList */ = {
+			isa = PBXGroup;
+			children = (
+				A5C0D4512D894921001056E6 /* AICreatorVideoListVC.swift */,
+				A5C0D4562D8ABBF1001056E6 /* AICreatorVideoModel.swift */,
+				A5C0D4582D8ABCD7001056E6 /* AICreatorVideoViewModel.swift */,
+			);
+			path = AICreatorVideoList;
 			sourceTree = "<group>";
 		};
 		CF999E1F3BAC670794ED64F7 /* Frameworks */ = {
@@ -597,6 +611,8 @@
 				A5549A482D82B65700793519 /* SignUpViewModel.swift in Sources */,
 				A5B9692C2D7E9D3600CEC10B /* Constant.swift in Sources */,
 				A54CAC412D7EF377008BA05E /* SignInViewModel.swift in Sources */,
+				A5C0D4572D8ABBF1001056E6 /* AICreatorVideoModel.swift in Sources */,
+				A5C0D4592D8ABCD7001056E6 /* AICreatorVideoViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
