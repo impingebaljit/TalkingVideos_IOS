@@ -29,6 +29,8 @@ class SignUpVC: UIViewController {
        
     }
     
+    
+    
     private func setupBindings() {
             viewModel.onAppleSignInSuccess = { [weak self] name, email in
                 self?.tf_Name.text = name

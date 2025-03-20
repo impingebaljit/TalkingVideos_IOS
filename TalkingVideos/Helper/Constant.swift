@@ -24,7 +24,9 @@ struct API {
         static let forgotPassword = "api/auth/forgot-password"
         static let resetPassword = "api/auth/reset-password"
         static let videoList = "api/captions/list"
-        
+        static let logout = "api/logout"
+        static let getProfile = "api/user"
+     
         // Add more endpoints as needed
    
     

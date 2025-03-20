@@ -21,6 +21,8 @@
 		A5549A462D81836F00793519 /* ProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5549A452D81836F00793519 /* ProfileVC.swift */; };
 		A5549A482D82B65700793519 /* SignUpViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5549A472D82B65700793519 /* SignUpViewModel.swift */; };
 		A5549A4A2D82B94D00793519 /* ForgotPasswordViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5549A492D82B94D00793519 /* ForgotPasswordViewModel.swift */; };
+		A5B8FA072D8C0B95002FF51E /* ProfileModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5B8FA062D8C0B95002FF51E /* ProfileModel.swift */; };
+		A5B8FA0A2D8C0CBF002FF51E /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5B8FA092D8C0CBF002FF51E /* ProfileViewModel.swift */; };
 		A5B968F02D7E9B7900CEC10B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5B968EF2D7E9B7900CEC10B /* AppDelegate.swift */; };
 		A5B968F22D7E9B7900CEC10B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5B968F12D7E9B7900CEC10B /* SceneDelegate.swift */; };
 		A5B968F42D7E9B7900CEC10B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5B968F32D7E9B7900CEC10B /* ViewController.swift */; };
@@ -46,7 +48,7 @@
 		A5C0D44E2D882505001056E6 /* ResetPassModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5C0D44D2D882505001056E6 /* ResetPassModel.swift */; };
 		A5C0D4502D88253F001056E6 /* ResetPassViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5C0D44F2D88253F001056E6 /* ResetPassViewModel.swift */; };
 		A5C0D4522D894921001056E6 /* AICreatorVideoListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5C0D4512D894921001056E6 /* AICreatorVideoListVC.swift */; };
-		A5C0D4542D897C27001056E6 /* CreatorVideoOptionsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5C0D4532D897C27001056E6 /* CreatorVideoOptionsVC.swift */; };
+		A5C0D4542D897C27001056E6 /* AICreatorImgCarouselVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5C0D4532D897C27001056E6 /* AICreatorImgCarouselVC.swift */; };
 		A5C0D4572D8ABBF1001056E6 /* AICreatorVideoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5C0D4562D8ABBF1001056E6 /* AICreatorVideoModel.swift */; };
 		A5C0D4592D8ABCD7001056E6 /* AICreatorVideoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5C0D4582D8ABCD7001056E6 /* AICreatorVideoViewModel.swift */; };
 		BF22D9C3B48F852EFA5BE781 /* Pods_TalkingVideos.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F51D098CA3E841C538809C01 /* Pods_TalkingVideos.framework */; };
@@ -84,6 +86,8 @@
 		A5549A452D81836F00793519 /* ProfileVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileVC.swift; sourceTree = "<group>"; };
 		A5549A472D82B65700793519 /* SignUpViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewModel.swift; sourceTree = "<group>"; };
 		A5549A492D82B94D00793519 /* ForgotPasswordViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordViewModel.swift; sourceTree = "<group>"; };
+		A5B8FA062D8C0B95002FF51E /* ProfileModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileModel.swift; sourceTree = "<group>"; };
+		A5B8FA092D8C0CBF002FF51E /* ProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewModel.swift; sourceTree = "<group>"; };
 		A5B968EC2D7E9B7900CEC10B /* TalkingVideos.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TalkingVideos.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A5B968EF2D7E9B7900CEC10B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A5B968F12D7E9B7900CEC10B /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -113,7 +117,7 @@
 		A5C0D44D2D882505001056E6 /* ResetPassModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetPassModel.swift; sourceTree = "<group>"; };
 		A5C0D44F2D88253F001056E6 /* ResetPassViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetPassViewModel.swift; sourceTree = "<group>"; };
 		A5C0D4512D894921001056E6 /* AICreatorVideoListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AICreatorVideoListVC.swift; sourceTree = "<group>"; };
-		A5C0D4532D897C27001056E6 /* CreatorVideoOptionsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreatorVideoOptionsVC.swift; sourceTree = "<group>"; };
+		A5C0D4532D897C27001056E6 /* AICreatorImgCarouselVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AICreatorImgCarouselVC.swift; sourceTree = "<group>"; };
 		A5C0D4562D8ABBF1001056E6 /* AICreatorVideoModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AICreatorVideoModel.swift; sourceTree = "<group>"; };
 		A5C0D4582D8ABCD7001056E6 /* AICreatorVideoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AICreatorVideoViewModel.swift; sourceTree = "<group>"; };
 		C88EA11D549D9801D5E5D377 /* Pods-TalkingVideos-TalkingVideosUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TalkingVideos-TalkingVideosUITests.debug.xcconfig"; path = "Target Support Files/Pods-TalkingVideos-TalkingVideosUITests/Pods-TalkingVideos-TalkingVideosUITests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -197,9 +201,9 @@
 			isa = PBXGroup;
 			children = (
 				A5549A372D817F8000793519 /* AICreatorsVC.swift */,
-				A5C0D4532D897C27001056E6 /* CreatorVideoOptionsVC.swift */,
+				A5B8FA052D8BE156002FF51E /* AICreatorImgCarousel */,
 				A5C0D4552D8ABBC9001056E6 /* AICreatorVideoList */,
-				A5549A452D81836F00793519 /* ProfileVC.swift */,
+				A5B8FA082D8C0BAF002FF51E /* ProfileVC */,
 			);
 			path = AICreatorsVC;
 			sourceTree = "<group>";
@@ -240,6 +244,24 @@
 				A5C0D44F2D88253F001056E6 /* ResetPassViewModel.swift */,
 			);
 			path = ResetPasswordVC;
+			sourceTree = "<group>";
+		};
+		A5B8FA052D8BE156002FF51E /* AICreatorImgCarousel */ = {
+			isa = PBXGroup;
+			children = (
+				A5C0D4532D897C27001056E6 /* AICreatorImgCarouselVC.swift */,
+			);
+			path = AICreatorImgCarousel;
+			sourceTree = "<group>";
+		};
+		A5B8FA082D8C0BAF002FF51E /* ProfileVC */ = {
+			isa = PBXGroup;
+			children = (
+				A5549A452D81836F00793519 /* ProfileVC.swift */,
+				A5B8FA092D8C0CBF002FF51E /* ProfileViewModel.swift */,
+				A5B8FA062D8C0B95002FF51E /* ProfileModel.swift */,
+			);
+			path = ProfileVC;
 			sourceTree = "<group>";
 		};
 		A5B968E32D7E9B7900CEC10B = {
@@ -581,7 +603,7 @@
 			files = (
 				A5B969302D7E9D3700CEC10B /* ExtensionClass.swift in Sources */,
 				A5549A432D8180A800793519 /* ResetPasswordVC.swift in Sources */,
-				A5C0D4542D897C27001056E6 /* CreatorVideoOptionsVC.swift in Sources */,
+				A5C0D4542D897C27001056E6 /* AICreatorImgCarouselVC.swift in Sources */,
 				A5B9692B2D7E9D3600CEC10B /* ApisSuffix.swift in Sources */,
 				A5C0D4522D894921001056E6 /* AICreatorVideoListVC.swift in Sources */,
 				A5C0D4502D88253F001056E6 /* ResetPassViewModel.swift in Sources */,
@@ -594,6 +616,7 @@
 				A5B969312D7E9D3700CEC10B /* FloatingPlaceholderTextField.swift in Sources */,
 				A5549A3E2D81807700793519 /* SignUpVC.swift in Sources */,
 				A5B968F02D7E9B7900CEC10B /* AppDelegate.swift in Sources */,
+				A5B8FA072D8C0B95002FF51E /* ProfileModel.swift in Sources */,
 				A5B969202D7E9CFF00CEC10B /* NetworkService.swift in Sources */,
 				A5C0D44C2D8803FA001056E6 /* ForgotPassModel.swift in Sources */,
 				A5C0D44E2D882505001056E6 /* ResetPassModel.swift in Sources */,
@@ -608,6 +631,7 @@
 				A54F38822D8157F000A53B85 /* DashboardVC.swift in Sources */,
 				A5B9692F2D7E9D3600CEC10B /* DateUtility.swift in Sources */,
 				A54CAC442D7EF440008BA05E /* AuthService.swift in Sources */,
+				A5B8FA0A2D8C0CBF002FF51E /* ProfileViewModel.swift in Sources */,
 				A5549A482D82B65700793519 /* SignUpViewModel.swift in Sources */,
 				A5B9692C2D7E9D3600CEC10B /* Constant.swift in Sources */,
 				A54CAC412D7EF377008BA05E /* SignInViewModel.swift in Sources */,
