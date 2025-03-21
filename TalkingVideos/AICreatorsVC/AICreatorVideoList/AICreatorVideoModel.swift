@@ -23,3 +23,10 @@ struct Thumbnail: Codable {
         case videoURL = "videoUrl"
     }
 }
+
+
+struct VideoDetailModel {
+    let thumbnail: Thumbnail
+    let creatorName: String
+    let color: UIColor
+}

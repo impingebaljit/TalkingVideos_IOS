@@ -157,4 +157,10 @@ class AICreatorImgCarouselVC: UIViewController {
     deinit {
         timer?.invalidate()
     }
+    
+    
+    @IBAction func acn_promptToVideo(_ sender: Any) {
+        
+    }
+    
 }

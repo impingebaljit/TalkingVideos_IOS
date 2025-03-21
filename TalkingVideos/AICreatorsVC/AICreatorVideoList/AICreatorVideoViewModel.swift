@@ -12,11 +12,23 @@ import AuthenticationServices
 class AICreatorVideoViewModel {
     private let authService: AuthService
     var thumbnails: [Thumbnail] = []
+    var supportedCreators: [String] = []
 
     init(authService: AuthService) {
         self.authService = authService
     }
-
+    func createModel(at index: Int) -> VideoDetailModel {
+           return VideoDetailModel(thumbnail: thumbnails[index], creatorName: supportedCreators[index], color: randomColor())
+       }
+    
+    func randomColor() -> UIColor {
+           return UIColor(
+               red: CGFloat.random(in: 0...1),
+               green: CGFloat.random(in: 0...1),
+               blue: CGFloat.random(in: 0...1),
+               alpha: 1.0
+           )
+       }
     
     func getTheVideoList(completion: @escaping (Bool) -> Void) {
         authService.getTheVideoList { [weak self] result in
@@ -28,6 +40,7 @@ class AICreatorVideoViewModel {
                 // ✅ Case 1: If already decoded model is returned
                 if let videoList = response as? AICreatorVideoModel {
                     self.thumbnails = Array(videoList.thumbnails.values)
+                    self.supportedCreators = Array(videoList.supportedCreators)
                     completion(true)
                     return
                 }

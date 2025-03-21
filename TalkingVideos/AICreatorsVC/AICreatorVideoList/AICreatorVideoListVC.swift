@@ -3,14 +3,28 @@ import AuthenticationServices
 
 class CharacterCell: UICollectionViewCell {
     static let identifier = "CharacterCell"
+    var viewModel: AICreatorVideoViewModel!
     
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
     
-    func configure(with thumbnail: Thumbnail) {
-        nameLabel.text = "Video"
-        loadImage(from: thumbnail.imageURL)
-    }
+//    func configure(with thumbnail: Thumbnail) {
+//        nameLabel.text = "Video"
+//        loadImage(from: thumbnail.imageURL)
+//    }
+    
+   
+    
+    func configure(with thumbnail: Thumbnail, creatorName: String) {
+        let authService = AuthService()
+        viewModel = AICreatorVideoViewModel(authService: authService)
+        
+           nameLabel.text = creatorName
+        nameLabel.textColor = viewModel.randomColor()
+           loadImage(from: thumbnail.imageURL)
+       }
+    
+     
     
     private func loadImage(from urlString: String) {
         guard let url = URL(string: urlString) else { return }
@@ -69,7 +83,11 @@ class AICreatorVideoListVC: UIViewController, UICollectionViewDataSource, UIColl
                }
                
                let thumbnail = viewModel.thumbnails[indexPath.row]
-               cell.configure(with: thumbnail)
+              // cell.configure(with: thumbnail)
+        
+        let creatorName = indexPath.row < viewModel.supportedCreators.count ? viewModel.supportedCreators[indexPath.row] : "Unknown"
+
+               cell.configure(with: thumbnail, creatorName: creatorName)
                
                return cell
     }
@@ -95,7 +113,26 @@ class AICreatorVideoListVC: UIViewController, UICollectionViewDataSource, UIColl
     }
 
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        print("Selected: \(thumbnails[indexPath.row].videoURL)")
+        guard indexPath.row < viewModel.thumbnails.count,
+              indexPath.row < viewModel.supportedCreators.count else {
+            print("❌ Index out of range at row: \(indexPath.row)")
+            return
+        }
+        
+        // Create model and pass it to the next VC
+        let selectedModel = viewModel.createModel(at: indexPath.row)
+        
+        // Ensure storyboard and ViewController instantiation is valid
+        guard let detailVC = storyboard?.instantiateViewController(withIdentifier: "AICreatorContinueVC") as? AICreatorContinueVC else {
+            print("❌ Failed to instantiate AICreatorContinueVC")
+            return
+        }
+        
+        detailVC.videoModel = selectedModel
+        navigationController?.pushViewController(detailVC, animated: true)
     }
+
+    
+    
 }
 
