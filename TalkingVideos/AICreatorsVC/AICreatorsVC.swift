@@ -24,17 +24,17 @@ class AICreatorsVC: UIViewController {
     }
     @IBAction func acn_CancelBtn(_ sender: Any) {
         print("print Cancel")
-
+        navigationController?.popViewController(animated: true)
         
-        if let navController = self.navigationController {
-               let dashboardVC = DashboardVC()
-               navController.pushViewController(dashboardVC, animated: false)
-           } else {
-               let dashboardVC = DashboardVC()
-               let navController = UINavigationController(rootViewController: dashboardVC)
-               navController.modalPresentationStyle = .fullScreen
-               present(navController, animated: false, completion: nil)
-           }
+//        if let navController = self.navigationController {
+//               let dashboardVC = DashboardVC()
+//               navController.pushViewController(dashboardVC, animated: false)
+//           } else {
+//               let dashboardVC = DashboardVC()
+//               let navController = UINavigationController(rootViewController: dashboardVC)
+//               navController.modalPresentationStyle = .fullScreen
+//               present(navController, animated: false, completion: nil)
+//           }
         
     }
    

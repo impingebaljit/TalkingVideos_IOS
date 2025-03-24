@@ -162,5 +162,7 @@ class AICreatorImgCarouselVC: UIViewController {
     @IBAction func acn_promptToVideo(_ sender: Any) {
         
     }
-    
+    @IBAction func acn_BackBtn(_ sender: Any) {
+        navigationController?.popViewController(animated: true)
+    }
 }

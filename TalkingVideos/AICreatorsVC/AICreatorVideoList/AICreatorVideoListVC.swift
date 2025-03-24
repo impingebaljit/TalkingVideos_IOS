@@ -133,6 +133,10 @@ class AICreatorVideoListVC: UIViewController, UICollectionViewDataSource, UIColl
     }
 
     
+    @IBAction func back_BtnAcn(_ sender: Any) {
+        
+        navigationController?.popViewController(animated: true)
+    }
     
 }
 

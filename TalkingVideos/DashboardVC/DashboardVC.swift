@@ -177,12 +177,29 @@ import UIKit
 //}
 
 
+struct Project {
+    let image: UIImage?
+    let title: String
+    let lastUpdated: String
+}
+
 class DashboardVC: UIViewController {
+
+    @IBOutlet weak var tblVw_Projects: UITableView!
+
+    private let emptyStateView = UIStackView()
+   private var projects: [Project] = []
+//    private var projects: [Project] = [
+//        Project(image: UIImage(named: "profileImage"), title: "Hey there. Ever had one of those days?", lastUpdated: "Mar 18, 2025"),
+//        Project(image: UIImage(named: "profileImage"), title: "New Project", lastUpdated: "Mar 19, 2025")
+//    ]
 
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationItem.hidesBackButton = true
         setupUI()
+        setupTableView()
+        checkEmptyState()
     }
 
     private func setupUI() {
@@ -192,34 +209,33 @@ class DashboardVC: UIViewController {
         let folderIcon = UIImageView(image: UIImage(named: "folderIcon"))
         folderIcon.tintColor = UIColor.darkGray
         folderIcon.translatesAutoresizingMaskIntoConstraints = false
-        view.addSubview(folderIcon)
 
         // Empty State Label
         let titleLabel = UILabel()
         titleLabel.text = "No projects yet"
         titleLabel.textColor = UIColor.white
         titleLabel.font = UIFont.systemFont(ofSize: 18, weight: .semibold)
-        titleLabel.translatesAutoresizingMaskIntoConstraints = false
-        view.addSubview(titleLabel)
 
         let subtitleLabel = UILabel()
         subtitleLabel.text = "Hit the button below to add your first project"
         subtitleLabel.textColor = UIColor.gray
         subtitleLabel.font = UIFont.systemFont(ofSize: 14, weight: .regular)
-        subtitleLabel.translatesAutoresizingMaskIntoConstraints = false
-        view.addSubview(subtitleLabel)
 
         // Center Content Stack
-        let stackView = UIStackView(arrangedSubviews: [folderIcon, titleLabel, subtitleLabel])
-        stackView.axis = .vertical
-        stackView.spacing = 12
-        stackView.alignment = .center
-        stackView.translatesAutoresizingMaskIntoConstraints = false
-        view.addSubview(stackView)
+        emptyStateView.axis = .vertical
+        emptyStateView.spacing = 12
+        emptyStateView.alignment = .center
+        emptyStateView.translatesAutoresizingMaskIntoConstraints = false
+
+        emptyStateView.addArrangedSubview(folderIcon)
+        emptyStateView.addArrangedSubview(titleLabel)
+        emptyStateView.addArrangedSubview(subtitleLabel)
+
+        view.addSubview(emptyStateView)
 
         NSLayoutConstraint.activate([
-            stackView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            stackView.centerYAnchor.constraint(equalTo: view.centerYAnchor)
+            emptyStateView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            emptyStateView.centerYAnchor.constraint(equalTo: view.centerYAnchor)
         ])
 
         // Add Custom Tab Bar
@@ -233,5 +249,64 @@ class DashboardVC: UIViewController {
             tabBar.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -15),
             tabBar.heightAnchor.constraint(equalToConstant: 80)
         ])
+    }
+
+    private func setupTableView() {
+        tblVw_Projects.delegate = self
+        tblVw_Projects.dataSource = self
+        tblVw_Projects.register(ProjectCell.self, forCellReuseIdentifier: "ProjectCell")
+        tblVw_Projects.tableFooterView = UIView() // Removes extra separators
+    }
+
+    private func checkEmptyState() {
+        emptyStateView.isHidden = !projects.isEmpty
+        tblVw_Projects.isHidden = projects.isEmpty
+    }
+}
+
+class ProjectCell: UITableViewCell {
+  
+    
+  
+    @IBOutlet var dateLabel: UILabel!
+    @IBOutlet var titleLabel: UILabel!
+    @IBOutlet var projectImageView: UIImageView!
+    
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+ 
+        
+    }
+
+//
+//    func configure(with project: Project) {
+//        projectImageView.image = project.image
+//        titleLabel.text = project.title
+//        dateLabel.text = "Last update on \(project.lastUpdated)"
+//    }
+}
+
+extension DashboardVC: UITableViewDelegate, UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return projects.count
+    }
+
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as? ProjectCell else {
+            return UITableViewCell()
+        }
+       // cell.configure(with: projects[indexPath.row])
+        return cell
+    }
+
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        print("Selected project: \(projects[indexPath.row].title)")
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+       
+            return 102
+        
     }
 }

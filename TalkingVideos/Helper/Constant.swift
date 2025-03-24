@@ -26,6 +26,7 @@ struct API {
         static let videoList = "api/captions/list"
         static let logout = "api/logout"
         static let getProfile = "api/user"
+        static let generateScript = "api/generate-script"
      
         // Add more endpoints as needed
    

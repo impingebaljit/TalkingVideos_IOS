@@ -26,6 +26,8 @@
 		A5B8FA0C2D8D5A4C002FF51E /* AICreatorContinueVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5B8FA0B2D8D5A4C002FF51E /* AICreatorContinueVC.swift */; };
 		A5B8FA0E2D8D6725002FF51E /* AIScriptVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5B8FA0D2D8D6725002FF51E /* AIScriptVC.swift */; };
 		A5B8FA102D8D7A7D002FF51E /* ScriptVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5B8FA0F2D8D7A7D002FF51E /* ScriptVC.swift */; };
+		A5B8FA132D914D63002FF51E /* AIScriptViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5B8FA122D914D63002FF51E /* AIScriptViewModel.swift */; };
+		A5B8FA152D914D78002FF51E /* AIScriptModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5B8FA142D914D78002FF51E /* AIScriptModel.swift */; };
 		A5B968F02D7E9B7900CEC10B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5B968EF2D7E9B7900CEC10B /* AppDelegate.swift */; };
 		A5B968F22D7E9B7900CEC10B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5B968F12D7E9B7900CEC10B /* SceneDelegate.swift */; };
 		A5B968F42D7E9B7900CEC10B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5B968F32D7E9B7900CEC10B /* ViewController.swift */; };
@@ -94,6 +96,8 @@
 		A5B8FA0B2D8D5A4C002FF51E /* AICreatorContinueVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AICreatorContinueVC.swift; sourceTree = "<group>"; };
 		A5B8FA0D2D8D6725002FF51E /* AIScriptVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AIScriptVC.swift; sourceTree = "<group>"; };
 		A5B8FA0F2D8D7A7D002FF51E /* ScriptVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScriptVC.swift; sourceTree = "<group>"; };
+		A5B8FA122D914D63002FF51E /* AIScriptViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AIScriptViewModel.swift; sourceTree = "<group>"; };
+		A5B8FA142D914D78002FF51E /* AIScriptModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AIScriptModel.swift; sourceTree = "<group>"; };
 		A5B968EC2D7E9B7900CEC10B /* TalkingVideos.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TalkingVideos.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A5B968EF2D7E9B7900CEC10B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A5B968F12D7E9B7900CEC10B /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -208,6 +212,7 @@
 			children = (
 				A5549A372D817F8000793519 /* AICreatorsVC.swift */,
 				A5B8FA052D8BE156002FF51E /* AICreatorImgCarousel */,
+				A5B8FA112D914926002FF51E /* AIScriptVC */,
 				A5C0D4552D8ABBC9001056E6 /* AICreatorVideoList */,
 				A5B8FA082D8C0BAF002FF51E /* ProfileVC */,
 			);
@@ -257,8 +262,6 @@
 			children = (
 				A5C0D4532D897C27001056E6 /* AICreatorImgCarouselVC.swift */,
 				A5B8FA0B2D8D5A4C002FF51E /* AICreatorContinueVC.swift */,
-				A5B8FA0D2D8D6725002FF51E /* AIScriptVC.swift */,
-				A5B8FA0F2D8D7A7D002FF51E /* ScriptVC.swift */,
 			);
 			path = AICreatorImgCarousel;
 			sourceTree = "<group>";
@@ -271,6 +274,17 @@
 				A5B8FA062D8C0B95002FF51E /* ProfileModel.swift */,
 			);
 			path = ProfileVC;
+			sourceTree = "<group>";
+		};
+		A5B8FA112D914926002FF51E /* AIScriptVC */ = {
+			isa = PBXGroup;
+			children = (
+				A5B8FA0D2D8D6725002FF51E /* AIScriptVC.swift */,
+				A5B8FA122D914D63002FF51E /* AIScriptViewModel.swift */,
+				A5B8FA142D914D78002FF51E /* AIScriptModel.swift */,
+				A5B8FA0F2D8D7A7D002FF51E /* ScriptVC.swift */,
+			);
+			path = AIScriptVC;
 			sourceTree = "<group>";
 		};
 		A5B968E32D7E9B7900CEC10B = {
@@ -623,6 +637,7 @@
 				A5549A4A2D82B94D00793519 /* ForgotPasswordViewModel.swift in Sources */,
 				A5B8FA102D8D7A7D002FF51E /* ScriptVC.swift in Sources */,
 				A54CAC402D7EF377008BA05E /* SignInVC.swift in Sources */,
+				A5B8FA132D914D63002FF51E /* AIScriptViewModel.swift in Sources */,
 				A5B969312D7E9D3700CEC10B /* FloatingPlaceholderTextField.swift in Sources */,
 				A5549A3E2D81807700793519 /* SignUpVC.swift in Sources */,
 				A5B8FA0C2D8D5A4C002FF51E /* AICreatorContinueVC.swift in Sources */,
@@ -636,6 +651,7 @@
 				A5BA0C9D2D816C4800FD642B /* TabBarController.swift in Sources */,
 				A5549A382D817F8000793519 /* AICreatorsVC.swift in Sources */,
 				A5B969332D7E9D3700CEC10B /* SingletonClass.swift in Sources */,
+				A5B8FA152D914D78002FF51E /* AIScriptModel.swift in Sources */,
 				A5B8FA0E2D8D6725002FF51E /* AIScriptVC.swift in Sources */,
 				A5549A412D81809700793519 /* ForgotPasswordVC.swift in Sources */,
 				A5B9692E2D7E9D3600CEC10B /* DateTimePickerClass.swift in Sources */,
