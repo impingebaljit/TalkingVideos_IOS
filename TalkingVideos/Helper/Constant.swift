@@ -16,17 +16,20 @@ import UIKit
 import Foundation
 
 struct API {
-    static let baseURL = "https://ugcreels.urtestsite.com/"
+    static let baseURL = "https://ugcreels.urtestsite.com/api/"
     
     struct Endpoints {
-        static let signUp = "api/auth/register"
-        static let signIn = "api/auth/login"
-        static let forgotPassword = "api/auth/forgot-password"
-        static let resetPassword = "api/auth/reset-password"
-        static let videoList = "api/captions/list"
-        static let logout = "api/logout"
-        static let getProfile = "api/user"
-        static let generateScript = "api/generate-script"
+        static let signUp = "auth/register"
+        static let signIn = "auth/login"
+        static let forgotPassword = "auth/forgot-password"
+        static let resetPassword = "auth/reset-password"
+        static let videoList = "captions/list"
+        static let logout = "logout"
+        static let getProfile = "user"
+        static let generateScript = "generate-script"
+        static let submitVideo = "captions/submit"
+        static let statusCheck = "captions/poll"
+      
      
         // Add more endpoints as needed
    

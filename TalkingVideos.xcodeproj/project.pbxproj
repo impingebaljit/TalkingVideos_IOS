@@ -56,6 +56,11 @@
 		A5C0D4542D897C27001056E6 /* AICreatorImgCarouselVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5C0D4532D897C27001056E6 /* AICreatorImgCarouselVC.swift */; };
 		A5C0D4572D8ABBF1001056E6 /* AICreatorVideoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5C0D4562D8ABBF1001056E6 /* AICreatorVideoModel.swift */; };
 		A5C0D4592D8ABCD7001056E6 /* AICreatorVideoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5C0D4582D8ABCD7001056E6 /* AICreatorVideoViewModel.swift */; };
+		A5D49C9F2D927F0B00408A5B /* SubmitModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5D49C9E2D927F0B00408A5B /* SubmitModel.swift */; };
+		A5D49CA12D927F3600408A5B /* SubmitViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5D49CA02D927F3600408A5B /* SubmitViewModel.swift */; };
+		A5D49CA52D92894300408A5B /* StatusCheckViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5D49CA42D92894300408A5B /* StatusCheckViewModel.swift */; };
+		A5D49CA82D92896800408A5B /* StatusCheckVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5D49CA72D92896800408A5B /* StatusCheckVC.swift */; };
+		A5D49CAA2D92897F00408A5B /* StatusCheckModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5D49CA92D92897F00408A5B /* StatusCheckModel.swift */; };
 		BF22D9C3B48F852EFA5BE781 /* Pods_TalkingVideos.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F51D098CA3E841C538809C01 /* Pods_TalkingVideos.framework */; };
 /* End PBXBuildFile section */
 
@@ -130,6 +135,11 @@
 		A5C0D4532D897C27001056E6 /* AICreatorImgCarouselVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AICreatorImgCarouselVC.swift; sourceTree = "<group>"; };
 		A5C0D4562D8ABBF1001056E6 /* AICreatorVideoModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AICreatorVideoModel.swift; sourceTree = "<group>"; };
 		A5C0D4582D8ABCD7001056E6 /* AICreatorVideoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AICreatorVideoViewModel.swift; sourceTree = "<group>"; };
+		A5D49C9E2D927F0B00408A5B /* SubmitModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubmitModel.swift; sourceTree = "<group>"; };
+		A5D49CA02D927F3600408A5B /* SubmitViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubmitViewModel.swift; sourceTree = "<group>"; };
+		A5D49CA42D92894300408A5B /* StatusCheckViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusCheckViewModel.swift; sourceTree = "<group>"; };
+		A5D49CA72D92896800408A5B /* StatusCheckVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusCheckVC.swift; sourceTree = "<group>"; };
+		A5D49CA92D92897F00408A5B /* StatusCheckModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusCheckModel.swift; sourceTree = "<group>"; };
 		C88EA11D549D9801D5E5D377 /* Pods-TalkingVideos-TalkingVideosUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TalkingVideos-TalkingVideosUITests.debug.xcconfig"; path = "Target Support Files/Pods-TalkingVideos-TalkingVideosUITests/Pods-TalkingVideos-TalkingVideosUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		C9EAD26C00ACA6C4392A25EB /* Pods-TalkingVideos-TalkingVideosUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TalkingVideos-TalkingVideosUITests.release.xcconfig"; path = "Target Support Files/Pods-TalkingVideos-TalkingVideosUITests/Pods-TalkingVideos-TalkingVideosUITests.release.xcconfig"; sourceTree = "<group>"; };
 		DBDACA82E5F8771EDFB2852C /* Pods-TalkingVideosTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TalkingVideosTests.release.xcconfig"; path = "Target Support Files/Pods-TalkingVideosTests/Pods-TalkingVideosTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -212,6 +222,7 @@
 			children = (
 				A5549A372D817F8000793519 /* AICreatorsVC.swift */,
 				A5B8FA052D8BE156002FF51E /* AICreatorImgCarousel */,
+				A5D49C9D2D927EEF00408A5B /* SubmitVideo */,
 				A5B8FA112D914926002FF51E /* AIScriptVC */,
 				A5C0D4552D8ABBC9001056E6 /* AICreatorVideoList */,
 				A5B8FA082D8C0BAF002FF51E /* ProfileVC */,
@@ -282,7 +293,6 @@
 				A5B8FA0D2D8D6725002FF51E /* AIScriptVC.swift */,
 				A5B8FA122D914D63002FF51E /* AIScriptViewModel.swift */,
 				A5B8FA142D914D78002FF51E /* AIScriptModel.swift */,
-				A5B8FA0F2D8D7A7D002FF51E /* ScriptVC.swift */,
 			);
 			path = AIScriptVC;
 			sourceTree = "<group>";
@@ -373,6 +383,27 @@
 				A5C0D4582D8ABCD7001056E6 /* AICreatorVideoViewModel.swift */,
 			);
 			path = AICreatorVideoList;
+			sourceTree = "<group>";
+		};
+		A5D49C9D2D927EEF00408A5B /* SubmitVideo */ = {
+			isa = PBXGroup;
+			children = (
+				A5B8FA0F2D8D7A7D002FF51E /* ScriptVC.swift */,
+				A5D49C9E2D927F0B00408A5B /* SubmitModel.swift */,
+				A5D49CA02D927F3600408A5B /* SubmitViewModel.swift */,
+				A5D49CA62D92895600408A5B /* StatusCheckVC */,
+			);
+			path = SubmitVideo;
+			sourceTree = "<group>";
+		};
+		A5D49CA62D92895600408A5B /* StatusCheckVC */ = {
+			isa = PBXGroup;
+			children = (
+				A5D49CA72D92896800408A5B /* StatusCheckVC.swift */,
+				A5D49CA42D92894300408A5B /* StatusCheckViewModel.swift */,
+				A5D49CA92D92897F00408A5B /* StatusCheckModel.swift */,
+			);
+			path = StatusCheckVC;
 			sourceTree = "<group>";
 		};
 		CF999E1F3BAC670794ED64F7 /* Frameworks */ = {
@@ -629,6 +660,7 @@
 				A5C0D4542D897C27001056E6 /* AICreatorImgCarouselVC.swift in Sources */,
 				A5B9692B2D7E9D3600CEC10B /* ApisSuffix.swift in Sources */,
 				A5C0D4522D894921001056E6 /* AICreatorVideoListVC.swift in Sources */,
+				A5D49CA82D92896800408A5B /* StatusCheckVC.swift in Sources */,
 				A5C0D4502D88253F001056E6 /* ResetPassViewModel.swift in Sources */,
 				A5C0D44A2D87ED2B001056E6 /* SignUpModel.swift in Sources */,
 				A5B968F42D7E9B7900CEC10B /* ViewController.swift in Sources */,
@@ -637,6 +669,7 @@
 				A5549A4A2D82B94D00793519 /* ForgotPasswordViewModel.swift in Sources */,
 				A5B8FA102D8D7A7D002FF51E /* ScriptVC.swift in Sources */,
 				A54CAC402D7EF377008BA05E /* SignInVC.swift in Sources */,
+				A5D49C9F2D927F0B00408A5B /* SubmitModel.swift in Sources */,
 				A5B8FA132D914D63002FF51E /* AIScriptViewModel.swift in Sources */,
 				A5B969312D7E9D3700CEC10B /* FloatingPlaceholderTextField.swift in Sources */,
 				A5549A3E2D81807700793519 /* SignUpVC.swift in Sources */,
@@ -648,6 +681,7 @@
 				A5C0D44E2D882505001056E6 /* ResetPassModel.swift in Sources */,
 				A5B968F22D7E9B7900CEC10B /* SceneDelegate.swift in Sources */,
 				A5549A462D81836F00793519 /* ProfileVC.swift in Sources */,
+				A5D49CA12D927F3600408A5B /* SubmitViewModel.swift in Sources */,
 				A5BA0C9D2D816C4800FD642B /* TabBarController.swift in Sources */,
 				A5549A382D817F8000793519 /* AICreatorsVC.swift in Sources */,
 				A5B969332D7E9D3700CEC10B /* SingletonClass.swift in Sources */,
@@ -655,6 +689,7 @@
 				A5B8FA0E2D8D6725002FF51E /* AIScriptVC.swift in Sources */,
 				A5549A412D81809700793519 /* ForgotPasswordVC.swift in Sources */,
 				A5B9692E2D7E9D3600CEC10B /* DateTimePickerClass.swift in Sources */,
+				A5D49CAA2D92897F00408A5B /* StatusCheckModel.swift in Sources */,
 				A5B9692D2D7E9D3600CEC10B /* CustomLoader.swift in Sources */,
 				A54F38822D8157F000A53B85 /* DashboardVC.swift in Sources */,
 				A5B9692F2D7E9D3600CEC10B /* DateUtility.swift in Sources */,
@@ -665,6 +700,7 @@
 				A54CAC412D7EF377008BA05E /* SignInViewModel.swift in Sources */,
 				A5C0D4572D8ABBF1001056E6 /* AICreatorVideoModel.swift in Sources */,
 				A5C0D4592D8ABCD7001056E6 /* AICreatorVideoViewModel.swift in Sources */,
+				A5D49CA52D92894300408A5B /* StatusCheckViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -847,10 +883,10 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = KFC8C487BF;
+				DEVELOPMENT_TEAM = 4TDHV4HWL2;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = TalkingVideos/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = "UGC Creator";
+				INFOPLIST_KEY_CFBundleDisplayName = "UGC Videos";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -877,10 +913,10 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = KFC8C487BF;
+				DEVELOPMENT_TEAM = 4TDHV4HWL2;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = TalkingVideos/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = "UGC Creator";
+				INFOPLIST_KEY_CFBundleDisplayName = "UGC Videos";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;

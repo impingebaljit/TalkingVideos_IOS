@@ -66,11 +66,12 @@ class AICreatorContinueVC: UIViewController {
     @IBAction func acn_ContinueBtn(_ sender: Any) {
         print("Continue button tapped")
       
-        guard let detailVC = storyboard?.instantiateViewController(withIdentifier: "AIScriptVC") as? AIScriptVC else {
-            print("❌ Failed to instantiate AICreatorContinueVC")
-            return
-        }
-        navigationController?.pushViewController(detailVC, animated: true)
+//        guard let detailVC = storyboard?.instantiateViewController(withIdentifier: "AIScriptVC") as? AIScriptVC else {
+//            print("❌ Failed to instantiate AICreatorContinueVC")
+//            return
+//        }
+//        detailVC.videoModelData = videoModel
+//        navigationController?.pushViewController(detailVC, animated: true)
     }
 
     @IBAction func acn_BackBtn(_ sender: Any) {

@@ -16,6 +16,7 @@ class AIScriptVC: UIViewController {
     @IBOutlet weak var btnGenerateScript: UIButton!
 
     private var viewModel: AIScriptViewModel!
+    var videoModelData: VideoDetailModel?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -67,6 +68,7 @@ class AIScriptVC: UIViewController {
                     }
                     
                     detailVC.scriptText = scriptModel.script
+                    detailVC.videoModelNew = self.videoModelData
                     self.navigationController?.pushViewController(detailVC, animated: true)
                     
                 } else {
