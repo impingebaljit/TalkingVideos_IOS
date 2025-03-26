@@ -22,7 +22,7 @@ class AICreatorContinueVC: UIViewController {
 
         // Ensure videoModel is available
         guard let model = videoModel else {
-            print("❌ videoModel not found")
+            print("videoModel not found")
             return
         }
 
@@ -37,8 +37,13 @@ class AICreatorContinueVC: UIViewController {
         // Ensure the back button uses the storyboard image
         backBtn.tintColor = .white
         backBtn.isHidden = false
+        
+        DispatchQueue.main.async {
+                  CustomLoader.shared.showLoader(in: self)
+            self.loadImage(from: model.thumbnail.imageURL)
+              }
 
-        loadImage(from: model.thumbnail.imageURL)
+      
 
         // Set button title and style
         continueBtn.setTitle("Continue with \(model.creatorName)", for: .normal)
@@ -53,6 +58,8 @@ class AICreatorContinueVC: UIViewController {
     }
 
     private func loadImage(from urlString: String) {
+        CustomLoader.shared.hideLoader()
+        
         guard let url = URL(string: urlString) else { return }
 
         URLSession.shared.dataTask(with: url) { [weak self] data, _, _ in
@@ -66,12 +73,12 @@ class AICreatorContinueVC: UIViewController {
     @IBAction func acn_ContinueBtn(_ sender: Any) {
         print("Continue button tapped")
       
-//        guard let detailVC = storyboard?.instantiateViewController(withIdentifier: "AIScriptVC") as? AIScriptVC else {
-//            print("❌ Failed to instantiate AICreatorContinueVC")
-//            return
-//        }
-//        detailVC.videoModelData = videoModel
-//        navigationController?.pushViewController(detailVC, animated: true)
+        guard let detailVC = storyboard?.instantiateViewController(withIdentifier: "AIScriptVC") as? AIScriptVC else {
+            print("Failed to instantiate AICreatorContinueVC")
+            return
+        }
+        detailVC.videoModelData = videoModel
+        navigationController?.pushViewController(detailVC, animated: true)
     }
 
     @IBAction func acn_BackBtn(_ sender: Any) {

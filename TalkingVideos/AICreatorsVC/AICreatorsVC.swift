@@ -24,7 +24,9 @@ class AICreatorsVC: UIViewController {
     }
     @IBAction func acn_CancelBtn(_ sender: Any) {
         print("print Cancel")
-        navigationController?.popViewController(animated: true)
+        //navigationController?.popViewController(animated: true)
+        self.dismiss(animated: true, completion: nil)
+
         
 //        if let navController = self.navigationController {
 //               let dashboardVC = DashboardVC()

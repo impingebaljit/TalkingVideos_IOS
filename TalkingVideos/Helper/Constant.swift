@@ -29,7 +29,10 @@ struct API {
         static let generateScript = "generate-script"
         static let submitVideo = "captions/submit"
         static let statusCheck = "captions/poll"
-      
+        static let finalVideos = "videos"
+        static let loginApple = "login/apple"
+        
+   
      
         // Add more endpoints as needed
    

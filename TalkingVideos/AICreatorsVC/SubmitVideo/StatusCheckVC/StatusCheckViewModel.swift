@@ -25,10 +25,10 @@ class StatusCheckViewModel {
                 guard let self = self else { return }
 
                 if success, let statusModel = statusModel {
-                    print("✅ StatusCheckModel received: \(statusModel)")
+                    print("StatusCheckModel received: \(statusModel)")
                     completion(true, statusModel)
                 } else {
-                    print("❌ Status check failed")
+                    print("Status check failed")
                     completion(false, nil)
                 }
             })

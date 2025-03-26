@@ -20,14 +20,14 @@ class SubmitViewModel{
         authService.submitVideo(script: prompt, creatorName: creatorName, resolution: resolution) { result in
             switch result {
             case .success(let response):
-                // ✅ Case 1: If AIScriptModel is directly returned
+                // Case 1: If AIScriptModel is directly returned
                 if let scriptModel = response as? SubmitModel {
-                    print("✅ AIScriptModel received: \(scriptModel)")
+                    print("AIScriptModel received: \(scriptModel)")
                     completion(true, scriptModel)
                     return
                 }
 
-                // ✅ Case 2: If raw Data is returned
+                // Case 2: If raw Data is returned
                 if let data = response as? Data {
                     if let jsonString = String(data: data, encoding: .utf8) {
                         print("Raw JSON: \(jsonString)")
@@ -36,17 +36,17 @@ class SubmitViewModel{
                         let scriptModel = try JSONDecoder().decode(SubmitModel.self, from: data)
                         completion(true, scriptModel)
                     } catch {
-                        print("❌ JSON Decoding Error: \(error)")
+                        print("JSON Decoding Error: \(error)")
                         completion(false, nil)
                     }
                     return
                 }
 
-                print("❌ Unexpected response type: \(type(of: response))")
+                print("Unexpected response type: \(type(of: response))")
                 completion(false, nil)
 
             case .failure(let error):
-                print("❌ API Error: \(error)")
+                print("API Error: \(error)")
                 completion(false, nil)
             }
            }

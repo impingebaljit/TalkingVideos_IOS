@@ -50,20 +50,22 @@ class ScriptVC: UIViewController {
     func callSubmitVideoApi(){
         let name = videoModelNew?.creatorName
         
+        print("Get Name Script VC:-\(name ?? "abc")")
+        
         viewModel.submitVideo(
             prompt: txtVw_Script.text,
             creatorName: name ?? "name",
             resolution: "fhd"
         ) { success, submitModel in
             if success, let model = submitModel {
-                print("✅ SubmitModel: \(model)")
+                print("SubmitModel: \(model)")
                 
                 let operationID = model.operationID
                 
                 DispatchQueue.main.async {
                  
                     guard let detailVC = self.storyboard?.instantiateViewController(withIdentifier: "StatusCheckVC") as? StatusCheckVC else {
-                        print("❌ Failed to instantiate AICreatorContinueVC")
+                        print("Failed to instantiate AICreatorContinueVC")
                         return
                     }
                     detailVC.videoModelNewData = self.videoModelNew
@@ -71,7 +73,7 @@ class ScriptVC: UIViewController {
                     self.navigationController?.pushViewController(detailVC, animated: true)
                 }
             } else {
-                print("❌ Video submission failed")
+                print("Video submission failed")
             }
         }
     }

@@ -56,10 +56,16 @@ class AICreatorVideoListVC: UIViewController, UICollectionViewDataSource, UIColl
         let authService = AuthService()
         viewModel = AICreatorVideoViewModel(authService: authService)
 
-        getTheListOfVideoApi()
+        DispatchQueue.main.async {
+                  CustomLoader.shared.showLoader(in: self)
+            self.getTheListOfVideoApi()
+              }
+        
     }
 
     func getTheListOfVideoApi() {
+        
+        
             viewModel.getTheVideoList { [weak self] success in
                 guard let self = self else { return }
                 
@@ -68,7 +74,7 @@ class AICreatorVideoListVC: UIViewController, UICollectionViewDataSource, UIColl
                         self.collectionView.reloadData()
                     }
                 } else {
-                    print("❌ Failed to fetch video list")
+                    print("Failed to fetch video list")
                 }
             }
         }
@@ -115,7 +121,7 @@ class AICreatorVideoListVC: UIViewController, UICollectionViewDataSource, UIColl
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         guard indexPath.row < viewModel.thumbnails.count,
               indexPath.row < viewModel.supportedCreators.count else {
-            print("❌ Index out of range at row: \(indexPath.row)")
+            print("Index out of range at row: \(indexPath.row)")
             return
         }
         
@@ -124,7 +130,7 @@ class AICreatorVideoListVC: UIViewController, UICollectionViewDataSource, UIColl
         
         // Ensure storyboard and ViewController instantiation is valid
         guard let detailVC = storyboard?.instantiateViewController(withIdentifier: "AICreatorContinueVC") as? AICreatorContinueVC else {
-            print("❌ Failed to instantiate AICreatorContinueVC")
+            print("Failed to instantiate AICreatorContinueVC")
             return
         }
         

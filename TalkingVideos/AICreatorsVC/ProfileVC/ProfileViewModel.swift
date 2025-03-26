@@ -30,7 +30,7 @@ class ProfileViewModel {
                 completion(true)
 
             case .failure(let error):
-                print("❌ Failed to fetch profile: \(error.localizedDescription)")
+                print("Failed to fetch profile: \(error.localizedDescription)")
                 completion(false)
             }
         }
@@ -64,7 +64,7 @@ class ProfileViewModel {
                     completion(true)
 
                 case .failure(let error):
-                    print("❌ Logout failed: \(error.localizedDescription)")
+                    print("Logout failed: \(error.localizedDescription)")
                     completion(false)
                 }
             }

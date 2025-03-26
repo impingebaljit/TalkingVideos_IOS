@@ -209,6 +209,9 @@
                                 </constraints>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain"/>
+                                <connections>
+                                    <action selector="acn_SignUpwithApple:" destination="NZP-dk-jf3" eventType="touchUpInside" id="Uoe-9a-cDQ"/>
+                                </connections>
                             </button>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="appleI" translatesAutoresizingMaskIntoConstraints="NO" id="hLz-OZ-GGh">
                                 <rect key="frame" x="34" y="678.33333333333337" width="325" height="54"/>
@@ -409,6 +412,9 @@
                                 </constraints>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain"/>
+                                <connections>
+                                    <action selector="acn_LoginwithApple:" destination="y6X-7K-g2J" eventType="touchUpInside" id="PaA-Ie-VII"/>
+                                </connections>
                             </button>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="appleI" translatesAutoresizingMaskIntoConstraints="NO" id="bdd-qa-WrB">
                                 <rect key="frame" x="34" y="652" width="325" height="54"/>
@@ -1389,8 +1395,7 @@
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain"/>
                                 <connections>
-                                    <action selector="acn_BackBtn:" destination="P90-oZ-fLZ" eventType="touchUpInside" id="GuC-2u-JZk"/>
-                                    <action selector="acn_backBTn:" destination="mLh-6k-4eg" eventType="touchUpInside" id="RPW-kQ-kze"/>
+                                    <action selector="acn_backBtn:" destination="mLh-6k-4eg" eventType="touchUpInside" id="e0y-i5-bN8"/>
                                 </connections>
                             </button>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="backBtn" translatesAutoresizingMaskIntoConstraints="NO" id="5u0-Hq-kOo">

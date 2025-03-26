@@ -36,13 +36,13 @@ class ProfileVC: UIViewController {
                 guard let self = self else { return }
 
                 if success {
-                    // ✅ Successfully fetched the profile
+                    // Successfully fetched the profile
                     if let userProfile = self.viewModel.userProfile {
                                         self.lbl_name.text = userProfile.name
                                         self.lbl_Email.text = userProfile.email
                                     }
                 } else {
-                    // ❌ Handle error case
+                    // Handle error case
                     self.showAlert(title: "Error", message: "Failed to fetch profile. Please try again.")
                 }
             }
@@ -75,13 +75,13 @@ class ProfileVC: UIViewController {
                         
                       
                         UserDefaults.standard.removeObject(forKey: "authToken")
-                        // ✅ Successfully fetched the profile
+                        // Successfully fetched the profile
                         self.navigateToSignInVC()
                        
 
                         
                     } else {
-                        // ❌ Handle error case
+                        //  Handle error case
                         self.showAlert(title: "Error", message: "Failed to fetch profile. Please try again.")
                     }
                 }

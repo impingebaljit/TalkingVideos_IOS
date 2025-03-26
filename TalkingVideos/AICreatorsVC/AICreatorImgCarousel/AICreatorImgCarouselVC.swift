@@ -104,6 +104,11 @@ class AICreatorImgCarouselVC: UIViewController {
 
     // MARK: - Get Thumbnails
     func getTheThumbnailImages() {
+        
+        DispatchQueue.main.async {
+            CustomLoader.shared.showLoader(in: self)
+            
+        }
         viewModel.getTheVideoList { [weak self] success in
             guard let self = self, success else { return }
 

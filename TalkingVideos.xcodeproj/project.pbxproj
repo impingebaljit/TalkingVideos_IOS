@@ -21,6 +21,9 @@
 		A5549A462D81836F00793519 /* ProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5549A452D81836F00793519 /* ProfileVC.swift */; };
 		A5549A482D82B65700793519 /* SignUpViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5549A472D82B65700793519 /* SignUpViewModel.swift */; };
 		A5549A4A2D82B94D00793519 /* ForgotPasswordViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5549A492D82B94D00793519 /* ForgotPasswordViewModel.swift */; };
+		A585F93E2D93DAD30086ADC7 /* DashboardModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A585F93D2D93DAD30086ADC7 /* DashboardModel.swift */; };
+		A585F9402D93DE760086ADC7 /* DashboardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A585F93F2D93DE760086ADC7 /* DashboardViewModel.swift */; };
+		A585F9422D93F0E00086ADC7 /* AppleLoginModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A585F9412D93F0E00086ADC7 /* AppleLoginModel.swift */; };
 		A5B8FA072D8C0B95002FF51E /* ProfileModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5B8FA062D8C0B95002FF51E /* ProfileModel.swift */; };
 		A5B8FA0A2D8C0CBF002FF51E /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5B8FA092D8C0CBF002FF51E /* ProfileViewModel.swift */; };
 		A5B8FA0C2D8D5A4C002FF51E /* AICreatorContinueVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5B8FA0B2D8D5A4C002FF51E /* AICreatorContinueVC.swift */; };
@@ -96,6 +99,10 @@
 		A5549A452D81836F00793519 /* ProfileVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileVC.swift; sourceTree = "<group>"; };
 		A5549A472D82B65700793519 /* SignUpViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewModel.swift; sourceTree = "<group>"; };
 		A5549A492D82B94D00793519 /* ForgotPasswordViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordViewModel.swift; sourceTree = "<group>"; };
+		A585F93C2D93B2240086ADC7 /* TalkingVideos.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = TalkingVideos.entitlements; sourceTree = "<group>"; };
+		A585F93D2D93DAD30086ADC7 /* DashboardModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardModel.swift; sourceTree = "<group>"; };
+		A585F93F2D93DE760086ADC7 /* DashboardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardViewModel.swift; sourceTree = "<group>"; };
+		A585F9412D93F0E00086ADC7 /* AppleLoginModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleLoginModel.swift; sourceTree = "<group>"; };
 		A5B8FA062D8C0B95002FF51E /* ProfileModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileModel.swift; sourceTree = "<group>"; };
 		A5B8FA092D8C0CBF002FF51E /* ProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewModel.swift; sourceTree = "<group>"; };
 		A5B8FA0B2D8D5A4C002FF51E /* AICreatorContinueVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AICreatorContinueVC.swift; sourceTree = "<group>"; };
@@ -194,6 +201,7 @@
 			isa = PBXGroup;
 			children = (
 				A54CAC3C2D7EF377008BA05E /* SignInVC.swift */,
+				A585F9412D93F0E00086ADC7 /* AppleLoginModel.swift */,
 				A54CAC3D2D7EF377008BA05E /* SignInViewModel.swift */,
 				A54CAC3E2D7EF377008BA05E /* SignInModel.swift */,
 			);
@@ -234,6 +242,8 @@
 			isa = PBXGroup;
 			children = (
 				A54F38812D8157F000A53B85 /* DashboardVC.swift */,
+				A585F93F2D93DE760086ADC7 /* DashboardViewModel.swift */,
+				A585F93D2D93DAD30086ADC7 /* DashboardModel.swift */,
 			);
 			path = DashboardVC;
 			sourceTree = "<group>";
@@ -322,6 +332,7 @@
 		A5B968EE2D7E9B7900CEC10B /* TalkingVideos */ = {
 			isa = PBXGroup;
 			children = (
+				A585F93C2D93B2240086ADC7 /* TalkingVideos.entitlements */,
 				A5B968EF2D7E9B7900CEC10B /* AppDelegate.swift */,
 				A5B968F12D7E9B7900CEC10B /* SceneDelegate.swift */,
 				A54CAC452D7EF447008BA05E /* NetworkClass */,
@@ -676,6 +687,7 @@
 				A5B8FA0C2D8D5A4C002FF51E /* AICreatorContinueVC.swift in Sources */,
 				A5B968F02D7E9B7900CEC10B /* AppDelegate.swift in Sources */,
 				A5B8FA072D8C0B95002FF51E /* ProfileModel.swift in Sources */,
+				A585F9422D93F0E00086ADC7 /* AppleLoginModel.swift in Sources */,
 				A5B969202D7E9CFF00CEC10B /* NetworkService.swift in Sources */,
 				A5C0D44C2D8803FA001056E6 /* ForgotPassModel.swift in Sources */,
 				A5C0D44E2D882505001056E6 /* ResetPassModel.swift in Sources */,
@@ -694,11 +706,13 @@
 				A54F38822D8157F000A53B85 /* DashboardVC.swift in Sources */,
 				A5B9692F2D7E9D3600CEC10B /* DateUtility.swift in Sources */,
 				A54CAC442D7EF440008BA05E /* AuthService.swift in Sources */,
+				A585F9402D93DE760086ADC7 /* DashboardViewModel.swift in Sources */,
 				A5B8FA0A2D8C0CBF002FF51E /* ProfileViewModel.swift in Sources */,
 				A5549A482D82B65700793519 /* SignUpViewModel.swift in Sources */,
 				A5B9692C2D7E9D3600CEC10B /* Constant.swift in Sources */,
 				A54CAC412D7EF377008BA05E /* SignInViewModel.swift in Sources */,
 				A5C0D4572D8ABBF1001056E6 /* AICreatorVideoModel.swift in Sources */,
+				A585F93E2D93DAD30086ADC7 /* DashboardModel.swift in Sources */,
 				A5C0D4592D8ABCD7001056E6 /* AICreatorVideoViewModel.swift in Sources */,
 				A5D49CA52D92894300408A5B /* StatusCheckViewModel.swift in Sources */,
 			);
@@ -881,6 +895,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = TalkingVideos/TalkingVideos.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 4TDHV4HWL2;
@@ -911,6 +926,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = TalkingVideos/TalkingVideos.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 4TDHV4HWL2;

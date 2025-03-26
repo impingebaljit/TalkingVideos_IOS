@@ -22,26 +22,62 @@ class SignUpVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-       // setupBindings()
+       
         
         let authService = AuthService() // Assuming AuthService is implemented
         viewModel = SignUpViewModel(authService: authService)
+        
+        setupBindings()
        
     }
     
     
     
     private func setupBindings() {
-            viewModel.onAppleSignInSuccess = { [weak self] name, email in
-                self?.tf_Name.text = name
-                self?.tf_Email.text = email
-                self?.showAlert("Apple Sign-In Successful")
+        viewModel.onAppleSignInSuccess = { [weak self] name, email, identityToken in
+            self?.tf_Name.text = name
+            self?.tf_Email.text = email
+            // self?.showAlert("Apple Sign-In Successful")
+            
+            //self?.navigateToDashboard()
+            
+            // Call appleLoginApi
+            let authService = AuthService()
+            authService.appleLoginApi(identity_token: identityToken) { result in
+                switch result {
+                case .success(let user):
+                    print("🎉 Successfully logged in: \(user)")
+                    
+                    // Save token in UserDefaults
+                    UserDefaults.standard.set(user.token, forKey: "authToken")
+                    UserDefaults.standard.synchronize()
+                    
+                    let alert = UIAlertController(title: "Success", message: "Apple Sign-In Successful!", preferredStyle: .alert)
+                    alert.addAction(UIAlertAction(title: "OK", style: .default) { _ in
+                        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                        if let dashboardVC = storyboard.instantiateViewController(withIdentifier: "DashboardVC") as? DashboardVC {
+                            let navController = UINavigationController(rootViewController: dashboardVC)
+                            self?.present(navController, animated: true, completion: nil)
+                        }
+                    })
+                    self?.present(alert, animated: true, completion: nil)
+                    
+                case .failure(let error):
+                    print("Login failed: \(error.localizedDescription)")
+                    self?.showAlert("Apple Sign-In Error: \(error.localizedDescription)")
+                }
+                
+                
+                
             }
-
-            viewModel.onAppleSignInFailure = { [weak self] error in
+            
+            self?.viewModel.onAppleSignInFailure = { [weak self] error in
                 self?.showAlert("Apple Sign-In Error: \(error)")
             }
         }
+    }
+    
+   
     @IBAction func acn_SignUp(_ sender: Any)  {
         guard let name = tf_Name.text, !name.isEmpty,
               let email = tf_Email.text, !email.isEmpty,
@@ -49,7 +85,10 @@ class SignUpVC: UIViewController {
             showAlert("All fields are required.")
             return
         }
-        
+        DispatchQueue.main.async {
+            CustomLoader.shared.showLoader(in: self)
+            
+        }
         // Validate using ViewModel's method
         if let errorMessage = viewModel.validateFields(name: name, email: email, password: password) {
             showAlert(errorMessage)
@@ -61,12 +100,14 @@ class SignUpVC: UIViewController {
             guard let self = self else { return }
 
             if success {
+                CustomLoader.shared.hideLoader()
+                
                 // Show success alert and navigate after dismissal
                             let alert = UIAlertController(title: "Success", message: "You have signed up successfully!", preferredStyle: .alert)
                             alert.addAction(UIAlertAction(title: "OK", style: .default) { _ in
                                 // Navigate to DashboardVC after user acknowledges the alert
                                 let storyboard = UIStoryboard(name: "Main", bundle: nil)
-                                if let dashboardVC = storyboard.instantiateViewController(withIdentifier: "DashboardVC") as? DashboardVC {
+                                if let dashboardVC = storyboard.instantiateViewController(withIdentifier: "SignInVC") as? SignInVC {
                                     let navController = UINavigationController(rootViewController: dashboardVC)
                                     self.present(navController, animated: true, completion: nil)
                                 }
@@ -74,7 +115,7 @@ class SignUpVC: UIViewController {
                             self.present(alert, animated: true, completion: nil)
                 
             } else {
-                print("❌ Sign-up failed: \(message ?? "Unknown error")")
+                print("Sign-up failed: \(message ?? "Unknown error")")
                 self.showAlert(message ?? "Sign-up failed. Please try again.")
             }
         }

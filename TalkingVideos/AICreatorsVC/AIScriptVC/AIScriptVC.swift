@@ -48,22 +48,26 @@ class AIScriptVC: UIViewController {
         print("Generate Script tapped")
 
         guard let prompt = tf_Script.text, !prompt.isEmpty else {
-            print("❌ Prompt is empty")
+            print("Prompt is empty")
             return
         }
-
-        generateScriptApi(prompt: prompt)
+//        DispatchQueue.main.async {
+//                CustomLoader.shared.showLoader(in: self)
+//                self.generateScriptApi(prompt: prompt)
+//            }
+       
     }
 
     func generateScriptApi(prompt: String) {
         viewModel.generateScript(prompt: prompt) { [weak self] success, scriptModel in
             guard let self = self else { return }
             DispatchQueue.main.async {
+                CustomLoader.shared.hideLoader()
                 if success, let scriptModel = scriptModel {
-                    print("✅ Script Generated: \(scriptModel)")
+                    print("Script Generated: \(scriptModel)")
                     
                     guard let detailVC = self.storyboard?.instantiateViewController(withIdentifier: "ScriptVC") as? ScriptVC else {
-                        print("❌ Failed to instantiate ScriptVC")
+                        print("Failed to instantiate ScriptVC")
                         return
                     }
                     
@@ -72,7 +76,7 @@ class AIScriptVC: UIViewController {
                     self.navigationController?.pushViewController(detailVC, animated: true)
                     
                 } else {
-                    print("❌ Failed to generate script")
+                    print("Failed to generate script")
                 }
             }
         }

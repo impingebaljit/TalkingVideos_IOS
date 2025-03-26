@@ -32,12 +32,17 @@ class AICreatorVideoViewModel {
     
     func getTheVideoList(completion: @escaping (Bool) -> Void) {
         authService.getTheVideoList { [weak self] result in
+            
+            CustomLoader.shared.hideLoader()
+            
             guard let self = self else { return }
 
             switch result {
+              
+                
             case .success(let response):
                 
-                // ✅ Case 1: If already decoded model is returned
+                // Case 1: If already decoded model is returned
                 if let videoList = response as? AICreatorVideoModel {
                     self.thumbnails = Array(videoList.thumbnails.values)
                     self.supportedCreators = Array(videoList.supportedCreators)
@@ -45,31 +50,31 @@ class AICreatorVideoViewModel {
                     return
                 }
 
-                // ✅ Case 2: If raw Data is returned
+                // Case 2: If raw Data is returned
                 if let data = response as? Data {
                     do {
-                        // 🟢 Print and inspect the raw JSON
+                        //  Print and inspect the raw JSON
                         if let jsonString = String(data: data, encoding: .utf8) {
                             print("Raw JSON: \(jsonString)")
                         }
                         
-                        // 🟢 Decode JSON to VideoList
+                        //  Decode JSON to VideoList
                         let videoList = try JSONDecoder().decode(AICreatorVideoModel.self, from: data)
                         self.thumbnails = Array(videoList.thumbnails.values)
                         completion(true)
                     } catch {
-                        print("❌ JSON Decoding Error: \(error)")
+                        print(" JSON Decoding Error: \(error)")
                         completion(false)
                     }
                     return
                 }
 
-                // 🟡 Unexpected Type Handling
-                print("❌ Unexpected Response Type: \(type(of: response))")
+                //  Unexpected Type Handling
+                print("Unexpected Response Type: \(type(of: response))")
                 completion(false)
 
             case .failure(let error):
-                print("❌ API Error: \(error)")
+                print("API Error: \(error)")
                 completion(false)
             }
         }

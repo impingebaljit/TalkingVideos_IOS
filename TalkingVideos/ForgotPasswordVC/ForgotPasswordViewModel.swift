@@ -59,11 +59,11 @@ class ForgotPasswordViewModel {
                 DispatchQueue.main.async {
                     switch result {
                     case .success(let response):
-                        print("✅ Password reset successful: \(response.message)")
+                        print("Password reset successful: \(response.message)")
                         completion(true, response.message) // Send success message
 
                     case .failure(let error):
-                        print("❌ Forgot password failed: \(error.localizedDescription)")
+                        print("Forgot password failed: \(error.localizedDescription)")
                         completion(false, error.localizedDescription) // Return error message
                     }
                 }

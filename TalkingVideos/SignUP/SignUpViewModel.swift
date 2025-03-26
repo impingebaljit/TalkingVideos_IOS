@@ -28,7 +28,7 @@ class SignUpViewModel: NSObject {
         self.authService = authService
     }
 
-    var onAppleSignInSuccess: ((String, String) -> Void)?
+    var onAppleSignInSuccess: ((String, String, String) -> Void)?
     var onAppleSignInFailure: ((String) -> Void)?
 
     func validateFields(name: String, email: String, password: String) -> String? {
@@ -101,13 +101,36 @@ class SignUpViewModel: NSObject {
 }
 
 extension SignUpViewModel: ASAuthorizationControllerDelegate {
+//    func authorizationController(controller: ASAuthorizationController, didCompleteWithAuthorization authorization: ASAuthorization) {
+//        if let appleIDCredential = authorization.credential as? ASAuthorizationAppleIDCredential {
+//            let fullName = appleIDCredential.fullName?.givenName ?? ""
+//            let email = appleIDCredential.email ?? ""
+//            onAppleSignInSuccess?(fullName, email)
+//        }
+//    }
+    
     func authorizationController(controller: ASAuthorizationController, didCompleteWithAuthorization authorization: ASAuthorization) {
         if let appleIDCredential = authorization.credential as? ASAuthorizationAppleIDCredential {
+            
             let fullName = appleIDCredential.fullName?.givenName ?? ""
             let email = appleIDCredential.email ?? ""
-            onAppleSignInSuccess?(fullName, email)
+            
+        if let identityTokenData = appleIDCredential.identityToken,
+                       let identityToken = String(data: identityTokenData, encoding: .utf8) {
+                        print("🪪 Identity Token: \(identityToken)")
+            onAppleSignInSuccess?(fullName, email, identityToken)
+                    } else {
+                        print("Failed to retrieve identity token")
+                    }
+        
+          
+             
+               // onAppleSignInSuccess?(fullName, email, ide)
+                
+                
+               
+            }
         }
-    }
 
     func authorizationController(controller: ASAuthorizationController, didCompleteWithError error: Error) {
         onAppleSignInFailure?(error.localizedDescription)

@@ -19,21 +19,21 @@ class CustomLoader {
     private init() {} // Prevent external instantiation
     
     func showLoader(in viewController: UIViewController) {
-        // Create loader view
+        // Ensure loader is not already present
+        if loaderView != nil { return }
+
+        // Create a full-screen overlay
         loaderView = UIView(frame: viewController.view.bounds)
-        loaderView?.backgroundColor = UIColor(white: 0, alpha: 0.5)
-        
-        // Add loader image
-        loaderImageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 100, height: 100)) // Set your desired frame
-        loaderImageView?.center = loaderView!.center
-        loaderImageView?.contentMode = .scaleAspectFit
-        loaderImageView?.image = UIImage(named: "colorLoader") // Change "loader_image" to your image name
-        
-        loaderView?.addSubview(loaderImageView!)
+        loaderView?.backgroundColor = UIColor(white: 0, alpha: 0.4) // Semi-transparent black background
+
+        // Create the default UIActivityIndicatorView (spinner)
+        let activityIndicator = UIActivityIndicatorView(style: .large)
+        activityIndicator.center = loaderView!.center
+        activityIndicator.startAnimating()
+        activityIndicator.color = .white
+        // Add subviews
+        loaderView?.addSubview(activityIndicator)
         viewController.view.addSubview(loaderView!)
-        
-        // Start loader animation
-        startLoadingAnimation()
     }
     
     func hideLoader() {
@@ -45,10 +45,20 @@ class CustomLoader {
         }
     }
     
-    private func startLoadingAnimation() {
-        // Start rotating animation
-        UIView.animate(withDuration: 1.0, delay: 0, options: [.curveLinear, .repeat], animations: {
-            self.loaderImageView?.transform = self.loaderImageView!.transform.rotated(by: CGFloat.pi)
-        }, completion: nil)
+//    private func startLoadingAnimation() {
+//        // Start rotating animation
+//        UIView.animate(withDuration: 1.0, delay: 0, options: [.curveLinear, .repeat], animations: {
+//            self.loaderImageView?.transform = self.loaderImageView!.transform.rotated(by: CGFloat.pi)
+//        }, completion: nil)
+//    }
+    
+    func startLoadingAnimation() {
+        guard let loaderImageView = loaderImageView else { return }
+
+        let rotation = CABasicAnimation(keyPath: "transform.rotation.z")
+        rotation.toValue = CGFloat.pi * 2
+        rotation.duration = 1.0
+        rotation.repeatCount = .infinity
+        loaderImageView.layer.add(rotation, forKey: "rotateAnimation")
     }
 }

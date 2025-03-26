@@ -77,11 +77,11 @@ class StatusCheckVC: UIViewController {
            }, completion: { [weak self] success, statusModel in
                DispatchQueue.main.async {
                    if success, let model = statusModel {
-                       print("✅ Final Status: \(model)")
+                       print(" Final Status: \(model)")
                        self?.handleCompletion(model: model)
                        self?.lbl_state.text = model.state
                    } else {
-                       print("❌ Status check failed")
+                       print(" Status check failed")
                        self?.handleFailure()
                    }
                }
@@ -105,4 +105,8 @@ class StatusCheckVC: UIViewController {
            print("Operation failed")
        }
 
+    @IBAction func acn_backBtn(_ sender: Any) {
+        
+        self.navigationController?.popViewController(animated: false)
+    }
 }
