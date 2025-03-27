@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		14C7CE3541A198A65E591777 /* Pods_TalkingVideosTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8FB2E0F4D9D04A8B7951CEC7 /* Pods_TalkingVideosTests.framework */; };
 		65680A3E2658140FE95EB241 /* Pods_TalkingVideos_TalkingVideosUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E8457B812EF22188DE21C2CD /* Pods_TalkingVideos_TalkingVideosUITests.framework */; };
+		A51A98412D951DB00081C0B1 /* privacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = A51A98402D951DA10081C0B1 /* privacyInfo.xcprivacy */; };
+		A51A98432D9534690081C0B1 /* GoogleSignInManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A51A98422D9534610081C0B1 /* GoogleSignInManager.swift */; };
+		A51A98452D9552AF0081C0B1 /* GoogleLoginModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A51A98442D9552A30081C0B1 /* GoogleLoginModel.swift */; };
 		A54CAC402D7EF377008BA05E /* SignInVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A54CAC3C2D7EF377008BA05E /* SignInVC.swift */; };
 		A54CAC412D7EF377008BA05E /* SignInViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A54CAC3D2D7EF377008BA05E /* SignInViewModel.swift */; };
 		A54CAC422D7EF377008BA05E /* SignInModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A54CAC3E2D7EF377008BA05E /* SignInModel.swift */; };
@@ -87,6 +90,9 @@
 /* Begin PBXFileReference section */
 		2B90513CE2AD0E2E2AA33B52 /* Pods-TalkingVideosTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TalkingVideosTests.debug.xcconfig"; path = "Target Support Files/Pods-TalkingVideosTests/Pods-TalkingVideosTests.debug.xcconfig"; sourceTree = "<group>"; };
 		8FB2E0F4D9D04A8B7951CEC7 /* Pods_TalkingVideosTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TalkingVideosTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A51A98402D951DA10081C0B1 /* privacyInfo.xcprivacy */ = {isa = PBXFileReference; lastKnownFileType = text; path = privacyInfo.xcprivacy; sourceTree = "<group>"; };
+		A51A98422D9534610081C0B1 /* GoogleSignInManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleSignInManager.swift; sourceTree = "<group>"; };
+		A51A98442D9552A30081C0B1 /* GoogleLoginModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleLoginModel.swift; sourceTree = "<group>"; };
 		A54CAC3C2D7EF377008BA05E /* SignInVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignInVC.swift; sourceTree = "<group>"; };
 		A54CAC3D2D7EF377008BA05E /* SignInViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignInViewModel.swift; sourceTree = "<group>"; };
 		A54CAC3E2D7EF377008BA05E /* SignInModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignInModel.swift; sourceTree = "<group>"; };
@@ -202,6 +208,8 @@
 			children = (
 				A54CAC3C2D7EF377008BA05E /* SignInVC.swift */,
 				A585F9412D93F0E00086ADC7 /* AppleLoginModel.swift */,
+				A51A98422D9534610081C0B1 /* GoogleSignInManager.swift */,
+				A51A98442D9552A30081C0B1 /* GoogleLoginModel.swift */,
 				A54CAC3D2D7EF377008BA05E /* SignInViewModel.swift */,
 				A54CAC3E2D7EF377008BA05E /* SignInModel.swift */,
 			);
@@ -349,6 +357,7 @@
 				A5B968F82D7E9B8100CEC10B /* Assets.xcassets */,
 				A5B968FA2D7E9B8100CEC10B /* LaunchScreen.storyboard */,
 				A5B968FD2D7E9B8100CEC10B /* Info.plist */,
+				A51A98402D951DA10081C0B1 /* privacyInfo.xcprivacy */,
 			);
 			path = TalkingVideos;
 			sourceTree = "<group>";
@@ -538,6 +547,7 @@
 			files = (
 				A5B968F92D7E9B8100CEC10B /* Assets.xcassets in Resources */,
 				A5B968FC2D7E9B8100CEC10B /* Base in Resources */,
+				A51A98412D951DB00081C0B1 /* privacyInfo.xcprivacy in Resources */,
 				A5B968F72D7E9B7900CEC10B /* Base in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -672,6 +682,7 @@
 				A5B9692B2D7E9D3600CEC10B /* ApisSuffix.swift in Sources */,
 				A5C0D4522D894921001056E6 /* AICreatorVideoListVC.swift in Sources */,
 				A5D49CA82D92896800408A5B /* StatusCheckVC.swift in Sources */,
+				A51A98432D9534690081C0B1 /* GoogleSignInManager.swift in Sources */,
 				A5C0D4502D88253F001056E6 /* ResetPassViewModel.swift in Sources */,
 				A5C0D44A2D87ED2B001056E6 /* SignUpModel.swift in Sources */,
 				A5B968F42D7E9B7900CEC10B /* ViewController.swift in Sources */,
@@ -689,6 +700,7 @@
 				A5B8FA072D8C0B95002FF51E /* ProfileModel.swift in Sources */,
 				A585F9422D93F0E00086ADC7 /* AppleLoginModel.swift in Sources */,
 				A5B969202D7E9CFF00CEC10B /* NetworkService.swift in Sources */,
+				A51A98452D9552AF0081C0B1 /* GoogleLoginModel.swift in Sources */,
 				A5C0D44C2D8803FA001056E6 /* ForgotPassModel.swift in Sources */,
 				A5C0D44E2D882505001056E6 /* ResetPassModel.swift in Sources */,
 				A5B968F22D7E9B7900CEC10B /* SceneDelegate.swift in Sources */,
@@ -897,7 +909,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = TalkingVideos/TalkingVideos.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 8;
 				DEVELOPMENT_TEAM = 4TDHV4HWL2;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = TalkingVideos/Info.plist;
@@ -928,7 +940,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = TalkingVideos/TalkingVideos.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 8;
 				DEVELOPMENT_TEAM = 4TDHV4HWL2;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = TalkingVideos/Info.plist;

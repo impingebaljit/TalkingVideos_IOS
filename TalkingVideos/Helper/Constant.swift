@@ -31,6 +31,7 @@ struct API {
         static let statusCheck = "captions/poll"
         static let finalVideos = "videos"
         static let loginApple = "login/apple"
+        static let loginGoogle = "login/google"
         
    
      
@@ -44,6 +45,7 @@ struct API {
         static let password = "password"
         static let userid = "userID"
         // Add more keys as needed
+        static let googleSignInClientIdKey = "766661257744-uihp3b204ntf6edlo74pvddgvmqin36v.apps.googleusercontent.com"
     }
     
     struct Constants {

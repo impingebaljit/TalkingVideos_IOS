@@ -122,6 +122,78 @@ class SignUpVC: UIViewController {
     }
 
     
+    @IBAction func acn_GoogleSignIn(_ sender: Any) {
+        
+        DispatchQueue.main.async {
+            CustomLoader.shared.showLoader(in: self)
+            self.handleGoogleSignIn()
+        }
+    }
+    
+    @objc func handleGoogleSignIn() {
+            GoogleSignInManager.shared.signInWithGoogle(presenting: self) { result in
+                CustomLoader.shared.hideLoader()
+                switch result {
+                    
+                case .success(let user):
+                    print("Google Sign-In successful!")
+                    print("User ID: \(user.userID ?? "No ID")")
+                    print("Name: \(user.profile?.name ?? "No Name")")
+                    print("Email: \(user.profile?.email ?? "No Email")")
+                    print("ID Token: \(user.idToken?.tokenString ?? "No Token")")
+                    
+                    self.loginWithGoogleToken(idToken: user.idToken?.tokenString ?? "token")
+
+                case .failure(let error):
+                    print("Google Sign-In failed: \(error.localizedDescription)")
+                }
+            }
+        }
+    
+    
+    func loginWithGoogleToken(idToken: String) {
+        let authService = AuthService()
+        authService.googleLoginApi(identity_token: idToken) { result in
+            DispatchQueue.main.async {
+                switch result {
+                case .success(let user):
+                    print("Successfully logged in: \(user)")
+
+                    // Save token in UserDefaults
+                    UserDefaults.standard.set(user.token, forKey: "authToken")
+                    UserDefaults.standard.synchronize()
+
+                    let alert = UIAlertController(title: "Success", message: "Google Sign-In Successful!", preferredStyle: .alert)
+                    alert.addAction(UIAlertAction(title: "OK", style: .default) { _ in
+                        self.navigateToDashboardScreen()
+                    })
+
+                    if let presentedVC = self.presentedViewController {
+                        presentedVC.dismiss(animated: false) {
+                            self.present(alert, animated: true, completion: nil)
+                        }
+                    } else {
+                        self.present(alert, animated: true, completion: nil)
+                    }
+
+                case .failure(let error):
+                    print("Login failed: \(error.localizedDescription)")
+                    self.showAlert("Google Sign-In Error: \(error.localizedDescription)")
+                }
+            }
+        }
+    }
+    private func navigateToDashboardScreen() {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        if let dashboardVC = storyboard.instantiateViewController(withIdentifier: "DashboardVC") as? DashboardVC {
+            let navController = UINavigationController(rootViewController: dashboardVC)
+            if let window = UIApplication.shared.windows.first {
+                window.rootViewController = navController
+                window.makeKeyAndVisible()
+            }
+        }
+    }
+    
     @IBAction func acn_Login(_ sender: Any) {
 //        if let dashboardVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "SignInVC") as? SignInVC {
 //            self.navigationController?.pushViewController(dashboardVC, animated: true)

@@ -11,6 +11,8 @@ pod 'AlamofireImage', '~> 3.5'
 pod 'SwiftyJSON'
 pod 'SDWebImage'
 pod 'IQKeyboardToolbarManager'
+pod 'GoogleSignIn'
+
 
   # Pods for TalkingVideos
 
