@@ -53,6 +53,7 @@ class SignInVC: UIViewController {
 
                         // Save token in UserDefaults
                         UserDefaults.standard.set(user.token, forKey: "authToken")
+                        UserDefaults.standard.set(true, forKey: "isUserLoggedIn")
                         UserDefaults.standard.synchronize()
 
                         let alert = UIAlertController(title: "Success", message: "Apple Sign-In Successful!", preferredStyle: .alert)
@@ -111,6 +112,7 @@ class SignInVC: UIViewController {
 
                     // Save token in UserDefaults
                     UserDefaults.standard.set(user.token, forKey: "authToken")
+                    UserDefaults.standard.set(true, forKey: "isUserLoggedIn")
                     UserDefaults.standard.synchronize()
 
                     let alert = UIAlertController(title: "Success", message: "Google Sign-In Successful!", preferredStyle: .alert)
@@ -189,7 +191,7 @@ class SignInVC: UIViewController {
             return
         }
 
-        UserDefaults.standard.set(true, forKey: "hasLoggedInBefore")
+       
 
         signInViewModel.signIn(email: email, password: password) { [weak self] success, errorMessage in
             guard let self = self else { return }
@@ -213,12 +215,16 @@ class SignInVC: UIViewController {
 
         let userId = String(user.id)
         let accessToken = signInViewModel.user?.token ?? ""
+        
+       
 
         SingletonClass.shared.userId = userId
         SingletonClass.shared.accessToken = accessToken
 
         UserDefaults.standard.set(userId, forKey: "userID")
-        UserDefaults.standard.set(accessToken, forKey: "accessToken")
+        UserDefaults.standard.set(accessToken, forKey: "authToken")
+        UserDefaults.standard.set(true, forKey: "isUserLoggedIn")
+        UserDefaults.standard.synchronize()
 
         navigateToDashboard()
     }
@@ -260,7 +266,7 @@ class SignInVC: UIViewController {
         //iostest@gmail.com
       //   tf_Email.text = "johndoe@example.com"
      //tf_Password.text = "password123"
-       // tf_Email.text = "nisha@gmail.com"//"johndoe@example.com"//
-    //tf_Password.text = "123456"//"password123"
+      // tf_Email.text = "nisha@gmail.com"//"johndoe@example.com"//
+   // tf_Password.text = "123456"//"password123"
     }
 }

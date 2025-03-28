@@ -103,6 +103,16 @@ class TabBarController: UITabBar {
     
     func handleTabSelection(item: UITabBarItem) {
             guard let parentVC = self.findViewController() else { return }
+        
+        
+        if item.tag == 0 { // Profile Tab
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            let loginViewController = storyboard.instantiateViewController(withIdentifier: "DashboardVC") as! DashboardVC
+            let navigationController = UINavigationController(rootViewController: loginViewController)
+            
+            window?.rootViewController = navigationController
+            window?.makeKeyAndVisible()
+        }
 
             if item.tag == 2 { // Profile Tab
                 let storyboard = UIStoryboard(name: "Main", bundle: nil)

@@ -10,7 +10,7 @@ import AuthenticationServices
 
 
 
-class ScriptVC: UIViewController {
+class ScriptVC: UIViewController, UITextViewDelegate {
 
     @IBOutlet weak var btn_Back: UIButton!
    
@@ -29,7 +29,8 @@ class ScriptVC: UIViewController {
         self.navigationController?.isNavigationBarHidden = true
 
         // Display the script if available
-        txtVw_Script.text = scriptText ?? "No script available."
+        txtVw_Script.delegate = self
+        txtVw_Script.text = scriptText ?? "Type your own script"
         
         print("VideoModelData CreatorName:-\(String(describing: videoModelNew?.creatorName))")
         
@@ -45,7 +46,7 @@ class ScriptVC: UIViewController {
 
     @IBAction func acn_GenerateVideo(_ sender: Any) {
         print("Generate Video tapped")
-        callSubmitVideoApi()
+        //callSubmitVideoApi()
     }
     func callSubmitVideoApi(){
         let name = videoModelNew?.creatorName
@@ -75,6 +76,23 @@ class ScriptVC: UIViewController {
             } else {
                 print("Video submission failed")
             }
+        }
+    }
+    
+    
+    // Remove placeholder when user starts typing
+    func textViewDidBeginEditing(_ textView: UITextView) {
+        if textView.text == "Type your own script" {
+            textView.text = ""
+            textView.textColor = .white // Change to normal text color
+        }
+    }
+
+    // Restore placeholder if user leaves it empty
+    func textViewDidEndEditing(_ textView: UITextView) {
+        if textView.text.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty {
+            textView.text = "Type your own script"
+            textView.textColor = .white
         }
     }
 }

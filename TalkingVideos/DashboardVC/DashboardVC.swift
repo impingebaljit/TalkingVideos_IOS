@@ -24,7 +24,7 @@ class DashboardVC: UIViewController {
         setupTableView()
         setupViewModel()
 
-      //  viewModel.fetchProjects()
+        //viewModel.fetchProjects()
     }
 
     private func setupUI() {

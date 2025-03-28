@@ -23,6 +23,18 @@ class ProfileVC: UIViewController {
         viewModel = ProfileViewModel(authService: authService)
 
         getProfile()
+        
+        // Add Custom Tab Bar
+        let tabBar = TabBarController()
+        tabBar.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(tabBar)
+
+        NSLayoutConstraint.activate([
+            tabBar.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            tabBar.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            tabBar.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -15),
+            tabBar.heightAnchor.constraint(equalToConstant: 80)
+        ])
     }
 
     func getProfile() {
@@ -90,6 +102,9 @@ class ProfileVC: UIViewController {
     }
     
     func  navigateToSignInVC(){
+        UserDefaults.standard.set(false, forKey: "isUserLoggedIn")
+            UserDefaults.standard.synchronize()
+        
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         if let dashboardVC = storyboard.instantiateViewController(withIdentifier: "SignInVC") as? SignInVC {
             let navController = UINavigationController(rootViewController: dashboardVC)

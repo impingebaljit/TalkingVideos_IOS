@@ -41,6 +41,11 @@ class StatusCheckVC: UIViewController {
         
         bindViewModel()
         viewModel.upload(operationId: operationIdSend)
+        
+        // Set up navigation callback
+               viewModel.onCompletion = { [weak self] in
+                   self?.navigateToDashboard()
+               }
     }
     
     private func loadImage(from urlString: String) {
@@ -67,46 +72,52 @@ class StatusCheckVC: UIViewController {
                }
            }
        }
-    func apiToCheckStatus() {
-           viewModel.checkStatus(operationID: operationIdSend, progressHandler: { [weak self] status in
-               print("📊 Progress: \(status)")
-               DispatchQueue.main.async {
-                   // Update your UI with the progress status
-                   self?.updateProgressUI(status: status)
-               }
-           }, completion: { [weak self] success, statusModel in
-               DispatchQueue.main.async {
-                   if success, let model = statusModel {
-                       print(" Final Status: \(model)")
-                       self?.handleCompletion(model: model)
-                       self?.lbl_state.text = model.state
-                   } else {
-                       print(" Status check failed")
-                       self?.handleFailure()
-                   }
-               }
-           })
-       }
+//    func apiToCheckStatus() {
+//           viewModel.checkStatus(operationID: operationIdSend, progressHandler: { [weak self] status in
+//               print("Progress: \(status)")
+//               DispatchQueue.main.async {
+//                   // Update your UI with the progress status
+//                   self?.updateProgressUI(status: status)
+//               }
+//           }, completion: { [weak self] success, statusModel in
+//               DispatchQueue.main.async {
+//                   if success, let model = statusModel {
+//                       print(" Final Status: \(model)")
+//                       self?.handleCompletion(model: model)
+//                       self?.lbl_state.text = model.state
+//                   } else {
+//                       print(" Status check failed")
+//                       self?.handleFailure()
+//                   }
+//               }
+//           })
+//       }
     
-    private func updateProgressUI(status: String) {
-           // Implement UI update logic here
-           print("UI Updated with status: \(status)")
-        //Accordingly the progress the state is updated the lbl value and progress is shwn
+//    private func updateProgressUI(status: String) {
+//           // Implement UI update logic here
+//           print("UI Updated with status: \(status)")
+//        //Accordingly the progress the state is updated the lbl value and progress is shwn
+//
+//       }
 
-       }
+    func navigateToDashboard(){
+        DispatchQueue.main.async(){
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            if let dashboardVC = storyboard.instantiateViewController(withIdentifier: "DashboardVC") as? DashboardVC {
+                let navController = UINavigationController(rootViewController: dashboardVC)
+                self.present(navController, animated: false, completion: nil)
+            }
+        }
+    }
 
-       private func handleCompletion(model: StatusCheckModel) {
-           // Handle success (e.g., navigate to a new screen or show a success message)
-           print("Operation completed successfully: \(model)")
-       }
-
-       private func handleFailure() {
-           // Handle failure (e.g., show an error message)
-           print("Operation failed")
-       }
+       
 
     @IBAction func acn_backBtn(_ sender: Any) {
         
         self.navigationController?.popViewController(animated: false)
+    }
+    
+    
+    @IBAction func acn_CancelBtn(_ sender: Any) {
     }
 }

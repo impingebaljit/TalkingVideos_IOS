@@ -71,6 +71,7 @@ class SignInViewModel: NSObject {
                             // Authentication successful
                             self.user = user
                             UserDefaults.standard.set(self.user?.token, forKey: "authToken")
+                            UserDefaults.standard.set(true, forKey: "isUserLoggedIn")
                                UserDefaults.standard.synchronize()
                             completion(true, nil)
                             

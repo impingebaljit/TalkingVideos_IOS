@@ -50,6 +50,7 @@ class SignUpVC: UIViewController {
                     
                     // Save token in UserDefaults
                     UserDefaults.standard.set(user.token, forKey: "authToken")
+                    UserDefaults.standard.set(true, forKey: "isUserLoggedIn")
                     UserDefaults.standard.synchronize()
                     
                     let alert = UIAlertController(title: "Success", message: "Apple Sign-In Successful!", preferredStyle: .alert)
@@ -161,6 +162,7 @@ class SignUpVC: UIViewController {
 
                     // Save token in UserDefaults
                     UserDefaults.standard.set(user.token, forKey: "authToken")
+                    UserDefaults.standard.set(true, forKey: "isUserLoggedIn")
                     UserDefaults.standard.synchronize()
 
                     let alert = UIAlertController(title: "Success", message: "Google Sign-In Successful!", preferredStyle: .alert)

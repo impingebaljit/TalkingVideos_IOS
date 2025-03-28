@@ -15,10 +15,19 @@ enum NetworkError: Error {
     case noData
     case decodingError
     case requestFailed(Error) // Change the parameter type to Error
+  
     
     //case requestFailed(statusCode: Int)
         case serverError(message: String)
 }
+
+//enum NetworkError: Error {
+//    case invalidURL
+//    case noData
+//    case decodingError
+//    case requestFailed(Int) // Ensure this accepts an Int
+//    case serverError(String)
+//}
 
 enum NetworkErrorr: Error {
     case invalidToken

@@ -11,7 +11,7 @@ class StatusCheckViewModel {
 
     private let authService: AuthService
     
-   
+    var onCompletion: (() -> Void)?
 
     init(authService: AuthService) {
         self.authService = authService
@@ -19,7 +19,7 @@ class StatusCheckViewModel {
 
     func checkStatus(operationID: String, progressHandler: @escaping (String) -> Void, completion: @escaping (Bool, StatusCheckModel?) -> Void) {
             authService.pollCaptionStatus(operationId: operationID, progressHandler: { status in
-                print("📊 Progress: \(status)")
+                print("Progress: \(status)")
                 progressHandler(status)
             }, completion: { [weak self] success, statusModel in
                 guard let self = self else { return }
@@ -72,12 +72,55 @@ class StatusCheckViewModel {
             }
         }
 
+//    private func handleStatusUpdate(_ statusModel: StatusCheckModel, operationID: String) {
+//        let stateMessage = "\(statusModel.progress ?? 100)% complete"
+//        updateState?(stateMessage)
+//
+//        if statusModel.progress! < 100 && statusModel.state != "COMPLETED" {
+//            pollUploadStatus(operationID: operationID)
+//        }
+//    }
+    
+//    private func handleStatusUpdate(_ statusModel: StatusCheckModel, operationID: String) {
+//        let progress = statusModel.progress ?? 100
+//        let stateMessage = "\(progress)% complete"
+//        updateState?(stateMessage)
+//
+//        if progress < 100 && statusModel.state != "COMPLETED" {
+//            pollUploadStatus(operationID: operationID)
+//        }
+//    }
+    
+//    private func handleStatusUpdate(_ statusModel: StatusCheckModel, operationID: String) {
+//        let progress = statusModel.progress ?? 100
+//        let stateMessage = "\(progress)% complete"
+//        updateState?(stateMessage)
+//
+//        if progress < 100 && statusModel.state != "COMPLETED" {
+//            pollUploadStatus(operationID: operationID)
+//        } else if progress == 100 && statusModel.state == "COMPLETED" {
+//            // Navigate to DashboardVC when completed
+//            DispatchQueue.main.async {
+//                self.onCompletion?()
+//            }
+//        }
+//    }
+    
+    
     private func handleStatusUpdate(_ statusModel: StatusCheckModel, operationID: String) {
-        let stateMessage = "\(statusModel.progress ?? 100)% complete"
+        let progress = statusModel.progress ?? 100
+        let stateMessage = "\(progress)% complete"
         updateState?(stateMessage)
 
-        if statusModel.progress! < 100 && statusModel.state != "COMPLETED" {
-            pollUploadStatus(operationID: operationID)
+        if progress < 100, statusModel.state != "COMPLETE" {
+            DispatchQueue.global().asyncAfter(deadline: .now() + 5) {
+                self.pollUploadStatus(operationID: operationID)
+            }
+        } else if progress == 100, statusModel.state == "COMPLETE" {
+            DispatchQueue.main.async {
+              //  print("Processing completed. Video URL: \(statusModel.url ?? "No URL")")
+                self.onCompletion?() // Pass the video URL if needed
+            }
         }
     }
     
