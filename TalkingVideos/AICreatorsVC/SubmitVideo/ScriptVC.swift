@@ -46,40 +46,67 @@ class ScriptVC: UIViewController, UITextViewDelegate {
 
     @IBAction func acn_GenerateVideo(_ sender: Any) {
         print("Generate Video tapped")
-        //callSubmitVideoApi()
+       // callSubmitVideoApi()
     }
-    func callSubmitVideoApi(){
-        let name = videoModelNew?.creatorName
+//    func callSubmitVideoApi(){
+//        let name = videoModelNew?.creatorName
+//        
+//        print("Get Name Script VC:-\(name ?? "abc")")
+//        
+//        viewModel.submitVideo(
+//            prompt: txtVw_Script.text,
+//            creatorName: name ?? "name",
+//            resolution: "fhd"
+//        ) { success, submitModel in
+//            if success, let model = submitModel {
+//                print("SubmitModel: \(model)")
+//                
+//                let operationID = model.operationID
+//                
+//                DispatchQueue.main.async {
+//                 
+//                    guard let detailVC = self.storyboard?.instantiateViewController(withIdentifier: "StatusCheckVC") as? StatusCheckVC else {
+//                        print("Failed to instantiate AICreatorContinueVC")
+//                        return
+//                    }
+//                    detailVC.videoModelNewData = self.videoModelNew
+//                    detailVC.operationIdSend = model.operationID
+//                    self.navigationController?.pushViewController(detailVC, animated: true)
+//                }
+//            } else {
+//                print("Video submission failed")
+//            }
+//        }
+//    }
+    
+    func callSubmitVideoApi() {
+        let name = videoModelNew?.creatorName ?? "name"
         
-        print("Get Name Script VC:-\(name ?? "abc")")
-        
-        viewModel.submitVideo(
-            prompt: txtVw_Script.text,
-            creatorName: name ?? "name",
-            resolution: "fhd"
-        ) { success, submitModel in
-            if success, let model = submitModel {
-                print("SubmitModel: \(model)")
-                
-                let operationID = model.operationID
-                
-                DispatchQueue.main.async {
-                 
+        viewModel.submitVideo(prompt: txtVw_Script.text, creatorName: name, resolution: "fhd") { success, submitModel, errorMessage in
+            DispatchQueue.main.async {
+                if success, let model = submitModel {
                     guard let detailVC = self.storyboard?.instantiateViewController(withIdentifier: "StatusCheckVC") as? StatusCheckVC else {
-                        print("Failed to instantiate AICreatorContinueVC")
+                        self.showAlert(message: "Failed to instantiate StatusCheckVC")
                         return
                     }
                     detailVC.videoModelNewData = self.videoModelNew
                     detailVC.operationIdSend = model.operationID
+                    print("OperationID:-\(model.operationID)")
                     self.navigationController?.pushViewController(detailVC, animated: true)
+                } else {
+                    self.showAlert(message: errorMessage ?? "Video submission failed")
                 }
-            } else {
-                print("Video submission failed")
             }
         }
     }
-    
-    
+
+    func showAlert(message: String) {
+        let alert = UIAlertController(title: "Error", message: message, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+        DispatchQueue.main.async {
+            self.present(alert, animated: true, completion: nil)
+        }
+    }
     // Remove placeholder when user starts typing
     func textViewDidBeginEditing(_ textView: UITextView) {
         if textView.text == "Type your own script" {

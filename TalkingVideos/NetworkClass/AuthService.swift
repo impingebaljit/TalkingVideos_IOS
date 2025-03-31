@@ -539,58 +539,48 @@ class AuthService {
 //        }
 
     func submitVideo(script: String, creatorName: String, resolution: String, completion: @escaping (Result<SubmitModel, Error>) -> Void) {
-        // Ensure token is available
-        guard let token = UserDefaults.standard.string(forKey: "authToken"), !token.isEmpty else {
-            print("Missing or empty Bearer Token")
-            completion(.failure(NetworkError.invalidURL))
-            return
-        }
+        let submitCaptionURL = API.baseURL + API.Endpoints.submitVideo
         
-        // Validate URL
-        guard let submitCaptionURL = URL(string: "\(API.baseURL)\(API.Endpoints.submitVideo)") else {
+        guard let url = URL(string: submitCaptionURL) else {
             print("Invalid URL")
             completion(.failure(NetworkError.invalidURL))
             return
         }
         
-        // Prepare request body
         let requestBody: [String: Any] = [
             "script": script,
             "creatorName": creatorName,
             "resolution": resolution
         ]
         
-        // Print request details for debugging
-        print("Submitting to URL Video:", submitCaptionURL.absoluteString)
-        print("Request Body Video:", requestBody)
-        print("Auth Token:Video:--", token)
-
-        // Serialize request body to JSON
-        guard let postData = try? JSONSerialization.data(withJSONObject: requestBody, options: .prettyPrinted) else {
+        guard let postData = try? JSONSerialization.data(withJSONObject: requestBody) else {
             print("JSON serialization error")
             completion(.failure(NetworkError.decodingError))
             return
         }
         
-        // Perform network request
-        NetworkService.shared.request(
-            url: submitCaptionURL,
-            method: .post,
-            body: postData,
-            headers: [
-                "Authorization": "Bearer \(token)",
-                "Content-Type": "application/json"
-            ]
-        ) { (result: Result<SubmitModel, NetworkError>) in
+        guard let token = UserDefaults.standard.string(forKey: "authToken"), !token.isEmpty else {
+            print("Missing or empty Bearer Token")
+            completion(.failure(NetworkError.invalidURL))
+            return
+        }
+        
+        let headers = [
+            "Content-Type": "application/json",
+            "Authorization": "Bearer \(token)"
+        ]
+        
+        print("Video Token:-\(token)")
+        
+        NetworkService.shared.request(url: url, method: .post, body: postData, headers: headers) { (result: Result<SubmitModel, NetworkError>) in
             switch result {
             case .success(let data):
-                print("Caption submitted successfully:", data)
+                print("Caption submitted successfully")
                 completion(.success(data))
-                
+            
             case .failure(let error):
-                print("Submission failed with error:", error)
-
                 let errorMessage: String
+                
                 switch error {
                 case .invalidURL:
                     errorMessage = "Invalid request URL."
@@ -604,152 +594,116 @@ class AuthService {
                     errorMessage = message
                 }
                 
-                print("API Error:", errorMessage)
-                completion(.failure(error))
+                print("Error: \(errorMessage)")
+                completion(.failure(NetworkError.serverError(message: errorMessage)))
             }
         }
     }
 
 
-
-    func pollCaptionStatus(operationId: String, progressHandler: @escaping (String) -> Void, completion: @escaping (Bool, StatusCheckModel?) -> Void) {
-        // Ensure token is available
+    func uploadData(operationId: String, completion: @escaping (Result<StatusCheckModel, Error>) -> Void) {
         guard let token = UserDefaults.standard.string(forKey: "authToken"), !token.isEmpty else {
-            print("  Missing or empty Bearer Token")
-            completion(false, nil)
+         //   completion(.failure(NetworkError.missingToken))
             return
         }
         
-        // Validate URL
-        guard let pollURL = URL(string: "\(API.baseURL)\(API.Endpoints.statusCheck)") else {
-            print("  Invalid URL")
-            completion(false, nil)
-            return
-        }
-
-        // Prepare request body
-        let parameters: [String: Any] = ["operationId": operationId]
-
-        // Serialize request body to JSON
-        guard let postData = try? JSONSerialization.data(withJSONObject: parameters) else {
-            print("  JSON serialization error")
-            completion(false, nil)
-            return
-        }
-
-        // Perform network request
-        NetworkService.shared.request(
-            url: pollURL,
-            method: .post,
-            body: postData,
-            headers: [
-                "Authorization": "Bearer \(token)",  // Added Bearer token for authentication
-                "Content-Type": "application/json"
-            ]
-        ) { [weak self] (result: Result<Data, NetworkError>) in
-            guard let self = self else { return }
-
-            switch result {
-            case .success(let data):
-                if let jsonString = String(data: data, encoding: .utf8) {
-                    print("Raw JSON: \(jsonString)")
-                }
-
-                do {
-                    let statusModel = try JSONDecoder().decode(StatusCheckModel.self, from: data)
-                    progressHandler(statusModel.state)
-
-                    if statusModel.state == "completed" {
-                        completion(true, statusModel)
-                    } else {
-                        // Retry polling after 5 seconds
-                        DispatchQueue.global().asyncAfter(deadline: .now() + 5) {
-                            self.pollCaptionStatus(operationId: operationId, progressHandler: progressHandler, completion: completion)
-                        }
-                    }
-                } catch {
-                    print("  JSON Decoding Error: \(error.localizedDescription)")
-                    completion(false, nil)
-                }
-
-            case .failure(let error):
-                print("  API Error: \(error)")
-                completion(false, nil)
-            }
-        }
-    }
-
-    
-    
-    func uploadData(operationId: String, progressHandler: @escaping (String) -> Void, completion: @escaping (Result<StatusCheckModel, Error>) -> Void) {
-        var progressObservation: NSKeyValueObservation?
-        let boundary = "Boundary-\(UUID().uuidString)"
-
-        // Ensure token is available
-        guard let token = UserDefaults.standard.string(forKey: "authToken"), !token.isEmpty else {
-            print("  Missing or empty Bearer Token")
-            completion(.failure(NSError(domain: "Missing Token", code: 401, userInfo: nil)))
-            return
-        }
-
-        // Validate URL
         guard let url = URL(string: "https://ugcreels.urtestsite.com/api/captions/poll") else {
-            print("  Invalid URL")
-            completion(.failure(NSError(domain: "Invalid URL", code: 400, userInfo: nil)))
+            completion(.failure(NetworkError.invalidURL))
             return
         }
-
-        var body = ""
-        body += "--\(boundary)\r\n"
-        body += "Content-Disposition: form-data; name=\"operationId\"\r\n\r\n\(operationId)\r\n"
-        body += "--\(boundary)--\r\n"
-
-        guard let postData = body.data(using: .utf8) else {
-            completion(.failure(NSError(domain: "Invalid Data", code: 0, userInfo: nil)))
-            return
-        }
-
+        
         var request = URLRequest(url: url, timeoutInterval: 60)
         request.httpMethod = "POST"
-        request.addValue("multipart/form-data; boundary=\(boundary)", forHTTPHeaderField: "Content-Type")
-        request.addValue("Bearer \(token)", forHTTPHeaderField: "Authorization") // ✅ Added Bearer token
-        request.httpBody = postData
-
+        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.addValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
+        
+        let body: [String: Any] = ["operationId": operationId]
+        
+        do {
+            request.httpBody = try JSONSerialization.data(withJSONObject: body, options: [])
+        } catch {
+            completion(.failure(error))
+            return
+        }
+        
         let task = URLSession.shared.dataTask(with: request) { data, response, error in
             if let error = error {
-                completion(.failure(error))
+                completion(.failure(NetworkError.requestFailed(error)))
                 return
             }
-
+            
             guard let data = data else {
-                completion(.failure(NSError(domain: "Invalid Response", code: 0, userInfo: nil)))
+                completion(.failure(NetworkError.noData))
                 return
             }
-
+            
             do {
-                let statusModel = try JSONDecoder().decode(StatusCheckModel.self, from: data)
-                completion(.success(statusModel))
+                let decodedResponse = try JSONDecoder().decode(StatusCheckModel.self, from: data)
+                completion(.success(decodedResponse))
+                self.checkProgress(operationId: operationId)
             } catch {
-                completion(.failure(error))
+                completion(.failure(NetworkError.decodingError))
             }
         }
-
-        // Observe upload progress
-        progressObservation = task.progress.observe(\.fractionCompleted, options: [.new]) { [weak progressObservation] progress, _ in
-            let percentage = String(format: "%.0f%%", progress.fractionCompleted * 100)
-            progressHandler(percentage)
-        }
-
+        
         task.resume()
     }
+
+    func checkProgress(operationId: String) {
+        DispatchQueue.global().asyncAfter(deadline: .now() + 3.0) {
+            guard let token = UserDefaults.standard.string(forKey: "authToken"), !token.isEmpty else {
+                print("Missing or empty Bearer Token")
+                return
+            }
+            
+            guard let url = URL(string: "https://ugcreels.urtestsite.com/api/captions/poll") else {
+                print("Invalid URL")
+                return
+            }
+            
+            var request = URLRequest(url: url, timeoutInterval: 30)
+            request.httpMethod = "POST"
+            request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+            request.addValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
+            
+            let body = ["operationId": operationId]
+            request.httpBody = try? JSONSerialization.data(withJSONObject: body, options: [])
+            
+            let task = URLSession.shared.dataTask(with: request) { data, response, error in
+                if let error = error {
+                    print("Error checking progress: \(error.localizedDescription)")
+                    return
+                }
+                
+                guard let data = data else {
+                    print("No progress data received")
+                    return
+                }
+                
+                do {
+                    let decodedResponse = try JSONDecoder().decode(StatusCheckModel.self, from: data)
+                   // print("Progress: \(decodedResponse.progress ?? 0)% - Status: \(decodedResponse.status)")
+                    
+                    if decodedResponse.state.lowercased() != "complete" {
+                        self.checkProgress(operationId: operationId)
+                    }
+                } catch {
+                    print("Decoding error while checking progress")
+                }
+            }
+            
+            task.resume()
+        }
+    }
+
+
+
+
 
   
         
         // MARK: - Fetch Videos API
     func fetchFinalVideos(completion: @escaping (Result<[DashboardModel], Error>) -> Void) {
-        
-      
-
       
                 guard let token = UserDefaults.standard.string(forKey: "authToken") else {
                     print("  Missing Bearer Token")
@@ -909,6 +863,68 @@ class AuthService {
             }
         }
     }
+    
+    
+    func deleteVideos(videoId: String, completion: @escaping (Result<DeleteVideoModel, Error>) -> Void) {
+        
+        // Retrieve token
+        guard let token = UserDefaults.standard.string(forKey: "authToken"), !token.isEmpty else {
+            print("❌ Missing Bearer Token")
+            completion(.failure(NetworkErrorr.invalidToken))
+            return
+        }
+        
+        let deleteVideoURL = API.baseURL + API.Endpoints.deleteVideo(withId: videoId)
+        print("➡️ DELETE URL: \(deleteVideoURL)")
+        
+        guard let url = URL(string: deleteVideoURL) else {
+            print("❌ Invalid URL: \(deleteVideoURL)")
+            completion(.failure(NetworkErrorr.invalidURL))
+            return
+        }
+
+        var request = URLRequest(url: url)
+        request.httpMethod = "DELETE"
+        request.addValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
+
+        let task = URLSession.shared.dataTask(with: request) { data, response, error in
+            if let error = error {
+                print("❌ Request error: \(error.localizedDescription)")
+                completion(.failure(error))
+                return
+            }
+
+            guard let httpResponse = response as? HTTPURLResponse else {
+                print("❌ Invalid response")
+                completion(.failure(NetworkErrorr.invalidResponse))
+                return
+            }
+
+            guard (200...299).contains(httpResponse.statusCode) else {
+                print("❌ Request failed with status code: \(httpResponse.statusCode)")
+                completion(.failure(NetworkErrorr.requestFailed(statusCode: httpResponse.statusCode)))
+                return
+            }
+
+            guard let data = data else {
+                print("❌ No data received")
+                completion(.failure(NetworkErrorr.noData))
+                return
+            }
+
+            do {
+                let decodedResponse = try JSONDecoder().decode(DeleteVideoModel.self, from: data)
+                completion(.success(decodedResponse))
+            } catch {
+                print("❌ Decoding error: \(error.localizedDescription)")
+                completion(.failure(NetworkErrorr.decodingError))
+            }
+        }
+        task.resume()
+    }
+
+    
+    
 
 }
 

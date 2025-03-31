@@ -30,4 +30,8 @@ struct DashboardModel: Codable {
     }
 }
 
+// MARK: - DeleteVideoModel
+struct DeleteVideoModel: Codable {
+    let message: String
+}
 

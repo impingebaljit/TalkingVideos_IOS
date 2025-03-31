@@ -118,7 +118,7 @@ class AIScriptVC: UIViewController {
     @objc func keyboardWillShow(_ notification: Notification) {
         if let keyboardFrame = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? CGRect {
             UIView.animate(withDuration: 0.3) {
-                self.btnGenerateScript.transform = CGAffineTransform(translationX: 50, y: -keyboardFrame.height + 15)
+                self.btnGenerateScript.transform = CGAffineTransform(translationX: 50, y: -keyboardFrame.height + 55)
                 self.btnWidthConstraint.constant = 260 // Adjust width when keyboard appears
                 self.view.layoutIfNeeded()
             }

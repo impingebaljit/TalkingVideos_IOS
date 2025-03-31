@@ -12,6 +12,8 @@
 		A51A98412D951DB00081C0B1 /* privacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = A51A98402D951DA10081C0B1 /* privacyInfo.xcprivacy */; };
 		A51A98432D9534690081C0B1 /* GoogleSignInManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A51A98422D9534610081C0B1 /* GoogleSignInManager.swift */; };
 		A51A98452D9552AF0081C0B1 /* GoogleLoginModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A51A98442D9552A30081C0B1 /* GoogleLoginModel.swift */; };
+		A51A984F2D9A62E30081C0B1 /* VideoPlayVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A51A984E2D9A62E30081C0B1 /* VideoPlayVC.swift */; };
+		A51A98532D9AA28D0081C0B1 /* UIImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A51A98522D9AA2870081C0B1 /* UIImageView.swift */; };
 		A54CAC402D7EF377008BA05E /* SignInVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A54CAC3C2D7EF377008BA05E /* SignInVC.swift */; };
 		A54CAC412D7EF377008BA05E /* SignInViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A54CAC3D2D7EF377008BA05E /* SignInViewModel.swift */; };
 		A54CAC422D7EF377008BA05E /* SignInModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A54CAC3E2D7EF377008BA05E /* SignInModel.swift */; };
@@ -93,6 +95,8 @@
 		A51A98402D951DA10081C0B1 /* privacyInfo.xcprivacy */ = {isa = PBXFileReference; lastKnownFileType = text; path = privacyInfo.xcprivacy; sourceTree = "<group>"; };
 		A51A98422D9534610081C0B1 /* GoogleSignInManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleSignInManager.swift; sourceTree = "<group>"; };
 		A51A98442D9552A30081C0B1 /* GoogleLoginModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleLoginModel.swift; sourceTree = "<group>"; };
+		A51A984E2D9A62E30081C0B1 /* VideoPlayVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoPlayVC.swift; sourceTree = "<group>"; };
+		A51A98522D9AA2870081C0B1 /* UIImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageView.swift; sourceTree = "<group>"; };
 		A54CAC3C2D7EF377008BA05E /* SignInVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignInVC.swift; sourceTree = "<group>"; };
 		A54CAC3D2D7EF377008BA05E /* SignInViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignInViewModel.swift; sourceTree = "<group>"; };
 		A54CAC3E2D7EF377008BA05E /* SignInModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignInModel.swift; sourceTree = "<group>"; };
@@ -249,7 +253,9 @@
 		A5549A3B2D81804D00793519 /* DashboardVC */ = {
 			isa = PBXGroup;
 			children = (
+				A51A984E2D9A62E30081C0B1 /* VideoPlayVC.swift */,
 				A54F38812D8157F000A53B85 /* DashboardVC.swift */,
+				A51A98522D9AA2870081C0B1 /* UIImageView.swift */,
 				A585F93F2D93DE760086ADC7 /* DashboardViewModel.swift */,
 				A585F93D2D93DAD30086ADC7 /* DashboardModel.swift */,
 			);
@@ -678,6 +684,7 @@
 			files = (
 				A5B969302D7E9D3700CEC10B /* ExtensionClass.swift in Sources */,
 				A5549A432D8180A800793519 /* ResetPasswordVC.swift in Sources */,
+				A51A98532D9AA28D0081C0B1 /* UIImageView.swift in Sources */,
 				A5C0D4542D897C27001056E6 /* AICreatorImgCarouselVC.swift in Sources */,
 				A5B9692B2D7E9D3600CEC10B /* ApisSuffix.swift in Sources */,
 				A5C0D4522D894921001056E6 /* AICreatorVideoListVC.swift in Sources */,
@@ -686,6 +693,7 @@
 				A5C0D4502D88253F001056E6 /* ResetPassViewModel.swift in Sources */,
 				A5C0D44A2D87ED2B001056E6 /* SignUpModel.swift in Sources */,
 				A5B968F42D7E9B7900CEC10B /* ViewController.swift in Sources */,
+				A51A984F2D9A62E30081C0B1 /* VideoPlayVC.swift in Sources */,
 				A5B969322D7E9D3700CEC10B /* KeyChainHelper.swift in Sources */,
 				A54CAC422D7EF377008BA05E /* SignInModel.swift in Sources */,
 				A5549A4A2D82B94D00793519 /* ForgotPasswordViewModel.swift in Sources */,
@@ -909,7 +917,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = TalkingVideos/TalkingVideos.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 9;
+				CURRENT_PROJECT_VERSION = 10;
 				DEVELOPMENT_TEAM = 4TDHV4HWL2;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = TalkingVideos/Info.plist;
@@ -940,7 +948,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = TalkingVideos/TalkingVideos.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 9;
+				CURRENT_PROJECT_VERSION = 10;
 				DEVELOPMENT_TEAM = 4TDHV4HWL2;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = TalkingVideos/Info.plist;

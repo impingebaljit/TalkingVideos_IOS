@@ -12,7 +12,7 @@ pod 'SwiftyJSON'
 pod 'SDWebImage'
 pod 'IQKeyboardToolbarManager'
 pod 'GoogleSignIn'
-
+pod 'SDWebImage'
 
   # Pods for TalkingVideos
 

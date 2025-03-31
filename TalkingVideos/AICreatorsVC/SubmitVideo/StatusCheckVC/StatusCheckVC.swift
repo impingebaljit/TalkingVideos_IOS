@@ -40,7 +40,7 @@ class StatusCheckVC: UIViewController {
              print("VideoModelData CreatorImg:-\(String(describing: videoModelNewData?.thumbnail))")
         
         bindViewModel()
-        viewModel.upload(operationId: operationIdSend)
+      //  viewModel.upload(operationId: operationIdSend)
         
         // Set up navigation callback
                viewModel.onCompletion = { [weak self] in
@@ -72,33 +72,7 @@ class StatusCheckVC: UIViewController {
                }
            }
        }
-//    func apiToCheckStatus() {
-//           viewModel.checkStatus(operationID: operationIdSend, progressHandler: { [weak self] status in
-//               print("Progress: \(status)")
-//               DispatchQueue.main.async {
-//                   // Update your UI with the progress status
-//                   self?.updateProgressUI(status: status)
-//               }
-//           }, completion: { [weak self] success, statusModel in
-//               DispatchQueue.main.async {
-//                   if success, let model = statusModel {
-//                       print(" Final Status: \(model)")
-//                       self?.handleCompletion(model: model)
-//                       self?.lbl_state.text = model.state
-//                   } else {
-//                       print(" Status check failed")
-//                       self?.handleFailure()
-//                   }
-//               }
-//           })
-//       }
-    
-//    private func updateProgressUI(status: String) {
-//           // Implement UI update logic here
-//           print("UI Updated with status: \(status)")
-//        //Accordingly the progress the state is updated the lbl value and progress is shwn
-//
-//       }
+
 
     func navigateToDashboard(){
         DispatchQueue.main.async(){

@@ -32,8 +32,11 @@ struct API {
         static let finalVideos = "videos"
         static let loginApple = "login/apple"
         static let loginGoogle = "login/google"
-        
-   
+        //static let deleteVideo = "auth/video/2"
+        static func deleteVideo(withId id: String) -> String {
+                    return "auth/video/\(id)"
+                }
+    
      
         // Add more endpoints as needed
    

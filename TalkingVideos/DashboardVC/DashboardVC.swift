@@ -6,6 +6,9 @@
 //
 
 import UIKit
+import AVFoundation
+import AVKit
+import SDWebImage
 
 class DashboardVC: UIViewController {
 
@@ -103,29 +106,93 @@ class ProjectCell: UITableViewCell {
     @IBOutlet var dateLabel: UILabel!
     @IBOutlet var titleLabel: UILabel!
     @IBOutlet var projectImageView: UIImageView!
+    
+   
 
     override func awakeFromNib() {
         super.awakeFromNib()
     }
 
-    func configure(with project: DashboardModel) {
-            titleLabel?.text = project.script
-            dateLabel?.text = "Last update on \(project.createdAt)"
+//    func configure(with project: DashboardModel) {
+//            titleLabel?.text = project.script
+//            dateLabel?.text = "Last update on \(project.createdAt)"
+//
+//            if let imageURL = URL(string: project.url) {
+//                DispatchQueue.global().async {
+//                    if let imageData = try? Data(contentsOf: imageURL) {
+//                        let image = UIImage(data: imageData)
+//                        DispatchQueue.main.async {
+//                            self.projectImageView?.image = image
+//                        }
+//                    }
+//                }
+//            } else {
+//                projectImageView?.image = UIImage(named: "projectPlaceholder")
+//            }
+//        }
+    
+    static let thumbnailCache = NSCache<NSURL, UIImage>()
 
-            if let imageURL = URL(string: project.url) {
-                DispatchQueue.global().async {
-                    if let imageData = try? Data(contentsOf: imageURL) {
-                        let image = UIImage(data: imageData)
-                        DispatchQueue.main.async {
-                            self.projectImageView?.image = image
-                        }
-                    }
-                }
-            } else {
-                projectImageView?.image = UIImage(named: "projectPlaceholder")
-            }
-        }
+      func configure(with project: DashboardModel) {
+          titleLabel?.text = project.script
+          dateLabel?.text = "Last update on \(project.createdAt)"
+          
+          guard let url = URL(string: project.url) else {
+              print("❌ Invalid URL: \(project.url)")
+              projectImageView?.image = UIImage(named: "projectPlaceholder")
+              return
+          }
 
+          // Reset the image to avoid flickering while loading
+          projectImageView?.image = UIImage(named: "projectPlaceholder")
+
+          if url.pathExtension.lowercased() == "mp4" {
+              print("🎬 Loading video thumbnail from \(url)")
+
+              // Check cache first
+              if let cachedThumbnail = ProjectCell.thumbnailCache.object(forKey: url as NSURL) {
+                  projectImageView?.image = cachedThumbnail
+                  return
+              }
+
+              // Generate the thumbnail asynchronously
+              DispatchQueue.global(qos: .background).async {
+                  if let thumbnail = self.createThumbnailOfVideoFromRemoteUrl(url: url) {
+                      ProjectCell.thumbnailCache.setObject(thumbnail, forKey: url as NSURL)
+                      
+                      DispatchQueue.main.async {
+                          if url.absoluteString == project.url {  // Ensure correct cell reuse behavior
+                              self.projectImageView?.image = thumbnail
+                          }
+                      }
+                  } else {
+                      print("⚠️ Failed to generate thumbnail for \(url)")
+                  }
+              }
+          } else {
+              print("🖼️ Loading image from \(url)")
+              projectImageView?.sd_setImage(with: url, placeholderImage: UIImage(named: "projectPlaceholder"))
+          }
+      }
+    
+func createThumbnailOfVideoFromRemoteUrl(url: URL) -> UIImage? {
+    let asset = AVAsset(url: url)
+    let assetImgGenerate = AVAssetImageGenerator(asset: asset)
+    assetImgGenerate.appliesPreferredTrackTransform = true
+    
+    // Set a reasonable maximum size to improve performance
+    assetImgGenerate.maximumSize = CGSize(width: 300, height: 300)
+    
+    let time = CMTime(seconds: 1.0, preferredTimescale: 600)
+    
+    do {
+        let img = try assetImgGenerate.copyCGImage(at: time, actualTime: nil)
+        return UIImage(cgImage: img)
+    } catch {
+        print("⚠️ Error generating thumbnail: \(error.localizedDescription)")
+        return nil
+    }
+}
 }
 
 extension DashboardVC: UITableViewDelegate, UITableViewDataSource {
@@ -141,15 +208,66 @@ extension DashboardVC: UITableViewDelegate, UITableViewDataSource {
         cell.configure(with: project)
         return cell
     }
-
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let project = viewModel.getProject(at: indexPath.row)
-        print("Selected project: \(project.operationID)")
+        
+        guard let videoURL = URL(string: project.url) else {
+            print("Invalid video URL")
+            return
+        }
+        
+      
+        
+        
+        
+        DispatchQueue.main.async {
+         
+            guard let detailVC = self.storyboard?.instantiateViewController(withIdentifier: "VideoPlayVC") as? VideoPlayVC else {
+                print("Failed to instantiate AICreatorContinueVC")
+                return
+            }
+            detailVC.videoURL = videoURL
+          
+            self.navigationController?.pushViewController(detailVC, animated: true)
+        }
+        
+        
+        
     }
 
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 102
     }
+    
+    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        let deleteAction = UIContextualAction(style: .destructive, title: "Delete") { [weak self] _, _, completionHandler in
+            guard let self = self else { return }
+
+            let project = viewModel.getProject(at: indexPath.row)
+
+            viewModel.deleteVideos(videoId: String(project.id)) { success in
+                DispatchQueue.main.async {
+                    if success {
+                        if indexPath.row < self.viewModel.projectCount() {  // Ensure valid index
+                            tableView.performBatchUpdates({
+                                tableView.deleteRows(at: [indexPath], with: .automatic)
+                            }, completion: { _ in
+                                self.checkEmptyState()
+                            })
+                        }
+                        self.showAlert(title: "", message: "Deleted video successfully.")
+                    } else {
+                        self.showAlert(title: "Error", message: "Failed to delete the video. Please try again.")
+                    }
+                    completionHandler(success)
+                }
+            }
+        }
+
+        deleteAction.backgroundColor = .red
+        return UISwipeActionsConfiguration(actions: [deleteAction])
+    }
+    
 }
 
 //struct Project {
