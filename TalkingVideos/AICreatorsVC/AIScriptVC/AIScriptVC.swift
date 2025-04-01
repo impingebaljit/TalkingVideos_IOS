@@ -26,8 +26,8 @@ class AIScriptVC: UIViewController {
         let authService = AuthService()
         viewModel = AIScriptViewModel(authService: authService)
 
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(_:)), name: UIResponder.keyboardWillShowNotification, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(_:)), name: UIResponder.keyboardWillHideNotification, object: nil)
+//        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(_:)), name: UIResponder.keyboardWillShowNotification, object: nil)
+//        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(_:)), name: UIResponder.keyboardWillHideNotification, object: nil)
         tf_Script.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
         self.navigationController?.isNavigationBarHidden = true
         
@@ -51,7 +51,7 @@ class AIScriptVC: UIViewController {
             guard let self = self, let data = data else { return }
             DispatchQueue.main.async {
                 self.imgVw.image = UIImage(data: data)
-                self.adjustButtonWidth()
+               // self.adjustButtonWidth()
             }
         }.resume()
     }
@@ -71,13 +71,13 @@ class AIScriptVC: UIViewController {
                  self.navigationController?.pushViewController(detailVC, animated: true)
              }
     }
-    private func adjustButtonWidth() {
-        let imageExists = imgVw.image != nil
-        btnWidthConstraint.constant = imageExists ? 350 : 150 // Adjust width accordingly
-        UIView.animate(withDuration: 0.3) {
-            self.view.layoutIfNeeded()
-        }
-    }
+//    private func adjustButtonWidth() {
+//        let imageExists = imgVw.image != nil
+//        btnWidthConstraint.constant = imageExists ? 350 : 150 // Adjust width accordingly
+//        UIView.animate(withDuration: 0.3) {
+//            self.view.layoutIfNeeded()
+//        }
+   // }
 
     @IBAction func acn_backBtn(_ sender: Any) {
         navigationController?.popViewController(animated: true)
@@ -115,20 +115,30 @@ class AIScriptVC: UIViewController {
         btnGenerateScript.backgroundColor = textField.text?.isEmpty == false ? UIColor.purple : UIColor.lightGray
     }
 
-    @objc func keyboardWillShow(_ notification: Notification) {
-        if let keyboardFrame = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? CGRect {
-            UIView.animate(withDuration: 0.3) {
-                self.btnGenerateScript.transform = CGAffineTransform(translationX: 50, y: -keyboardFrame.height + 55)
-                self.btnWidthConstraint.constant = 260 // Adjust width when keyboard appears
-                self.view.layoutIfNeeded()
-            }
-        }
-    }
+//    @objc func keyboardWillShow(_ notification: Notification) {
+//        if let keyboardFrame = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? CGRect {
+//            UIView.animate(withDuration: 0.3) {
+//                self.btnGenerateScript.transform = CGAffineTransform(translationX: 50, y: -keyboardFrame.height + 55)
+//                self.btnWidthConstraint.constant = 260 // Adjust width when keyboard appears
+//                self.view.layoutIfNeeded()
+//            }
+//        }
+//    }
 
-    @objc func keyboardWillHide(_ notification: Notification) {
-        UIView.animate(withDuration: 0.3) {
-            self.btnGenerateScript.transform = .identity
-            self.adjustButtonWidth()
-        }
+//    @objc func keyboardWillHide(_ notification: Notification) {
+//        UIView.animate(withDuration: 0.3) {
+//            self.btnGenerateScript.transform = .identity
+//            self.adjustButtonWidth()
+//        }
+//    }
+    
+    
+    @IBAction func acn_plusBtn(_ sender: Any) {
+        
+        
     }
+    
+    
+    
+    
 }

@@ -86,14 +86,35 @@ class TabBarController: UITabBar {
 //           window?.makeKeyAndVisible()
            
            
+//           guard let parentVC = self.findViewController() else { return }
+//
+//                  let storyboard = UIStoryboard(name: "Main", bundle: nil)
+//                  if let aiCreatorsVC = storyboard.instantiateViewController(withIdentifier: "AICreatorsVC") as? AICreatorsVC {
+//                      let navController = UINavigationController(rootViewController: aiCreatorsVC)
+//                      navController.modalPresentationStyle = .pageSheet
+//                      //parentVC.present(navController, animated: true, completion: nil)
+//                      parentVC.navigationController?.pushViewController(navController, animated: false)
+//                  }
+           
+           
+           
            guard let parentVC = self.findViewController() else { return }
 
-                  let storyboard = UIStoryboard(name: "Main", bundle: nil)
-                  if let aiCreatorsVC = storyboard.instantiateViewController(withIdentifier: "AICreatorsVC") as? AICreatorsVC {
-                      let navController = UINavigationController(rootViewController: aiCreatorsVC)
-                      navController.modalPresentationStyle = .pageSheet
-                      parentVC.present(navController, animated: true, completion: nil)
-                  }
+           let storyboard = UIStoryboard(name: "Main", bundle: nil)
+           if let aiCreatorsVC = storyboard.instantiateViewController(withIdentifier: "AICreatorsVC") as? AICreatorsVC {
+               // No need to wrap aiCreatorsVC in a UINavigationController unless you really want a navigation bar
+               aiCreatorsVC.modalPresentationStyle = .pageSheet
+               
+               // If you need a navigation controller:
+               let navController = UINavigationController(rootViewController: aiCreatorsVC)
+               
+               // Push the aiCreatorsVC if it's within the current navigation stack
+               parentVC.navigationController?.pushViewController(aiCreatorsVC, animated: false)
+               
+               // If you're using the navController, you can push that instead
+               // parentVC.navigationController?.pushViewController(navController, animated: false)
+           }
+
            
        }
     override func didMoveToWindow() {

@@ -8,6 +8,8 @@
 import UIKit
 import AuthenticationServices
 
+
+
 class StatusCheckVC: UIViewController {
 
     @IBOutlet weak var imgVw: UIImageView!
@@ -21,31 +23,27 @@ class StatusCheckVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-    
-        // Do any additional setup after loading the view.
-        
-      
-       // imgVw.image = img
-        
         imgVw.layer.cornerRadius = 20
         imgVw.clipsToBounds = true
         
-        let authService = AuthService() // Assuming AuthService is implemented
+        let authService = AuthService()
         viewModel = StatusCheckViewModel(authService: authService)
         
-        let img = videoModelNewData?.thumbnail.imageURL
-        loadImage(from: img!)
-        
-        print("VideoModelData CreatorName:-\(String(describing: videoModelNewData?.creatorName))")
-             print("VideoModelData CreatorImg:-\(String(describing: videoModelNewData?.thumbnail))")
+        if let img = videoModelNewData?.thumbnail.imageURL {
+            loadImage(from: img)
+        }
+
+        print("VideoModelData CreatorName: \(String(describing: videoModelNewData?.creatorName))")
+        print("VideoModelData CreatorImg: \(String(describing: videoModelNewData?.thumbnail))")
         
         bindViewModel()
-      //  viewModel.upload(operationId: operationIdSend)
+        viewModel.upload(operationId: operationIdSend)
         
-        // Set up navigation callback
-               viewModel.onCompletion = { [weak self] in
-                   self?.navigateToDashboard()
-               }
+        viewModel.onCompletion = { [weak self] in
+            DispatchQueue.main.async {
+                self?.navigateToDashboard()
+            }
+        }
     }
     
     private func loadImage(from urlString: String) {
@@ -60,22 +58,23 @@ class StatusCheckVC: UIViewController {
     }
     
     private func bindViewModel() {
-           viewModel.updateProgress = { [weak self] progress in
-               DispatchQueue.main.async {
-                   self?.lbl_state.text = "Progress: \(progress)"
-               }
-           }
+        viewModel.updateProgress = { [weak self] progress in
+            DispatchQueue.main.async {
+                self?.lbl_state.text = "Progress: \(progress)%"
+                print("Progress: \(progress)%")
+            }
+        }
 
-           viewModel.updateState = { [weak self] state in
-               DispatchQueue.main.async {
-                   self?.lbl_state.text = state
-               }
-           }
-       }
+        viewModel.updateState = { [weak self] state in
+            DispatchQueue.main.async {
+                self?.lbl_state.text = state
+                print("State: \(state)")
+            }
+        }
+    }
 
-
-    func navigateToDashboard(){
-        DispatchQueue.main.async(){
+    func navigateToDashboard() {
+        DispatchQueue.main.async {
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
             if let dashboardVC = storyboard.instantiateViewController(withIdentifier: "DashboardVC") as? DashboardVC {
                 let navController = UINavigationController(rootViewController: dashboardVC)
@@ -84,14 +83,8 @@ class StatusCheckVC: UIViewController {
         }
     }
 
-       
-
     @IBAction func acn_backBtn(_ sender: Any) {
-        
         self.navigationController?.popViewController(animated: false)
     }
-    
-    
-    @IBAction func acn_CancelBtn(_ sender: Any) {
-    }
 }
+

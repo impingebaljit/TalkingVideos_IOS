@@ -7,18 +7,21 @@
 
 import UIKit
 import AuthenticationServices
-
+import AVFoundation
 
 
 class ScriptVC: UIViewController, UITextViewDelegate {
 
     @IBOutlet weak var btn_Back: UIButton!
    
-
+    @IBOutlet weak var lbl_CountWords: UILabel!
+    
     @IBOutlet weak var txtVw_Script: UITextView!
     var scriptText: String?
     
     private var viewModel: SubmitViewModel!
+    
+    let speechSynthesizer = AVSpeechSynthesizer()
     
     var videoModelNew: VideoDetailModel?
 
@@ -28,25 +31,65 @@ class ScriptVC: UIViewController, UITextViewDelegate {
         self.navigationItem.hidesBackButton = true
         self.navigationController?.isNavigationBarHidden = true
 
+        
+       
+        
+        
         // Display the script if available
         txtVw_Script.delegate = self
         txtVw_Script.text = scriptText ?? "Type your own script"
         
         print("VideoModelData CreatorName:-\(String(describing: videoModelNew?.creatorName))")
-        
+        updateWordCount()
         
         
         let authService = AuthService() // Assuming AuthService is implemented
         viewModel = SubmitViewModel(authService: authService)
     }
 
+    func updateWordCount() {
+          let text = txtVw_Script.text ?? ""
+          
+          // Split the text into words and count
+          let wordCount = text.split { $0.isWhitespace || $0.isNewline }.count
+         
+          
+          // Calculate time: Assuming average speaking speed of 150 words per minute
+          let speakingRate = 150.0 // words per minute
+          let secondsPerWord = 60.0 / speakingRate
+          let timeInSeconds = Double(wordCount) * secondsPerWord
+          
+          // Display the time in seconds
+         // timeLabel.text = String(format: "Time to speak: %.2f seconds", timeInSeconds)
+        
+     
+
+        lbl_CountWords.text = "\(wordCount) words \(Int(timeInSeconds))s"
+        
+      }
+    // Function to speak the words
+    @IBAction func acn_playWords(_ sender: Any) {
+        speakWords()  // Star
+    }
+    func speakWords() {
+           let text = txtVw_Script.text ?? ""
+           let utterance = AVSpeechUtterance(string: text)
+           
+           // Set properties for speech
+           utterance.voice = AVSpeechSynthesisVoice(language: "en-US")
+           utterance.rate = 0.5  // Adjust rate as needed (0.0 to 1.0)
+           
+           // Speak the text
+           speechSynthesizer.speak(utterance)
+       }
+    
     @IBAction func acn_backBTn(_ sender: Any) {
         navigationController?.popViewController(animated: true)
     }
 
     @IBAction func acn_GenerateVideo(_ sender: Any) {
         print("Generate Video tapped")
-       // callSubmitVideoApi()
+       callSubmitVideoApi()
     }
 //    func callSubmitVideoApi(){
 //        let name = videoModelNew?.creatorName
@@ -122,4 +165,10 @@ class ScriptVC: UIViewController, UITextViewDelegate {
             textView.textColor = .white
         }
     }
+    
+   
+        func textViewDidChange(_ textView: UITextView) {
+            updateWordCount()  // Update word count when text changes
+        }
+    
 }

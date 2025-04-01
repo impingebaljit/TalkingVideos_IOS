@@ -22,12 +22,14 @@ class DashboardVC: UIViewController {
         super.viewDidLoad()
 
         self.navigationItem.hidesBackButton = true
+        
+        self.navigationController?.isNavigationBarHidden = true
 
         setupUI()
         setupTableView()
         setupViewModel()
 
-        //viewModel.fetchProjects()
+        viewModel.fetchProjects()
     }
 
     private func setupUI() {

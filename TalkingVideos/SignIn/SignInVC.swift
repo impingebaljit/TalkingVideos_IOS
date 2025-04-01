@@ -231,15 +231,26 @@ class SignInVC: UIViewController {
 
     // MARK: - Navigation Helpers
 
-    private func navigateToDashboard() {
+     private func navigateToDashboard() {
         let alert = UIAlertController(title: "Success", message: "User signed in successfully!", preferredStyle: .alert)
+        
         alert.addAction(UIAlertAction(title: "OK", style: .default) { [weak self] _ in
-            self?.navigateToViewController(identifier: "DashboardVC")
+            guard let self = self else { return } // Safely unwrap self to avoid retain cycles
+            
+            // Instantiate the Dashboard view controller from the storyboard
+            if let dashboardVC = self.storyboard?.instantiateViewController(withIdentifier: "DashboardVC") {
+                // Push the view controller to the navigation stack
+                self.navigationController?.pushViewController(dashboardVC, animated: true)
+            }
         })
-
-        present(alert, animated: true, completion: nil)
+        
+        // Present the alert
+        self.present(alert, animated: true, completion: nil)
     }
 
+
+  
+    
     private func navigateToViewController(identifier: String) {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let viewController = storyboard.instantiateViewController(withIdentifier: identifier)
@@ -266,7 +277,7 @@ class SignInVC: UIViewController {
         //iostest@gmail.com
       //   tf_Email.text = "johndoe@example.com"
      //tf_Password.text = "password123"
-      // tf_Email.text = "nisha@gmail.com"//"johndoe@example.com"//
-   // tf_Password.text = "123456"//"password123"
+       tf_Email.text = "nisha@gmail.com"//"johndoe@example.com"//
+    tf_Password.text = "123456"//"password123"
     }
 }

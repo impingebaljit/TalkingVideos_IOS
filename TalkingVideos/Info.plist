@@ -2,55 +2,69 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-    <key>NSPrivacyAccessedAPICategories</key>
-    <array>
-        <string>Networking</string>
-    </array>
-
-    <!-- Google Sign-In Configuration -->
-    <key>CFBundleURLTypes</key>
-    <array>
-        <dict>
-            <key>CFBundleURLSchemes</key>
-            <array>
-                <string>com.googleusercontent.apps.766661257744-uihp3b204ntf6edlo74pvddgvmqin36v</string>
-            </array>
-        </dict>
-    </array>
-
-    <key>LSApplicationQueriesSchemes</key>
-    <array>
-        <string>googlechrome</string>
-    </array>
-
-    <key>UIUserInterfaceStyle</key>
-    <string>Light</string>
-
-    <key>CFBundleIconName</key>
-    <string>AppIcon</string>
-
-    <key>NSAppTransportSecurity</key>
-    <dict/>
-    
-    <key>UIApplicationSceneManifest</key>
-    <dict>
-        <key>UIApplicationSupportsMultipleScenes</key>
-        <false/>
-        <key>UISceneConfigurations</key>
-        <dict>
-            <key>UIWindowSceneSessionRoleApplication</key>
-            <array>
-                <dict>
-                    <key>UISceneConfigurationName</key>
-                    <string>Default Configuration</string>
-                    <key>UISceneDelegateClassName</key>
-                    <string>$(PRODUCT_MODULE_NAME).SceneDelegate</string>
-                    <key>UISceneStoryboardFile</key>
-                    <string>Main</string>
-                </dict>
-            </array>
-        </dict>
-    </dict>
+	<key>UIAppFonts</key>
+	<array>
+		<string>Poppins-Black.ttf</string>
+		<string>Poppins-BlackItalic.ttf</string>
+     
+     <string>Poppins-Bold.ttf</string>
+     <string>Poppins-BoldItalic.ttf</string>
+     <string>Poppins-ExtraBold.ttf</string>
+     <string>Poppins-ExtraBoldItalic.ttf</string>
+     <string>Poppins-ExtraLight.ttf</string>
+     <string>Poppins-ExtraLightItalic.ttf</string>
+     <string>Poppins-Italic.ttf</string>
+     <string>Poppins-Light.ttf</string>
+     <string>Poppins-LightItalic.ttf</string>
+     <string>Poppins-Medium.ttf</string>
+     <string>Poppins-MediumItalic.ttf</string>
+     <string>Poppins-Regular.ttf</string>
+     <string>Poppins-SemiBold.ttf</string>
+     <string>Poppins-SemiBoldItalic.ttf</string>
+     <string>Poppins-Thin.ttf</string>
+     <string>Poppins-ThinItalic.ttf</string>
+	</array>
+	<key>NSPrivacyAccessedAPICategories</key>
+	<array>
+		<string>Networking</string>
+	</array>
+	<key>CFBundleURLTypes</key>
+	<array>
+		<dict>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>com.googleusercontent.apps.766661257744-uihp3b204ntf6edlo74pvddgvmqin36v</string>
+			</array>
+		</dict>
+	</array>
+	<key>LSApplicationQueriesSchemes</key>
+	<array>
+		<string>googlechrome</string>
+	</array>
+	<key>UIUserInterfaceStyle</key>
+	<string>Light</string>
+	<key>CFBundleIconName</key>
+	<string>AppIcon</string>
+	<key>NSAppTransportSecurity</key>
+	<dict/>
+	<key>UIApplicationSceneManifest</key>
+	<dict>
+		<key>UIApplicationSupportsMultipleScenes</key>
+		<false/>
+		<key>UISceneConfigurations</key>
+		<dict>
+			<key>UIWindowSceneSessionRoleApplication</key>
+			<array>
+				<dict>
+					<key>UISceneConfigurationName</key>
+					<string>Default Configuration</string>
+					<key>UISceneDelegateClassName</key>
+					<string>$(PRODUCT_MODULE_NAME).SceneDelegate</string>
+					<key>UISceneStoryboardFile</key>
+					<string>Main</string>
+				</dict>
+			</array>
+		</dict>
+	</dict>
 </dict>
 </plist>
-
