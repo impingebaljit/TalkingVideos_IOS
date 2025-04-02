@@ -6,10 +6,15 @@
 //
 
 import UIKit
-
-
- 
 import Foundation
+
+
+enum UploadStatus {
+    case notStarted
+    case inProgress(Double) // Percentage (0-100)
+    case completed
+    case failed
+}
 
 // MARK: - DashboardModelElement
 struct DashboardModel: Codable {
@@ -18,6 +23,12 @@ struct DashboardModel: Codable {
     let url: String
     let status: String?
     let createdAt, updatedAt: String
+    let creatorImage: String?
+    let creatorVideo: String?
+       
+    
+    var isUploading: Bool = false
+    var uploadInProgress: Bool?// Add this property
 
     enum CodingKeys: String, CodingKey {
         case id
@@ -27,6 +38,9 @@ struct DashboardModel: Codable {
         case state, url, status
         case createdAt = "created_at"
         case updatedAt = "updated_at"
+        case  creatorImage, creatorVideo
+        
+       case uploadInProgress = "uploadInProgress"
     }
 }
 

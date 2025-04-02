@@ -47,13 +47,14 @@ class AICreatorContinueVC: UIViewController {
 
         // Set button title and style
         continueBtn.setTitle("Continue with \(model.creatorName)", for: .normal)
-        continueBtn.backgroundColor = model.color
+       // continueBtn.backgroundColor = UIColor.//model.color
+        continueBtn.backgroundColor = UIColor(red: 139/255.0, green: 32/255.0, blue: 247/255.0, alpha: 1.0)
         continueBtn.setTitleColor(.white, for: .normal) // Title in white color
-        continueBtn.layer.cornerRadius = continueBtn.frame.height / 2
+        continueBtn.layer.cornerRadius = 10//continueBtn.frame.height / 2
         continueBtn.clipsToBounds = true
 
         // ImageView styling to match design
-        imgVw.layer.cornerRadius = 20
+        imgVw.layer.cornerRadius = 10
         imgVw.clipsToBounds = true
     }
 

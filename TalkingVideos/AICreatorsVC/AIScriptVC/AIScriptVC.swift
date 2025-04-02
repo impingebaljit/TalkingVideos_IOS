@@ -112,7 +112,7 @@ class AIScriptVC: UIViewController {
     }
 
     @objc func textFieldDidChange(_ textField: UITextField) {
-        btnGenerateScript.backgroundColor = textField.text?.isEmpty == false ? UIColor.purple : UIColor.lightGray
+        btnGenerateScript.backgroundColor = textField.text?.isEmpty == false ? UIColor(red: 139/255.0, green: 32/255.0, blue: 247/255.0, alpha: 1.0) : UIColor.lightGray
     }
 
 //    @objc func keyboardWillShow(_ notification: Notification) {

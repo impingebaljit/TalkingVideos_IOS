@@ -7,22 +7,6 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "CF85B1AE-52C8-428F-92D9-5C8D9868D826"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "TalkingVideos/DashboardVC/DashboardVC.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "136"
-            endingLineNumber = "136"
-            landmarkName = "ProjectCell"
-            landmarkType = "3">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
             uuid = "01584217-D530-4DCB-ADFD-0D88280A2580"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
@@ -66,6 +50,36 @@
             endingLineNumber = "575"
             landmarkName = "submitVideo(script:creatorName:resolution:completion:)"
             landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "C0C0130A-9BBB-497E-A43B-748A3D318EF7 - b1251df4ff74cd0"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "TalkingVideos.AuthService.submitVideo(script: Swift.String, creatorName: Swift.String, resolution: Swift.String, completion: (Swift.Result&lt;TalkingVideos.SubmitModel, Swift.Error&gt;) -&gt; ()) -&gt; ()"
+                  moduleName = "TalkingVideos.debug.dylib"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/nishagupta/Documents/ImpingeProjects/TalkingVideos_IOSApp/TalkingVideos/NetworkClass/AuthService.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "575"
+                  endingLineNumber = "575">
+               </Location>
+               <Location
+                  uuid = "C0C0130A-9BBB-497E-A43B-748A3D318EF7 - 8827c71d437cb1f9"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Result&lt;TalkingVideos.SubmitModel, TalkingVideos.NetworkError&gt;) -&gt; () in TalkingVideos.AuthService.submitVideo(script: Swift.String, creatorName: Swift.String, resolution: Swift.String, completion: (Swift.Result&lt;TalkingVideos.SubmitModel, Swift.Error&gt;) -&gt; ()) -&gt; ()"
+                  moduleName = "TalkingVideos.debug.dylib"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/nishagupta/Documents/ImpingeProjects/TalkingVideos_IOSApp/TalkingVideos/NetworkClass/AuthService.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "575"
+                  endingLineNumber = "575">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -98,6 +112,36 @@
             endingLineNumber = "57"
             landmarkName = "submitVideo(prompt:creatorName:resolution:completion:)"
             landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "1717C36D-A1ED-4509-B33E-1EDA84FE7429 - 81a4e2f362c0a0f2"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "TalkingVideos.SubmitViewModel.submitVideo(prompt: Swift.String, creatorName: Swift.String, resolution: Swift.String, completion: (Swift.Bool, Swift.Optional&lt;TalkingVideos.SubmitModel&gt;, Swift.Optional&lt;Swift.String&gt;) -&gt; ()) -&gt; ()"
+                  moduleName = "TalkingVideos.debug.dylib"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/nishagupta/Documents/ImpingeProjects/TalkingVideos_IOSApp/TalkingVideos/AICreatorsVC/SubmitVideo/SubmitViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "57"
+                  endingLineNumber = "57">
+               </Location>
+               <Location
+                  uuid = "1717C36D-A1ED-4509-B33E-1EDA84FE7429 - 345a62f75577e4f8"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Result&lt;TalkingVideos.SubmitModel, Swift.Error&gt;) -&gt; () in TalkingVideos.SubmitViewModel.submitVideo(prompt: Swift.String, creatorName: Swift.String, resolution: Swift.String, completion: (Swift.Bool, Swift.Optional&lt;TalkingVideos.SubmitModel&gt;, Swift.Optional&lt;Swift.String&gt;) -&gt; ()) -&gt; ()"
+                  moduleName = "TalkingVideos.debug.dylib"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/nishagupta/Documents/ImpingeProjects/TalkingVideos_IOSApp/TalkingVideos/AICreatorsVC/SubmitVideo/SubmitViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "57"
+                  endingLineNumber = "57">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -151,64 +195,110 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "246CEF58-ECF2-43F3-87DB-2D97A7124C35"
+            uuid = "E821EF5A-876C-4C57-852C-6570FBDF293F"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "TalkingVideos/AICreatorsVC/SubmitVideo/ScriptVC.swift"
+            filePath = "TalkingVideos/DashboardVC/DashboardVC.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "128"
-            endingLineNumber = "128"
-            landmarkName = "callSubmitVideoApi()"
+            startingLineNumber = "28"
+            endingLineNumber = "28"
+            landmarkName = "viewDidLoad()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "3020C2C2-D11C-4933-BFD4-BAEABB75E58F"
+            uuid = "DEA88EB7-6D78-47C1-8B9E-19FFDCF8E9C3"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "TalkingVideos/AICreatorsVC/SubmitVideo/ScriptVC.swift"
+            filePath = "TalkingVideos/DashboardVC/DashboardViewModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "129"
-            endingLineNumber = "129"
-            landmarkName = "callSubmitVideoApi()"
+            startingLineNumber = "198"
+            endingLineNumber = "198"
+            landmarkName = "fetchProjects()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "E3989447-C325-4ABC-9A64-F1A7108DB9D9"
+            uuid = "0C4CD0FD-D754-483A-A415-CAC782B26D4D"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "TalkingVideos/AICreatorsVC/SubmitVideo/ScriptVC.swift"
+            filePath = "TalkingVideos/DashboardVC/DashboardViewModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "136"
-            endingLineNumber = "136"
-            landmarkName = "callSubmitVideoApi()"
+            startingLineNumber = "200"
+            endingLineNumber = "200"
+            landmarkName = "fetchProjects()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "0C4CD0FD-D754-483A-A415-CAC782B26D4D - 2a4a59c081bc85a3"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Result&lt;Swift.Array&lt;TalkingVideos.DashboardModel&gt;, Swift.Error&gt;) -&gt; () in TalkingVideos.DashboardViewModel.fetchProjects() -&gt; ()"
+                  moduleName = "TalkingVideos.debug.dylib"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/nishagupta/Documents/ImpingeProjects/TalkingVideos_IOSApp/TalkingVideos/DashboardVC/DashboardViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "201"
+                  endingLineNumber = "201">
+               </Location>
+               <Location
+                  uuid = "0C4CD0FD-D754-483A-A415-CAC782B26D4D - 2a4a59c081bc85a3"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Result&lt;Swift.Array&lt;TalkingVideos.DashboardModel&gt;, Swift.Error&gt;) -&gt; () in TalkingVideos.DashboardViewModel.fetchProjects() -&gt; ()"
+                  moduleName = "TalkingVideos.debug.dylib"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/nishagupta/Documents/ImpingeProjects/TalkingVideos_IOSApp/TalkingVideos/DashboardVC/DashboardViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "201"
+                  endingLineNumber = "201">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "E727D3B1-1671-4000-A9F9-7BBE32C1D4BD"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "TalkingVideos/NetworkClass/AuthService.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "685"
+            endingLineNumber = "685"
+            landmarkName = "fetchFinalVideos(completion:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "724451E0-F033-4314-AF8C-15471AE7C26A"
+            uuid = "F0430029-4785-4085-ADF8-F210FD8FF920"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "TalkingVideos/AICreatorsVC/SubmitVideo/ScriptVC.swift"
+            filePath = "TalkingVideos/DashboardVC/DashboardViewModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "131"
-            endingLineNumber = "131"
-            landmarkName = "callSubmitVideoApi()"
+            startingLineNumber = "204"
+            endingLineNumber = "204"
+            landmarkName = "fetchProjects()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

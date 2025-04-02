@@ -31,10 +31,6 @@ class ScriptVC: UIViewController, UITextViewDelegate {
         self.navigationItem.hidesBackButton = true
         self.navigationController?.isNavigationBarHidden = true
 
-        
-       
-        
-        
         // Display the script if available
         txtVw_Script.delegate = self
         txtVw_Script.text = scriptText ?? "Type your own script"
@@ -45,8 +41,34 @@ class ScriptVC: UIViewController, UITextViewDelegate {
         
         let authService = AuthService() // Assuming AuthService is implemented
         viewModel = SubmitViewModel(authService: authService)
+        
+        // Add observers for keyboard notifications
+            NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(_:)), name: UIResponder.keyboardWillShowNotification, object: nil)
+            NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(_:)), name: UIResponder.keyboardWillHideNotification, object: nil)
+    }
+    deinit {
+        NotificationCenter.default.removeObserver(self)
+    }
+    
+    @objc func keyboardWillShow(_ notification: Notification) {
+        if let keyboardFrame = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? CGRect {
+            let keyboardHeight = keyboardFrame.height
+            let bottomInset = keyboardHeight - view.safeAreaInsets.bottom
+
+            UIView.animate(withDuration: 0.3) {
+                self.txtVw_Script.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: bottomInset, right: 0)
+                self.txtVw_Script.scrollIndicatorInsets = self.txtVw_Script.contentInset
+            }
+        }
     }
 
+    @objc func keyboardWillHide(_ notification: Notification) {
+        UIView.animate(withDuration: 0.3) {
+            self.txtVw_Script.contentInset = .zero
+            self.txtVw_Script.scrollIndicatorInsets = .zero
+        }
+    }
+    
     func updateWordCount() {
           let text = txtVw_Script.text ?? ""
           
@@ -91,36 +113,11 @@ class ScriptVC: UIViewController, UITextViewDelegate {
         print("Generate Video tapped")
        callSubmitVideoApi()
     }
-//    func callSubmitVideoApi(){
-//        let name = videoModelNew?.creatorName
-//        
-//        print("Get Name Script VC:-\(name ?? "abc")")
-//        
-//        viewModel.submitVideo(
-//            prompt: txtVw_Script.text,
-//            creatorName: name ?? "name",
-//            resolution: "fhd"
-//        ) { success, submitModel in
-//            if success, let model = submitModel {
-//                print("SubmitModel: \(model)")
-//                
-//                let operationID = model.operationID
-//                
-//                DispatchQueue.main.async {
-//                 
-//                    guard let detailVC = self.storyboard?.instantiateViewController(withIdentifier: "StatusCheckVC") as? StatusCheckVC else {
-//                        print("Failed to instantiate AICreatorContinueVC")
-//                        return
-//                    }
-//                    detailVC.videoModelNewData = self.videoModelNew
-//                    detailVC.operationIdSend = model.operationID
-//                    self.navigationController?.pushViewController(detailVC, animated: true)
-//                }
-//            } else {
-//                print("Video submission failed")
-//            }
-//        }
-//    }
+
+    @IBAction func acn_DeleteBtn(_ sender: Any) {
+        txtVw_Script.text = ""  // Clear the text view
+            lbl_CountWords.text = "0 words 0s"  // Reset word count display if needed
+    }
     
     func callSubmitVideoApi() {
         let name = videoModelNew?.creatorName ?? "name"
@@ -128,19 +125,30 @@ class ScriptVC: UIViewController, UITextViewDelegate {
         viewModel.submitVideo(prompt: txtVw_Script.text, creatorName: name, resolution: "fhd") { success, submitModel, errorMessage in
             DispatchQueue.main.async {
                 if success, let model = submitModel {
-                    guard let detailVC = self.storyboard?.instantiateViewController(withIdentifier: "StatusCheckVC") as? StatusCheckVC else {
-                        self.showAlert(message: "Failed to instantiate StatusCheckVC")
-                        return
+                    self.showSuccessAlert {
+                        guard let detailVC = self.storyboard?.instantiateViewController(withIdentifier: "DashboardVC") as? DashboardVC else {
+                            self.showAlert(message: "Failed to instantiate DashboardVC")
+                            return
+                        }
+                        detailVC.operationIdSend = model.operationID
+                        detailVC.comesFromSubmitVideo = true
+                        print("OperationID:-\(model.operationID)")
+                        self.navigationController?.pushViewController(detailVC, animated: true)
                     }
-                    detailVC.videoModelNewData = self.videoModelNew
-                    detailVC.operationIdSend = model.operationID
-                    print("OperationID:-\(model.operationID)")
-                    self.navigationController?.pushViewController(detailVC, animated: true)
                 } else {
                     self.showAlert(message: errorMessage ?? "Video submission failed")
                 }
             }
         }
+    }
+
+    // Show success alert with a completion handler
+    func showSuccessAlert(completion: @escaping () -> Void) {
+        let alert = UIAlertController(title: "Success", message: "Video submitted successfully!", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .default) { _ in
+            completion() // Navigate to DashboardVC after user taps OK
+        })
+        self.present(alert, animated: true, completion: nil)
     }
 
     func showAlert(message: String) {

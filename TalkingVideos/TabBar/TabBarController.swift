@@ -23,9 +23,9 @@ class TabBarController: UITabBar {
     }
 
     private func setupTabBar() {
-        tintColor = UIColor(red: 140/255, green: 32/255, blue: 248/255, alpha: 1.0)
+        tintColor = UIColor.clear//(red: 140/255, green: 32/255, blue: 248/255, alpha: 1.0)
         unselectedItemTintColor = UIColor.gray
-        barTintColor = UIColor(red: 16/255, green: 9/255, blue: 25/255, alpha: 1.0)
+        barTintColor = UIColor.clear//(red: 16/255, green: 9/255, blue: 25/255, alpha: 1.0)
 
         let projectsItem = createTabBarItem(title: "Projects", imageName: "project", tag: 0)
         let createItem = UITabBarItem(title: "", image: nil, tag: 1)
