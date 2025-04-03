@@ -111,7 +111,7 @@ class ScriptVC: UIViewController, UITextViewDelegate {
 
     @IBAction func acn_GenerateVideo(_ sender: Any) {
         print("Generate Video tapped")
-       callSubmitVideoApi()
+     //  callSubmitVideoApi()
     }
 
     @IBAction func acn_DeleteBtn(_ sender: Any) {

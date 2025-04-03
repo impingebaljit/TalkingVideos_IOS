@@ -120,7 +120,13 @@ class NetworkService {
                     
                 }
             } else {
-                completion(.failure(.requestFailed(NSError(domain: "NetworkService", code: httpResponse.statusCode, userInfo: nil)))) // Provide a default NSError
+                
+                if httpResponse.statusCode == 400, let responseData = data {
+                        completion(.failure(.serverError(message: String(data: responseData, encoding: .utf8) ?? "Unknown error")))
+                        return
+                    }
+                
+              //  completion(.failure(.requestFailed(NSError(domain: "NetworkService", code: httpResponse.statusCode, userInfo: nil)))) // Provide a default NSError
             }
         }
 

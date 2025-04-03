@@ -52,7 +52,15 @@ class AICreatorContinueVC: UIViewController {
         continueBtn.setTitleColor(.white, for: .normal) // Title in white color
         continueBtn.layer.cornerRadius = 10//continueBtn.frame.height / 2
         continueBtn.clipsToBounds = true
+        let fontName = "SFProDisplay-Medium"
+        let fontSize: CGFloat = 18
 
+        if let font = UIFont(name: fontName, size: fontSize) {
+            continueBtn.titleLabel?.font = font // Correctly sets the font for the button's text
+        } else {
+            print("Font '\(fontName)' not found. Using system font.")
+            continueBtn.titleLabel?.font = UIFont.systemFont(ofSize: fontSize, weight: .medium) // Fallback
+        }
         // ImageView styling to match design
         imgVw.layer.cornerRadius = 10
         imgVw.clipsToBounds = true

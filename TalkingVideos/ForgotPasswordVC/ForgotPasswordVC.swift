@@ -10,7 +10,7 @@ import AuthenticationServices
 
 class ForgotPasswordVC: UIViewController {
 
-    @IBOutlet weak var tf_Email: UITextField!
+    @IBOutlet weak var tf_Email: CustomTextField!
    
     var viewModel: ForgotPasswordViewModel!
     
@@ -19,6 +19,10 @@ class ForgotPasswordVC: UIViewController {
 
         // Do any additional setup after loading the view.
         self.navigationItem.hidesBackButton = true
+        
+        
+        tf_Email.placeholderColor = UIColor.white
+     
         
         let authService = AuthService() // Assuming AuthService is implemented
         viewModel = ForgotPasswordViewModel(authService: authService)
@@ -79,10 +83,17 @@ class ForgotPasswordVC: UIViewController {
     private func navigateToLoginVC() {
         // Navigate to LoginVC
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        if let dashboardVC = storyboard.instantiateViewController(withIdentifier: "SignInVC") as? SignInVC {
-            let navController = UINavigationController(rootViewController: dashboardVC)
-            self.present(navController, animated: false, completion: nil)
+//        if let dashboardVC = storyboard.instantiateViewController(withIdentifier: "SignInVC") as? SignInVC {
+//            let navController = UINavigationController(rootViewController: dashboardVC)
+//            self.present(navController, animated: false, completion: nil)
+//        }
+        
+        
+        if let dashboardVC = self.storyboard?.instantiateViewController(withIdentifier: "SignInVC") {
+            // Push the view controller to the navigation stack
+            self.navigationController?.pushViewController(dashboardVC, animated: true)
         }
+        
     }
     private func showAlert(_ message: String) {
           let alert = UIAlertController(title: "Message", message: message, preferredStyle: .alert)

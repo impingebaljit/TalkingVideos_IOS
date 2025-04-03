@@ -12,7 +12,23 @@
         <string>SFPRODISPLAYREGULAR.OTF</string>
         <string>SFPRODISPLAYSEMIBOLDITALIC.OTF</string>
         <string>SFPRODISPLAYTHINITALIC.OTF</string>
-        <string>SFPRODISPLAYULTRALIGHTITALIC.OTF</string>
+        <string>sf-pro-display_black-italic.ttf</string>
+        <string>sf-pro-display_black.ttf</string>
+        <string>sf-pro-display_bold-italic.ttf</string>
+        <string>sf-pro-display_bold.ttf</string>
+        <string>sf-pro-display_heavy-italic.ttf</string>
+        <string>sf-pro-display_heavy.ttf</string>
+        <string>sf-pro-display_light-italic.ttf</string>
+        <string>sf-pro-display_light.ttf</string>
+        <string>sf-pro-display_medium-italic.ttf</string>
+        <string>sf-pro-display_regular-italic.ttf</string>
+        <string>sf-pro-display_regular.ttf</string>
+        <string>sf-pro-display_semibold-italic.ttf</string>
+        <string>sf-pro-display_semibold.ttf</string>
+        <string>sf-pro-display_thin-italic.ttf</string>
+        <string>sf-pro-display_thin.ttf</string>
+        <string>sf-pro-display_ultralight-italic.ttf</string>
+        <string>sf-pro-display_ultralight.ttf</string>
 	</array>
 	<key>NSPrivacyAccessedAPICategories</key>
 	<array>

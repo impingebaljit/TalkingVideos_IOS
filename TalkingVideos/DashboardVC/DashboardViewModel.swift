@@ -72,10 +72,7 @@ import UIKit
 //    }
 //    
 //    // Remove project at a given index
-//    func removeProject(at index: Int) {
-//        projects.remove(at: index)
-//        onProjectsUpdated?()
-//    }
+    
 //    
 //    // Upload data with progress tracking
 //    func upload(operationId: String) {
@@ -164,22 +161,32 @@ class DashboardViewModel {
     private var uploadingProjects: [DashboardModel] = [] // Store in-progress uploads
     private var retryCount = 3
     
+    private var getStatusI: StatusCheckModel?
+    
     var onProjectsUpdated: (() -> Void)?
     var updateProgress: ((Int) -> Void)?
     var updateState: ((String) -> Void)?
     
     private let authService = AuthService()
     
-    var projectCount: Int {
+    func projectCount() -> Int {
         return projects.count
     }
     
+//    func getProject(at index: Int) -> DashboardModel? {
+//           guard index >= 0 && index < projects.count else {
+//               return nil
+//           }
+//           return projects[index]
+//       }
+    
     func getProject(at index: Int) -> DashboardModel? {
-           guard index >= 0 && index < projects.count else {
-               return nil
-           }
-           return projects[index]
-       }
+        guard index >= 0, index < projects.count else {
+            print("Attempted to access index \(index) but projects only has \(projects.count) items.")
+            return nil
+        }
+        return projects[index]
+    }
     
 //    func fetchProjects() {
 //        authService.fetchFinalVideos { [weak self] result in
@@ -231,7 +238,7 @@ class DashboardViewModel {
             script: "Uploading...",
             creatorName: "Unknown",
             operationID: "operationID",
-            state: "uploading",
+            state: "",
             url: "",
             status: nil,
             createdAt: Date().description,
@@ -296,5 +303,44 @@ class DashboardViewModel {
     
     private func handleError(_ error: Error) {
         print("Error: \(error.localizedDescription)")
+    }
+    
+  
+//    func getStatus() -> StatusCheckModel? {
+//        return  ""
+//    }
+    func deleteVideos(videoId: String, completion: @escaping (Bool) -> Void) {
+        
+            guard let videoIdInt = Int(videoId) else {
+                print("Invalid videoId: \(videoId)")
+                completion(false)
+                return
+            }
+
+            authService.deleteVideos(videoId: videoId) { [weak self] result in
+                DispatchQueue.main.async {
+                    switch result {
+                    case .success:
+                        if let index = self?.projects.firstIndex(where: { $0.id == videoIdInt }) {
+                            self?.projects.remove(at: index)  // Remove from the data source
+                            self?.onProjectsUpdated?()
+                            completion(true)
+                        } else {
+                            completion(false) // Index not found
+                        }
+                    case .failure(let error):
+                        print("Error deleting video: \(error)")
+                        completion(false)
+                    }
+                }
+            }
+        
+    }
+    
+    
+    
+    func removeProject(at index: Int) {
+        guard index >= 0, index < projects.count else { return }
+        projects.remove(at: index)
     }
 }

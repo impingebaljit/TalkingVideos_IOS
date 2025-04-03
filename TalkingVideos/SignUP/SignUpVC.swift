@@ -10,11 +10,11 @@ import AuthenticationServices
 
 class SignUpVC: UIViewController {
 
-    @IBOutlet weak var tf_Name: UITextField!
+    @IBOutlet weak var tf_Name: CustomTextField!
     
-    @IBOutlet weak var tf_Email: UITextField!
+    @IBOutlet weak var tf_Email: CustomTextField!
     
-    @IBOutlet weak var tf_Password: UITextField!
+    @IBOutlet weak var tf_Password: CustomTextField!
   
     var viewModel: SignUpViewModel!
     
@@ -23,6 +23,9 @@ class SignUpVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
        
+        tf_Name.placeholderColor = UIColor.white
+        tf_Email.placeholderColor = UIColor.white
+        tf_Password.placeholderColor = UIColor.white
         
         let authService = AuthService() // Assuming AuthService is implemented
         viewModel = SignUpViewModel(authService: authService)

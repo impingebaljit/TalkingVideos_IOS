@@ -12,8 +12,8 @@ import GoogleSignIn
 class SignInVC: UIViewController {
 
     @IBOutlet weak var btnContinue: UIButton!
-    @IBOutlet weak var tf_Password: UITextField!
-    @IBOutlet weak var tf_Email: UITextField!
+    @IBOutlet weak var tf_Password: CustomTextField!
+    @IBOutlet weak var tf_Email: CustomTextField!
 
     var signInViewModel: SignInViewModel!
     var userToParse: SignInModel?
@@ -157,6 +157,8 @@ class SignInVC: UIViewController {
 
     @IBAction func acn_ForgotPassword(_ sender: Any) {
         print("Forgot password tapped")
+        
+        
     }
 
     @IBAction func acn_LoginwithApple(_ sender: Any) {
@@ -272,12 +274,16 @@ class SignInVC: UIViewController {
     // MARK: - UI Setup
 
     private func setupTextfields() {
-        tf_Email.placeholder = "Email ID"
-        tf_Password.placeholder = "Password"
+       // tf_Email.placeholder = "Email ID"
+       // tf_Password.placeholder = "Password"
+        
+        tf_Email.placeholderColor = UIColor.white
+        tf_Password.placeholderColor = UIColor.white
+       
         //iostest@gmail.com
       //   tf_Email.text = "johndoe@example.com"
      //tf_Password.text = "password123"
-       tf_Email.text = "nisha@gmail.com"//"johndoe@example.com"//
-    tf_Password.text = "123456"//"password123"
+       //tf_Email.text = "nisha@gmail.com"//"johndoe@example.com"//
+    //tf_Password.text = "123456"//"password123"
     }
 }

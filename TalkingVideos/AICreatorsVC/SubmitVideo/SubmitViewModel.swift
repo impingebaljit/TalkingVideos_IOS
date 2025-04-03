@@ -70,11 +70,42 @@ class SubmitViewModel{
                 } else {
                     completion(false, nil, "Unexpected response type: \(type(of: response))")
                 }
-            
+                
+                //            case .failure(let error):
+                //                completion(false, nil, "API Error: \(error.localizedDescription)")
+                
             case .failure(let error):
-                completion(false, nil, "API Error: \(error.localizedDescription)")
+                var errorMessage = "An unknown error occurred."
+                
+                // Check if the error is a network error with a response body
+                if let networkError = error as? NetworkError {
+                    switch networkError {
+                    case .serverError(let message):
+                        // Try decoding the error message if it's in JSON format
+                        if let jsonData = message.data(using: .utf8),
+                           let errorResponse = try? JSONDecoder().decode([String: String].self, from: jsonData),
+                           let detailMessage = errorResponse["detail"] {
+                            errorMessage = detailMessage  // Extract API error message
+                        } else {
+                            errorMessage = message // Fallback to raw message
+                        }
+                    case .requestFailed(let statusCode):
+                        errorMessage = "Request failed with status code \(statusCode)."
+                    case .invalidURL:
+                        errorMessage = "Invalid request URL."
+                    case .noData:
+                        errorMessage = "No response data received."
+                    case .decodingError:
+                        errorMessage = "Failed to parse server response."
+                    }
+                } else {
+                    errorMessage = error.localizedDescription
+                }
+                
+                print("Error: \(errorMessage)")
+                completion(false, nil, errorMessage)
             }
         }
+        
     }
-
 }

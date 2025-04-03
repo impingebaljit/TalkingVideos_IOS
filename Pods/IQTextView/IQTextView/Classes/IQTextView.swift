@@ -54,7 +54,7 @@ import UIKit
             placeholderLabel.numberOfLines = 0
             placeholderLabel.font = self.font
             placeholderLabel.textAlignment = self.textAlignment
-            placeholderLabel.backgroundColor = UIColor.clear
+            placeholderLabel.backgroundColor = UIColor.white
             placeholderLabel.isAccessibilityElement = false
             placeholderLabel.textColor = UIColor.placeholderText
             self.addSubview(placeholderLabel)

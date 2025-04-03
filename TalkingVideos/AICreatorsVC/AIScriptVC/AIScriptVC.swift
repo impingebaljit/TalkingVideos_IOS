@@ -12,7 +12,7 @@ import AuthenticationServices
 class AIScriptVC: UIViewController {
 
     @IBOutlet weak var imgVw: UIImageView!
-    @IBOutlet weak var tf_Script: UITextField!
+    @IBOutlet weak var tf_Script: CustomTextField!
     @IBOutlet weak var btnBack: UIButton!
     @IBOutlet weak var btnGenerateScript: UIButton!
     @IBOutlet weak var btnWidthConstraint: NSLayoutConstraint! // Ensure this outlet is connected in storyboard
@@ -23,6 +23,7 @@ class AIScriptVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        tf_Script.placeholderColor = UIColor.white
         let authService = AuthService()
         viewModel = AIScriptViewModel(authService: authService)
 
@@ -101,7 +102,10 @@ class AIScriptVC: UIViewController {
                 CustomLoader.shared.hideLoader()
                 if success, let scriptModel = scriptModel {
                     guard let detailVC = self.storyboard?.instantiateViewController(withIdentifier: "ScriptVC") as? ScriptVC else { return }
-                    detailVC.scriptText = scriptModel.script
+                    let scriptText = scriptModel.script.content.compactMap { $0.text }.joined(separator: "\n")
+                                   
+                    detailVC.scriptText = scriptText
+                    print("Get the script Text:- \(scriptText)")
                     detailVC.videoModelNew = self.videoModelData
                     self.navigationController?.pushViewController(detailVC, animated: true)
                 } else {
