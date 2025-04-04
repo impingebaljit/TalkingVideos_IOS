@@ -54,6 +54,12 @@ struct API {
     struct Constants {
         static let alertTitle = "Bluelight"
     }
+    
+    struct VideoStatus {
+           static let complete = "COMPLETE"
+           static let processing = "PROCESSING"
+           static let queued = "QUEUED"
+       }
 }
 
 

@@ -111,7 +111,20 @@ class ScriptVC: UIViewController, UITextViewDelegate {
 
     @IBAction func acn_GenerateVideo(_ sender: Any) {
         print("Generate Video tapped")
-     //  callSubmitVideoApi()
+        DispatchQueue.main.async {
+            CustomLoader.shared.showLoader(in: self)
+        self.callSubmitVideoApi()
+            
+//            guard let detailVC = self.storyboard?.instantiateViewController(withIdentifier: "DashboardVC") as? DashboardVC else {
+//                self.showAlert(message: "Failed to instantiate DashboardVC")
+//                return
+//            }
+//            detailVC.operationIdSend = "fdfdfdsfds"
+//            detailVC.comesFromSubmitVideo = true
+//            //print("OperationID:-\(model.operationID)")
+//            self.navigationController?.pushViewController(detailVC, animated: true)
+        }
+     
     }
 
     @IBAction func acn_DeleteBtn(_ sender: Any) {
@@ -124,6 +137,7 @@ class ScriptVC: UIViewController, UITextViewDelegate {
         
         viewModel.submitVideo(prompt: txtVw_Script.text, creatorName: name, resolution: "fhd") { success, submitModel, errorMessage in
             DispatchQueue.main.async {
+                CustomLoader.shared.hideLoader()
                 if success, let model = submitModel {
                     self.showSuccessAlert {
                         guard let detailVC = self.storyboard?.instantiateViewController(withIdentifier: "DashboardVC") as? DashboardVC else {

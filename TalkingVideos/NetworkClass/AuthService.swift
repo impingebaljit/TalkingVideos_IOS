@@ -609,7 +609,7 @@ class AuthService {
                      progressHandler: @escaping (Int) -> Void,
                      completion: @escaping (Result<StatusCheckModel, NetworkError>) -> Void) {
         
-        let uploadURL = "https://ugcreels.urtestsite.com/api/dummy"//API.baseURL + API.Endpoints.statusCheck
+        let uploadURL = API.baseURL + API.Endpoints.statusCheck
         
         guard let url = URL(string: uploadURL) else {
             print("Invalid URL: \(uploadURL)")
@@ -618,7 +618,7 @@ class AuthService {
         }
         
         let requestBody: [String: Any] = [
-            "operationId": "UKSad6TX2sEZiWRVJDJU"//operationId
+            "operationId": operationId
         ]
         
         guard let postData = try? JSONSerialization.data(withJSONObject: requestBody) else {
@@ -640,7 +640,7 @@ class AuthService {
         
         print("Upload Token: \(token)") // For debugging purposes
         
-        NetworkService.shared.request(url: url, method: .get, body: postData, headers: headers) { (result: Result<StatusCheckModel, NetworkError>) in
+        NetworkService.shared.request(url: url, method: .post, body: postData, headers: headers) { (result: Result<StatusCheckModel, NetworkError>) in
             switch result {
             case .success(let data):
                 print("Data uploaded successfully: \(data)")

@@ -767,7 +767,7 @@
                                                     </userDefinedRuntimeAttributes>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hey there. Ever had one of those..." lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="V33-sP-iTY">
-                                                    <rect key="frame" x="98" y="15" width="269" height="35"/>
+                                                    <rect key="frame" x="98" y="15" width="259" height="35"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="35" id="vpl-c1-AH2"/>
                                                     </constraints>
@@ -776,7 +776,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Last update on Mar 18,2025" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="THX-6h-1gi">
-                                                    <rect key="frame" x="98" y="43" width="269" height="35"/>
+                                                    <rect key="frame" x="98" y="46" width="269" height="35"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="35" id="E7z-pH-uc3"/>
                                                     </constraints>
@@ -784,21 +784,41 @@
                                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="arrowTable" translatesAutoresizingMaskIntoConstraints="NO" id="6R5-ZI-rb7">
+                                                    <rect key="frame" x="362" y="37" width="20" height="20"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="20" id="AIu-z3-PCx"/>
+                                                        <constraint firstAttribute="width" constant="20" id="zDX-vr-7XG"/>
+                                                    </constraints>
+                                                </imageView>
+                                                <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="vUe-3j-V5D">
+                                                    <rect key="frame" x="98" y="47" width="259" height="4"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="4" id="82A-U7-Ief"/>
+                                                    </constraints>
+                                                    <color key="progressTintColor" red="0.54901960780000003" green="0.12549019610000001" blue="0.97254901959999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                </progressView>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="V33-sP-iTY" firstAttribute="top" secondItem="4WR-Rn-Zlu" secondAttribute="topMargin" constant="4" id="2wL-YD-m7u"/>
+                                                <constraint firstItem="6R5-ZI-rb7" firstAttribute="trailing" secondItem="4WR-Rn-Zlu" secondAttribute="trailingMargin" id="Xqp-VC-958"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="THX-6h-1gi" secondAttribute="trailing" constant="15" id="Xzr-IG-5dY"/>
+                                                <constraint firstItem="vUe-3j-V5D" firstAttribute="top" secondItem="4WR-Rn-Zlu" secondAttribute="topMargin" constant="36" id="Ypd-hg-h46"/>
                                                 <constraint firstItem="a2t-gu-Esm" firstAttribute="leading" secondItem="4WR-Rn-Zlu" secondAttribute="leadingMargin" id="bKh-8E-68z"/>
+                                                <constraint firstItem="6R5-ZI-rb7" firstAttribute="centerY" secondItem="a2t-gu-Esm" secondAttribute="centerY" id="bxB-rb-7l1"/>
                                                 <constraint firstItem="a2t-gu-Esm" firstAttribute="top" secondItem="4WR-Rn-Zlu" secondAttribute="topMargin" constant="4" id="cR3-Lh-eMG"/>
-                                                <constraint firstItem="THX-6h-1gi" firstAttribute="top" secondItem="4WR-Rn-Zlu" secondAttribute="topMargin" constant="32" id="co3-cW-u0N"/>
+                                                <constraint firstItem="THX-6h-1gi" firstAttribute="top" secondItem="4WR-Rn-Zlu" secondAttribute="topMargin" constant="35" id="co3-cW-u0N"/>
                                                 <constraint firstItem="V33-sP-iTY" firstAttribute="leading" secondItem="a2t-gu-Esm" secondAttribute="trailing" constant="18" id="hGf-LG-Mqi"/>
                                                 <constraint firstItem="THX-6h-1gi" firstAttribute="leading" secondItem="a2t-gu-Esm" secondAttribute="trailing" constant="18" id="odn-nI-st2"/>
-                                                <constraint firstAttribute="trailingMargin" secondItem="V33-sP-iTY" secondAttribute="trailing" constant="15" id="tdQ-8x-ykQ"/>
+                                                <constraint firstItem="vUe-3j-V5D" firstAttribute="trailing" secondItem="V33-sP-iTY" secondAttribute="trailing" id="owC-6a-Ri5"/>
+                                                <constraint firstItem="vUe-3j-V5D" firstAttribute="leading" secondItem="V33-sP-iTY" secondAttribute="leading" id="shD-8c-Dfa"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="V33-sP-iTY" secondAttribute="trailing" constant="25" id="tdQ-8x-ykQ"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <connections>
                                             <outlet property="dateLabel" destination="THX-6h-1gi" id="ksn-V7-dZW"/>
+                                            <outlet property="progressView_Bar" destination="vUe-3j-V5D" id="vRy-qN-LKC"/>
                                             <outlet property="projectImageView" destination="a2t-gu-Esm" id="MyS-Mf-z1C"/>
                                             <outlet property="titleLabel" destination="V33-sP-iTY" id="gEt-kk-N6N"/>
                                         </connections>
@@ -839,7 +859,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gH0-Tb-cdw" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3695.419847328244" y="633.80281690140851"/>
+            <point key="canvasLocation" x="3694.0298507462685" y="633.63844393592672"/>
         </scene>
         <!--AICreatorImgCarouselVC-->
         <scene sceneID="xjH-Uw-O0N">
@@ -1781,12 +1801,12 @@
         <!--AICreatorsVC-->
         <scene sceneID="X72-BD-25Q">
             <objects>
-                <viewController storyboardIdentifier="AICreatorsVC" id="yXZ-el-oZD" userLabel="AICreatorsVC" customClass="AICreatorsVC" customModule="TalkingVideos" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="AICreatorsVC" modalPresentationStyle="currentContext" id="yXZ-el-oZD" userLabel="AICreatorsVC" customClass="AICreatorsVC" customModule="TalkingVideos" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="91f-g7-V76">
                         <rect key="frame" x="0.0" y="0.0" width="402" height="874"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No projects yet" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oW9-Pg-bPn">
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No projects yet" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oW9-Pg-bPn">
                                 <rect key="frame" x="0.0" y="366" width="402" height="52"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="52" id="HYd-dP-KvL"/>
@@ -1795,7 +1815,7 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hit the button below to add your first project" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BcP-gW-end">
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hit the button below to add your first project" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BcP-gW-end">
                                 <rect key="frame" x="0.0" y="403" width="402" height="52"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="52" id="9r2-AN-vTt"/>
@@ -1845,7 +1865,7 @@
                                     <action selector="acn_CancelBtn:" destination="yXZ-el-oZD" eventType="touchUpInside" id="rnc-EX-SJC"/>
                                 </connections>
                             </button>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="folderIcon" translatesAutoresizingMaskIntoConstraints="NO" id="IeS-yh-Oul">
+                            <imageView hidden="YES" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="folderIcon" translatesAutoresizingMaskIntoConstraints="NO" id="IeS-yh-Oul">
                                 <rect key="frame" x="75" y="224" width="252" height="128"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="128" id="lnz-eP-K4U"/>
@@ -1875,7 +1895,8 @@
                             </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="hL3-yX-zbJ"/>
-                        <color key="backgroundColor" red="0.070588235294117646" green="0.070588235294117646" blue="0.070588235294117646" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="0Hc-v0-vMd" firstAttribute="top" secondItem="scz-X9-28h" secondAttribute="bottom" constant="24" id="0CW-st-8EE"/>
                             <constraint firstItem="Bqm-eI-vS4" firstAttribute="leading" secondItem="6db-mO-Hx5" secondAttribute="leading" id="2mC-ol-6b4"/>
@@ -2265,6 +2286,7 @@
         <image name="aiCreators" width="386" height="113"/>
         <image name="appleI" width="388" height="54"/>
         <image name="arrow" width="32" height="32"/>
+        <image name="arrowTable" width="10.333333015441895" height="18"/>
         <image name="backBtn" width="48" height="48"/>
         <image name="bookmark" catalog="system" width="110" height="128"/>
         <image name="custom" width="388" height="78"/>

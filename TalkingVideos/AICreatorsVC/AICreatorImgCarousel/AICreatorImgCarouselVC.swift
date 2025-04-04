@@ -168,6 +168,8 @@ class AICreatorImgCarouselVC: UIViewController {
         
     }
     @IBAction func acn_BackBtn(_ sender: Any) {
-        navigationController?.popViewController(animated: true)
+       navigationController?.popViewController(animated: true)
+        
+       // self.dismiss(animated: true, completion: nil)
     }
 }

@@ -24,12 +24,14 @@ class VideoPlayVC: UIViewController {
     var videoURL: URL?
     private var player: AVPlayer?
     private var playerLayer: AVPlayerLayer?
+    private var isPlaying = false  // Flag to track playback state
 
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationItem.hidesBackButton = true
         setupAudioSession()  // Configure audio session
         setupPlayer()
+        setupTapGesture()  // Add tap gesture to control playback
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -77,7 +79,26 @@ class VideoPlayVC: UIViewController {
             self.playerLayer?.frame = self.imgVw.bounds
             self.imgVw.layer.addSublayer(playerLayer)
 
-            self.player?.play()  // ✅ Instant playback
+            self.player?.play()  // Start playback immediately
+            self.isPlaying = true  // Update playback state
+        }
+    }
+
+    private func setupTapGesture() {
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleTap))
+        imgVw.addGestureRecognizer(tapGesture)
+        imgVw.isUserInteractionEnabled = true
+    }
+
+    @objc func handleTap() {
+        guard let player = player else { return }
+
+        if isPlaying {
+            player.pause()
+            isPlaying = false
+        } else {
+            player.play()
+            isPlaying = true
         }
     }
 

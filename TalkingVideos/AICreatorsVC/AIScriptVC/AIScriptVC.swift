@@ -102,10 +102,10 @@ class AIScriptVC: UIViewController {
                 CustomLoader.shared.hideLoader()
                 if success, let scriptModel = scriptModel {
                     guard let detailVC = self.storyboard?.instantiateViewController(withIdentifier: "ScriptVC") as? ScriptVC else { return }
-                    let scriptText = scriptModel.script.content.compactMap { $0.text }.joined(separator: "\n")
+                  //  let scriptText = scriptModel.script.content.compactMap { $0.text }.joined(separator: "\n")
                                    
-                    detailVC.scriptText = scriptText
-                    print("Get the script Text:- \(scriptText)")
+                    detailVC.scriptText = scriptModel.script
+                    print("Get the script Text:- \(scriptModel.script)")
                     detailVC.videoModelNew = self.videoModelData
                     self.navigationController?.pushViewController(detailVC, animated: true)
                 } else {

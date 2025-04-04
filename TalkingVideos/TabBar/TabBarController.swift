@@ -98,12 +98,12 @@ class TabBarController: UITabBar {
            
            
            
-           guard let parentVC = self.findViewController() else { return }
+          guard let parentVC = self.findViewController() else { return }
 
            let storyboard = UIStoryboard(name: "Main", bundle: nil)
            if let aiCreatorsVC = storyboard.instantiateViewController(withIdentifier: "AICreatorsVC") as? AICreatorsVC {
                // No need to wrap aiCreatorsVC in a UINavigationController unless you really want a navigation bar
-               aiCreatorsVC.modalPresentationStyle = .pageSheet
+               aiCreatorsVC.modalPresentationStyle = .overFullScreen
                
                // If you need a navigation controller:
                let navController = UINavigationController(rootViewController: aiCreatorsVC)
@@ -115,8 +115,46 @@ class TabBarController: UITabBar {
                // parentVC.navigationController?.pushViewController(navController, animated: false)
            }
 
-           
+           //showAICreatorsScreen()
        }
+    func showAICreatorsScreen() {
+        guard let parentVC = self.findViewController() else { return }
+        
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        if let aiCreatorsVC = storyboard.instantiateViewController(withIdentifier: "AICreatorsVC") as? AICreatorsVC {
+            
+            if let sheet = aiCreatorsVC.sheetPresentationController {
+                sheet.detents = [.medium(), .large()] // Opens as half-screen, can expand
+                sheet.prefersGrabberVisible = true // Shows a grabber for resizing
+                sheet.prefersScrollingExpandsWhenScrolledToEdge = false
+            }
+            
+            aiCreatorsVC.modalPresentationStyle = .pageSheet
+            parentVC.present(aiCreatorsVC, animated: true)
+        }
+    }
+    
+   /* func showAICreatorsScreen() {
+        guard let parentVC = self.findViewController() else { return }
+        
+        // Add dimming overlay
+        let dimmingView = UIView(frame: parentVC.view.bounds)
+        dimmingView.backgroundColor = UIColor.black.withAlphaComponent(0.5) // 50% opacity
+        dimmingView.tag = 999 // Set a tag to identify and remove it later
+        parentVC.view.addSubview(dimmingView)
+
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        if let aiCreatorsVC = storyboard.instantiateViewController(withIdentifier: "AICreatorsVC") as? AICreatorsVC {
+            aiCreatorsVC.modalPresentationStyle = .overFullScreen // Keep background visible
+//            aiCreatorsVC.dismissHandler = {
+//                // Remove dimming effect when dismissed
+//                dimmingView.removeFromSuperview()
+//            }
+            parentVC.present(aiCreatorsVC, animated: true, completion: nil)
+        }
+    }*/
+    
+    
     override func didMoveToWindow() {
         super.didMoveToWindow()
         delegate = self

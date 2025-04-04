@@ -14,6 +14,7 @@ class ProjectCell: UITableViewCell {
     @IBOutlet var titleLabel: UILabel!
     @IBOutlet var projectImageView: UIImageView!
     
+    @IBOutlet weak var progressView_Bar: UIProgressView!
     private let progressView: UIProgressView = {
          let progress = UIProgressView(progressViewStyle: .default)
          progress.progressTintColor = UIColor.purple // Purple Progress
@@ -26,6 +27,8 @@ class ProjectCell: UITableViewCell {
         super.awakeFromNib()
         
         setupProgressView()
+        
+        progressView_Bar.isHidden = true
 
     }
     private func setupProgressView() {
@@ -39,81 +42,94 @@ class ProjectCell: UITableViewCell {
          ])
      }
 
-//    func configure(with project: DashboardModel) {
-//        titleLabel?.text = project.script
-//        dateLabel?.text = "Last update on \(project.createdAt)"
-//        // projectImageView.image = SDWebImage.image(project.creatorImage)
-//        
-//        if let imageUrlString = project.creatorImage, let imageUrl = URL(string: imageUrlString) {
-//            projectImageView.sd_setImage(with: imageUrl, placeholderImage: UIImage(named: "placeholderImage")) { (image, error, cacheType, url) in
-//                if let error = error {
-//                    print("Error loading image: \(error)")
-//                    // Optionally, handle the error (e.g., show a default image)
-//                } else {
-//                    // Image loaded successfully, you can perform additional tasks here if needed
-//                }
-//            }
+
+
+    
+//    func configure(with status: StatusCheckModel) {
+//        self.titleLabel.text = "Progress: \(status.progress ?? 0)%"
+//        self.dateLabel.text = status.state
+//       // self.progressBar.progress = Float(status.progress ?? 0) / 100.0
+//    }
+    
+//    func configure(with status: StatusCheckModel) {
+//        if status.state.uppercased() == "COMPLETE" {
+//            self.titleLabel.text = "Video generation successful"
+//            self.progressView_Bar.isHidden = false
+//            self.dateLabel.text = "100% complete"
+//            // self.progressBar.progress = 1.0
 //        } else {
-//            // Handle the case where imageUrlString is nil or invalid
-//            projectImageView.image = UIImage(named: "defaultImage") // Or a placeholder
+//            self.titleLabel.text = "Generating Video..."
+//            self.dateLabel.text = "\(status.progress ?? 0)% complete"
+//            self.progressView_Bar.isHidden = false
+//            print("GEt The Status Progress;- \(status.progress ?? 0)")
+//            self.progressView_Bar.progress = Float(status.progress ?? 0) / 100.0
 //        }
-//        
-//        
-//        
-//     
-//        
-//        
 //    }
 
-//    func configure(with project: DashboardModel) {
-//        titleLabel?.text = project.script
-//        dateLabel?.text = project.createdAt
-//
-//        if project.uploadInProgress ?? false {
-//            titleLabel.text = "Generating video..."
-//            titleLabel.textColor = .white
-//            dateLabel.textColor = UIColor.white.withAlphaComponent(0.7)
-//
-//            // Progress Bar
-//            progressView.isHidden = false
-//            progressView.progressTintColor = UIColor.purple
-//            progressView.trackTintColor = UIColor.darkGray
-//
-//            if let progress = project.state {
-//                progressView.progress = 20
-//                dateLabel.text = "\(progress)% complete"
-//            } else {
-//                progressView.progress = 0.0
-//                dateLabel.text = "Starting..."
-//            }
-//        } else {
-//            titleLabel.textColor = .white
-//            dateLabel.textColor = .gray
-//            progressView.isHidden = true
-//        }
-//
-//        if let imageUrlString = project.creatorImage, let imageUrl = URL(string: imageUrlString) {
-//            projectImageView.sd_setImage(with: imageUrl, placeholderImage: UIImage(named: "placeholderImage"))
-//        } else {
-//            projectImageView.image = UIImage(named: "defaultImage")
-//        }
-//    }
     
     
     func configure(with status: StatusCheckModel) {
-        self.titleLabel.text = "Progress: \(status.progress ?? 0)%"
-        self.dateLabel.text = status.state
-       // self.progressBar.progress = Float(status.progress ?? 0) / 100.0
-    }
+        let state = status.state.uppercased()
 
+        switch state {
+        case "COMPLETE":
+            self.titleLabel.text = "Video generation successful"
+            self.dateLabel.text = "100% complete"
+            self.progressView_Bar.isHidden = true
+            self.progressView_Bar.progress = 1.0
+
+        case "PROCESSING":
+            self.titleLabel.text = "Generating video..."
+            let progress = Float(status.progress ?? 0)
+            self.dateLabel.text = "\(Int(progress))% complete"
+            self.progressView_Bar.isHidden = false
+            self.progressView_Bar.progress = progress / 100.0
+
+        case "QUEUED":
+            self.titleLabel.text = "Waiting in queue..."
+            self.dateLabel.text = "Queued - starting soon"
+            self.progressView_Bar.isHidden = false
+            self.progressView_Bar.progress = 0.0
+
+        default:
+            self.titleLabel.text = "Preparing video..."
+            self.dateLabel.text = "\(status.progress ?? 0)% complete"
+            self.progressView_Bar.isHidden = true
+            self.progressView_Bar.progress = Float(status.progress ?? 0) / 100.0
+        }
+
+        print("Status: \(state), Progress: \(status.progress ?? 0)")
+    }
+    
+    
+    
     func configure(with project: DashboardModel) {
         self.titleLabel.text = project.script
-        self.dateLabel.text = "Last update on \(project.createdAt)"
+      //  self.dateLabel.text = "Last update on \(project.createdAt)"
+        self.progressView_Bar.isHidden = true
+        let input = project.createdAt
+        let result = formatDate(input)
+        print(result)  // Output: Last update on Mar 25
+        self.dateLabel.text = "Last update on \(result)"
         
         if let imageUrlString = project.creatorImage, let imageUrl = URL(string: imageUrlString) {
             projectImageView.sd_setImage(with: imageUrl, placeholderImage: UIImage(named: "placeholderImage"))
         } else {
             projectImageView.image = UIImage(named: "defaultImage")
+        }
+    }
+    func formatDate(_ dateString: String) -> String {
+        let inputFormatter = DateFormatter()
+        inputFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSSSSZ"
+        inputFormatter.locale = Locale(identifier: "en_US_POSIX")
+        
+        if let date = inputFormatter.date(from: dateString) {
+            let outputFormatter = DateFormatter()
+            outputFormatter.dateFormat = "MMM dd, yyyy"
+            let formattedDate = outputFormatter.string(from: date)
+            return "\(formattedDate)"
+        } else {
+            return "Invalid date"
         }
     }
 
