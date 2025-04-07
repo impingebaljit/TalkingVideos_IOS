@@ -139,7 +139,7 @@ class ScriptVC: UIViewController, UITextViewDelegate {
             DispatchQueue.main.async {
                 CustomLoader.shared.hideLoader()
                 if success, let model = submitModel {
-                    self.showSuccessAlert {
+                   // self.showSuccessAlert {
                         guard let detailVC = self.storyboard?.instantiateViewController(withIdentifier: "DashboardVC") as? DashboardVC else {
                             self.showAlert(message: "Failed to instantiate DashboardVC")
                             return
@@ -148,7 +148,7 @@ class ScriptVC: UIViewController, UITextViewDelegate {
                         detailVC.comesFromSubmitVideo = true
                         print("OperationID:-\(model.operationID)")
                         self.navigationController?.pushViewController(detailVC, animated: true)
-                    }
+                  //  }
                 } else {
                     self.showAlert(message: errorMessage ?? "Video submission failed")
                 }

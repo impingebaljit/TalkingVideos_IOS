@@ -8,13 +8,20 @@
 import UIKit
 import SDWebImage
 
-
+protocol ProjectCellDelegate: AnyObject {
+    func didTapCancelInCell(_ cell: ProjectCell)
+}
 class ProjectCell: UITableViewCell {
     @IBOutlet var dateLabel: UILabel!
     @IBOutlet var titleLabel: UILabel!
     @IBOutlet var projectImageView: UIImageView!
     
+    @IBOutlet weak var acn_DleteBtn: UIButton!
+    @IBOutlet weak var imgArrow: UIImageView!
     @IBOutlet weak var progressView_Bar: UIProgressView!
+    
+    weak var delegate: ProjectCellDelegate?
+    
     private let progressView: UIProgressView = {
          let progress = UIProgressView(progressViewStyle: .default)
          progress.progressTintColor = UIColor.purple // Purple Progress
@@ -22,7 +29,15 @@ class ProjectCell: UITableViewCell {
          progress.isHidden = true
          return progress
      }()
+    
+   
 
+    @IBAction func acn_DeleteBtn(_ sender: Any) {
+       
+        delegate?.didTapCancelInCell(self)
+    }
+    
+   
     override func awakeFromNib() {
         super.awakeFromNib()
         
@@ -43,33 +58,9 @@ class ProjectCell: UITableViewCell {
      }
 
 
-
-    
-//    func configure(with status: StatusCheckModel) {
-//        self.titleLabel.text = "Progress: \(status.progress ?? 0)%"
-//        self.dateLabel.text = status.state
-//       // self.progressBar.progress = Float(status.progress ?? 0) / 100.0
-//    }
-    
-//    func configure(with status: StatusCheckModel) {
-//        if status.state.uppercased() == "COMPLETE" {
-//            self.titleLabel.text = "Video generation successful"
-//            self.progressView_Bar.isHidden = false
-//            self.dateLabel.text = "100% complete"
-//            // self.progressBar.progress = 1.0
-//        } else {
-//            self.titleLabel.text = "Generating Video..."
-//            self.dateLabel.text = "\(status.progress ?? 0)% complete"
-//            self.progressView_Bar.isHidden = false
-//            print("GEt The Status Progress;- \(status.progress ?? 0)")
-//            self.progressView_Bar.progress = Float(status.progress ?? 0) / 100.0
-//        }
-//    }
-
-    
-    
     func configure(with status: StatusCheckModel) {
         let state = status.state.uppercased()
+        acn_DleteBtn.isUserInteractionEnabled = true
 
         switch state {
         case "COMPLETE":
@@ -77,6 +68,7 @@ class ProjectCell: UITableViewCell {
             self.dateLabel.text = "100% complete"
             self.progressView_Bar.isHidden = true
             self.progressView_Bar.progress = 1.0
+            imgArrow.image = UIImage(named: "arrow")
 
         case "PROCESSING":
             self.titleLabel.text = "Generating video..."
@@ -84,18 +76,21 @@ class ProjectCell: UITableViewCell {
             self.dateLabel.text = "\(Int(progress))% complete"
             self.progressView_Bar.isHidden = false
             self.progressView_Bar.progress = progress / 100.0
+            imgArrow.image = UIImage(named: "cross")
 
         case "QUEUED":
-            self.titleLabel.text = "Waiting in queue..."
-            self.dateLabel.text = "Queued - starting soon"
+            self.titleLabel.text = "Queued"
+            self.dateLabel.text = "Please wait"
             self.progressView_Bar.isHidden = false
             self.progressView_Bar.progress = 0.0
+            imgArrow.image = UIImage(named: "cross")
 
         default:
             self.titleLabel.text = "Preparing video..."
             self.dateLabel.text = "\(status.progress ?? 0)% complete"
-            self.progressView_Bar.isHidden = true
-            self.progressView_Bar.progress = Float(status.progress ?? 0) / 100.0
+            self.progressView_Bar.isHidden = false
+            self.progressView_Bar.progress = 50//Float(status.progress ?? 0) / 100.0
+            imgArrow.image = UIImage(named: "cross")
         }
 
         print("Status: \(state), Progress: \(status.progress ?? 0)")
@@ -104,7 +99,9 @@ class ProjectCell: UITableViewCell {
     
     
     func configure(with project: DashboardModel) {
-        self.titleLabel.text = project.script
+        acn_DleteBtn.isUserInteractionEnabled = false
+        self.titleLabel.text = project.script ?? "ABC"
+        imgArrow.image = UIImage(named: "arrow")
       //  self.dateLabel.text = "Last update on \(project.createdAt)"
         self.progressView_Bar.isHidden = true
         let input = project.createdAt
@@ -113,7 +110,7 @@ class ProjectCell: UITableViewCell {
         self.dateLabel.text = "Last update on \(result)"
         
         if let imageUrlString = project.creatorImage, let imageUrl = URL(string: imageUrlString) {
-            projectImageView.sd_setImage(with: imageUrl, placeholderImage: UIImage(named: "placeholderImage"))
+            projectImageView.sd_setImage(with: imageUrl, placeholderImage: UIImage(named: "defaultImage"))
         } else {
             projectImageView.image = UIImage(named: "defaultImage")
         }

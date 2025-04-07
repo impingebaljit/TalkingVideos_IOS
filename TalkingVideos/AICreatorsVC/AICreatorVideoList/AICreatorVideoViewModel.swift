@@ -13,13 +13,19 @@ class AICreatorVideoViewModel {
     private let authService: AuthService
     var thumbnails: [Thumbnail] = []
     var supportedCreators: [String] = []
+    
+    var videoDetails: [VideoDetailModel] = []
 
     init(authService: AuthService) {
         self.authService = authService
     }
+//    func createModel(at index: Int) -> VideoDetailModel {
+//           return VideoDetailModel(thumbnail: thumbnails[index], creatorName: supportedCreators[index], color: randomColor())
+//       }
+    
     func createModel(at index: Int) -> VideoDetailModel {
-           return VideoDetailModel(thumbnail: thumbnails[index], creatorName: supportedCreators[index], color: randomColor())
-       }
+            return videoDetails[index]
+        }
     
     func randomColor() -> UIColor {
            return UIColor(
@@ -30,54 +36,106 @@ class AICreatorVideoViewModel {
            )
        }
     
+//    func getTheVideoList(completion: @escaping (Bool) -> Void) {
+//        authService.getTheVideoList { [weak self] result in
+//            
+//            CustomLoader.shared.hideLoader()
+//            
+//            guard let self = self else { return }
+//
+//            switch result {
+//              
+//                
+//            case .success(let response):
+//                
+//                // Case 1: If already decoded model is returned
+//                if let videoList = response as? AICreatorVideoModel {
+//                    self.thumbnails = Array(videoList.thumbnails.values)
+//                    self.supportedCreators = Array(videoList.supportedCreators)
+//                    completion(true)
+//                    return
+//                }
+//
+//                // Case 2: If raw Data is returned
+//                if let data = response as? Data {
+//                    do {
+//                        //  Print and inspect the raw JSON
+//                        if let jsonString = String(data: data, encoding: .utf8) {
+//                            print("Raw JSON: \(jsonString)")
+//                        }
+//                        
+//                        //  Decode JSON to VideoList
+//                        let videoList = try JSONDecoder().decode(AICreatorVideoModel.self, from: data)
+//                        self.thumbnails = Array(videoList.thumbnails.values)
+//                        completion(true)
+//                    } catch {
+//                        print(" JSON Decoding Error: \(error)")
+//                        completion(false)
+//                    }
+//                    return
+//                }
+//
+//                //  Unexpected Type Handling
+//                print("Unexpected Response Type: \(type(of: response))")
+//                completion(false)
+//
+//            case .failure(let error):
+//                print("API Error: \(error)")
+//                completion(false)
+//            }
+//        }
+//    }
+    
+    
+    
     func getTheVideoList(completion: @escaping (Bool) -> Void) {
-        authService.getTheVideoList { [weak self] result in
-            
-            CustomLoader.shared.hideLoader()
-            
-            guard let self = self else { return }
+            authService.getTheVideoList { [weak self] result in
+                CustomLoader.shared.hideLoader()
+                guard let self = self else { return }
 
-            switch result {
-              
-                
-            case .success(let response):
-                
-                // Case 1: If already decoded model is returned
-                if let videoList = response as? AICreatorVideoModel {
-                    self.thumbnails = Array(videoList.thumbnails.values)
-                    self.supportedCreators = Array(videoList.supportedCreators)
-                    completion(true)
-                    return
-                }
-
-                // Case 2: If raw Data is returned
-                if let data = response as? Data {
-                    do {
-                        //  Print and inspect the raw JSON
-                        if let jsonString = String(data: data, encoding: .utf8) {
-                            print("Raw JSON: \(jsonString)")
-                        }
-                        
-                        //  Decode JSON to VideoList
-                        let videoList = try JSONDecoder().decode(AICreatorVideoModel.self, from: data)
-                        self.thumbnails = Array(videoList.thumbnails.values)
+                switch result {
+                case .success(let response):
+                    if let videoList = response as? AICreatorVideoModel {
+                        self.processVideoList(videoList)
                         completion(true)
-                    } catch {
-                        print(" JSON Decoding Error: \(error)")
-                        completion(false)
+                        return
                     }
-                    return
+
+                    if let data = response as? Data {
+                        do {
+                            if let jsonString = String(data: data, encoding: .utf8) {
+                                print("Raw JSON: \(jsonString)")
+                            }
+
+                            let videoList = try JSONDecoder().decode(AICreatorVideoModel.self, from: data)
+                            self.processVideoList(videoList)
+                            completion(true)
+                        } catch {
+                            print("JSON Decoding Error: \(error)")
+                            completion(false)
+                        }
+                        return
+                    }
+
+                    print("Unexpected Response Type: \(type(of: response))")
+                    completion(false)
+
+                case .failure(let error):
+                    print("API Error: \(error)")
+                    completion(false)
                 }
+            }
+        }
 
-                //  Unexpected Type Handling
-                print("Unexpected Response Type: \(type(of: response))")
-                completion(false)
-
-            case .failure(let error):
-                print("API Error: \(error)")
-                completion(false)
+        private func processVideoList(_ videoList: AICreatorVideoModel) {
+            videoDetails = videoList.supportedCreators.compactMap { creatorName in
+                guard let thumbnail = videoList.thumbnails[creatorName] else {
+                    print("No thumbnail for creator: \(creatorName)")
+                    return nil
+                }
+                return VideoDetailModel(thumbnail: thumbnail, creatorName: creatorName, color: randomColor())
             }
         }
     }
 
-}
+

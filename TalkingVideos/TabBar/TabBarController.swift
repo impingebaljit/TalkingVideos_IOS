@@ -98,7 +98,7 @@ class TabBarController: UITabBar {
            
            
            
-          guard let parentVC = self.findViewController() else { return }
+       /*   guard let parentVC = self.findViewController() else { return }
 
            let storyboard = UIStoryboard(name: "Main", bundle: nil)
            if let aiCreatorsVC = storyboard.instantiateViewController(withIdentifier: "AICreatorsVC") as? AICreatorsVC {
@@ -113,26 +113,24 @@ class TabBarController: UITabBar {
                
                // If you're using the navController, you can push that instead
                // parentVC.navigationController?.pushViewController(navController, animated: false)
-           }
+           }*/
+           
+           showAICreatorsScreen()
 
-           //showAICreatorsScreen()
+           
        }
     func showAICreatorsScreen() {
-        guard let parentVC = self.findViewController() else { return }
-        
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        if let aiCreatorsVC = storyboard.instantiateViewController(withIdentifier: "AICreatorsVC") as? AICreatorsVC {
-            
-            if let sheet = aiCreatorsVC.sheetPresentationController {
-                sheet.detents = [.medium(), .large()] // Opens as half-screen, can expand
-                sheet.prefersGrabberVisible = true // Shows a grabber for resizing
-                sheet.prefersScrollingExpandsWhenScrolledToEdge = false
+            guard let parentVC = self.findViewController() else { return }
+
+            let vc = AICreatorsVC()
+            vc.modalPresentationStyle = .pageSheet
+            if let sheet = vc.sheetPresentationController {
+                sheet.detents = [.medium()]
+                sheet.prefersGrabberVisible = true
             }
-            
-            aiCreatorsVC.modalPresentationStyle = .pageSheet
-            parentVC.present(aiCreatorsVC, animated: true)
+            parentVC.present(vc, animated: true)
         }
-    }
+
     
    /* func showAICreatorsScreen() {
         guard let parentVC = self.findViewController() else { return }
@@ -182,6 +180,45 @@ class TabBarController: UITabBar {
                 window?.makeKeyAndVisible()
             }
         }
+    
+    
+    
+    
+  
+
+    func showAICreatorOptions() {
+           guard let parentVC = self.findViewController() else { return }
+
+           let alertController = UIAlertController(
+               title: nil,
+               message: nil,
+               preferredStyle: .actionSheet
+           )
+
+         
+
+           // Add "AI Creators" action
+           let aiCreatorsAction = UIAlertAction(title: "AI Creators", style: .default) { _ in
+               // Handle "AI Creators" selection
+               print("AI Creators selected")
+               self.showAICreatorsScreen()
+
+           }
+           alertController.addAction(aiCreatorsAction)
+
+         
+
+           // Add a "Cancel" action
+           let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+           alertController.addAction(cancelAction)
+
+           // Present the action sheet
+           parentVC.present(alertController, animated: true, completion: nil)
+       }
+   
+
+    
+    
 }
 extension TabBarController: UITabBarDelegate {
     
@@ -200,12 +237,17 @@ extension UIImage {
 // Helper extension to find the parent view controller
 extension UIView {
     func findViewController() -> UIViewController? {
-        if let nextResponder = next as? UIViewController {
-            return nextResponder
-        } else if let nextResponder = next as? UIView {
-            return nextResponder.findViewController()
-        } else {
-            return nil
-        }
-    }
+         if let nextResponder = next as? UIViewController {
+             return nextResponder
+         } else if let nextResponder = next as? UIView {
+             return nextResponder.findViewController()
+         } else {
+             return nil
+         }
+     }
+}
+class ClosureSleeve {
+    let closure: () -> Void
+    init (_ closure: @escaping () -> Void) { self.closure = closure }
+    @objc func invoke () { closure() }
 }

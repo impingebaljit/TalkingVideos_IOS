@@ -785,10 +785,10 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="arrowTable" translatesAutoresizingMaskIntoConstraints="NO" id="6R5-ZI-rb7">
-                                                    <rect key="frame" x="362" y="37" width="20" height="20"/>
+                                                    <rect key="frame" x="364" y="38" width="18" height="18"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="height" constant="20" id="AIu-z3-PCx"/>
-                                                        <constraint firstAttribute="width" constant="20" id="zDX-vr-7XG"/>
+                                                        <constraint firstAttribute="height" constant="18" id="AIu-z3-PCx"/>
+                                                        <constraint firstAttribute="width" constant="18" id="zDX-vr-7XG"/>
                                                     </constraints>
                                                 </imageView>
                                                 <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="vUe-3j-V5D">
@@ -798,9 +798,23 @@
                                                     </constraints>
                                                     <color key="progressTintColor" red="0.54901960780000003" green="0.12549019610000001" blue="0.97254901959999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 </progressView>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IXK-hy-YlQ">
+                                                    <rect key="frame" x="338" y="21" width="50" height="51"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="50" id="k90-BP-MJb"/>
+                                                        <constraint firstAttribute="height" constant="51" id="xho-OW-h2D"/>
+                                                    </constraints>
+                                                    <state key="normal" title="Button"/>
+                                                    <buttonConfiguration key="configuration" style="plain"/>
+                                                    <connections>
+                                                        <action selector="acn_DeleteBtn:" destination="MKn-W6-l56" eventType="touchUpInside" id="EL9-Z7-31X"/>
+                                                    </connections>
+                                                </button>
                                             </subviews>
                                             <constraints>
+                                                <constraint firstAttribute="trailing" secondItem="IXK-hy-YlQ" secondAttribute="trailing" constant="14" id="2Cf-7v-TtO"/>
                                                 <constraint firstItem="V33-sP-iTY" firstAttribute="top" secondItem="4WR-Rn-Zlu" secondAttribute="topMargin" constant="4" id="2wL-YD-m7u"/>
+                                                <constraint firstItem="IXK-hy-YlQ" firstAttribute="top" secondItem="4WR-Rn-Zlu" secondAttribute="top" constant="21" id="Axu-3K-tbB"/>
                                                 <constraint firstItem="6R5-ZI-rb7" firstAttribute="trailing" secondItem="4WR-Rn-Zlu" secondAttribute="trailingMargin" id="Xqp-VC-958"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="THX-6h-1gi" secondAttribute="trailing" constant="15" id="Xzr-IG-5dY"/>
                                                 <constraint firstItem="vUe-3j-V5D" firstAttribute="top" secondItem="4WR-Rn-Zlu" secondAttribute="topMargin" constant="36" id="Ypd-hg-h46"/>
@@ -817,7 +831,9 @@
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <connections>
+                                            <outlet property="acn_DleteBtn" destination="IXK-hy-YlQ" id="RmN-Ah-Zk6"/>
                                             <outlet property="dateLabel" destination="THX-6h-1gi" id="ksn-V7-dZW"/>
+                                            <outlet property="imgArrow" destination="6R5-ZI-rb7" id="ruJ-SP-ReV"/>
                                             <outlet property="progressView_Bar" destination="vUe-3j-V5D" id="vRy-qN-LKC"/>
                                             <outlet property="projectImageView" destination="a2t-gu-Esm" id="MyS-Mf-z1C"/>
                                             <outlet property="titleLabel" destination="V33-sP-iTY" id="gEt-kk-N6N"/>
@@ -866,20 +882,20 @@
             <objects>
                 <viewController storyboardIdentifier="AICreatorImgCarouselVC" id="CQ6-qm-MHr" userLabel="AICreatorImgCarouselVC" customClass="AICreatorImgCarouselVC" customModule="TalkingVideos" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Kh1-cF-E7f">
-                        <rect key="frame" x="0.0" y="0.0" width="402" height="864"/>
+                        <rect key="frame" x="0.0" y="0.0" width="402" height="874"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="AI Creators" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UDJ-2E-Tfv">
-                                <rect key="frame" x="161" y="30" width="120.33333333333331" height="30"/>
+                                <rect key="frame" x="161" y="92" width="120.33333333333331" height="30"/>
                                 <fontDescription key="fontDescription" name="SFProDisplay-Medium" family="SF Pro Display" pointSize="25"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="04w-5d-VJ5">
-                                <rect key="frame" x="32" y="134" width="338" height="432"/>
+                                <rect key="frame" x="32" y="196" width="338" height="437"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="opH-oM-Gge">
-                                        <rect key="frame" x="0.0" y="0.0" width="338" height="432"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="338" height="437"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </imageView>
                                 </subviews>
@@ -896,7 +912,7 @@
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Generate talking videos with our creators" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DS2-c9-AYU">
-                                <rect key="frame" x="32" y="598" width="338" height="80"/>
+                                <rect key="frame" x="32" y="665" width="338" height="80"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="80" id="7wb-cz-bft"/>
                                 </constraints>
@@ -905,13 +921,13 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="promptToVideo" translatesAutoresizingMaskIntoConstraints="NO" id="h9k-uk-8R5">
-                                <rect key="frame" x="20" y="772" width="362" height="64"/>
+                                <rect key="frame" x="20" y="748" width="362" height="64"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="64" id="rov-Ab-PC0"/>
                                 </constraints>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8Vv-TY-QJ7">
-                                <rect key="frame" x="20" y="769" width="362" height="75"/>
+                                <rect key="frame" x="20" y="745" width="362" height="75"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="75" id="fFh-uv-zP8"/>
                                 </constraints>
@@ -923,7 +939,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SmM-1d-cFv">
-                                <rect key="frame" x="32" y="20" width="80" height="70"/>
+                                <rect key="frame" x="32" y="82" width="80" height="70"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="80" id="wqu-Ld-5M6"/>
@@ -936,7 +952,7 @@
                                 </connections>
                             </button>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="backBtn" translatesAutoresizingMaskIntoConstraints="NO" id="Mv1-Tq-IDf">
-                                <rect key="frame" x="20" y="20" width="50" height="50"/>
+                                <rect key="frame" x="20" y="82" width="50" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="LBQ-HW-Fuk"/>
                                     <constraint firstAttribute="width" constant="50" id="xbP-Nc-BmH"/>
@@ -975,7 +991,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zgC-zi-JbY" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3313.740458015267" y="1293.661971830986"/>
+            <point key="canvasLocation" x="3376" y="1383"/>
         </scene>
         <!--AICreatorVideoListVC-->
         <scene sceneID="a5r-io-N0R">
@@ -1133,7 +1149,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wVx-fS-twa" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4396.1832061068699" y="1293.661971830986"/>
+            <point key="canvasLocation" x="4369" y="1405"/>
         </scene>
         <!--AICreatorContinueVC-->
         <scene sceneID="CR7-xd-WxJ">
@@ -1288,14 +1304,14 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </imageView>
-                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="top" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="NGJ-Xr-bmu" customClass="CustomTextField" customModule="TalkingVideos" customModuleProvider="target">
+                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="top" placeholder="Type a prompt..." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="NGJ-Xr-bmu" customClass="CustomTextField" customModule="TalkingVideos" customModuleProvider="target">
                                 <rect key="frame" x="52" y="230" width="298" height="111"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="111" id="62x-5h-Ht5"/>
                                 </constraints>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <fontDescription key="fontDescription" name="Poppins-Regular" family="Poppins" pointSize="16"/>
+                                <fontDescription key="fontDescription" name="Poppins-Regular" family="Poppins" pointSize="20"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FLQ-Rm-8P6">
@@ -1849,7 +1865,6 @@
                                 <buttonConfiguration key="configuration" style="plain"/>
                                 <connections>
                                     <action selector="acn_AICreatorBtn:" destination="yXZ-el-oZD" eventType="touchUpInside" id="8I5-wc-lKm"/>
-                                    <segue destination="CQ6-qm-MHr" kind="show" id="tLq-Bd-TG9"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0Hc-v0-vMd">

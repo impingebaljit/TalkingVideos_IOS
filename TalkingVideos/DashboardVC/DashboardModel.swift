@@ -19,9 +19,9 @@ enum UploadStatus {
 // MARK: - DashboardModelElement
 struct DashboardModel: Codable {
     let id, userID: Int
-    let script, creatorName, operationID: String
+    let script, creatorName, operationID: String?
     var state: String?
-    let url: String
+    let url: String?
     let status: String?
     let createdAt, updatedAt: String
     let creatorImage: String?

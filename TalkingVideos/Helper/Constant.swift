@@ -57,8 +57,8 @@ struct API {
     
     struct VideoStatus {
            static let complete = "COMPLETE"
-           static let processing = "PROCESSING"
-           static let queued = "QUEUED"
+           static let processing = "PROCESSING"//PROCESSING
+           static let queued = "QUEUED"//QUEUED
        }
 }
 

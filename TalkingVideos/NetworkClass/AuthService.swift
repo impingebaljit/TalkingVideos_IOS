@@ -688,7 +688,7 @@ class AuthService {
             completion(.failure(NetworkErrorr.invalidToken))
             return
         }
-        
+        print("Auth Token Get:-\(token)")
         let videoListURL = "\(API.baseURL)\(API.Endpoints.finalVideos)"
         guard let url = URL(string: videoListURL) else {
             print("  Invalid URL: \(videoListURL)")

@@ -8,8 +8,8 @@ class DashboardVC: UIViewController {
     @IBOutlet weak var tblVw_Projects: UITableView!
     
     var operationIdSend = String()
-    var comesFromSubmitVideo = Bool()
-
+    //var comesFromSubmitVideo = Bool()
+    var comesFromSubmitVideo: Bool = false
     private let emptyStateView = UIStackView()
 
     private let viewModel = DashboardViewModel()
@@ -35,12 +35,15 @@ class DashboardVC: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        viewModel.fetchProjects()
        
-    //   comesFromSubmitVideo = true
+       print("View WillAppear called")
+    // comesFromSubmitVideo = true//"kerMMN1YwQUDVmb0sJh3"
         if(comesFromSubmitVideo == true) {
             viewModel.upload(operationId: operationIdSend, from: true)
         }
+        
+        
+        viewModel.fetchProjects()
         tblVw_Projects.reloadData()
     }
     
@@ -48,12 +51,73 @@ class DashboardVC: UIViewController {
         viewModel.onProjectsUpdated = { [weak self] in
             DispatchQueue.main.async {
                 self?.tblVw_Projects.reloadData()
+
+                // ✅ Reset the flag once upload is complete and view updated
+                let state = self?.viewModel.getStatus()?.state.uppercased() ?? ""
+                if state == API.VideoStatus.complete {
+                    self?.comesFromSubmitVideo = false
+                }
             }
         }
     }
 
- 
-    
+    func didTapCancelInCell(_ cell: ProjectCell) {
+        
+        guard let indexPath = self.tblVw_Projects.indexPath(for: cell) else { return }
+        
+        // Retrieve the project corresponding to this row
+        let project = viewModel.projects[indexPath.row]
+        
+        // Show confirmation alert
+        showCancelAlert(on: self, projectId: project.id)
+        
+    }
+        
+
+
+    func showCancelAlert(on viewController: UIViewController, projectId: Int) {
+        // Create the alert controller
+        let alertController = UIAlertController(
+            title: "Cancel AI Creator Video?",
+            message: "Are you sure you want to cancel generating an AI Creator video? This action can't be undone.",
+            preferredStyle: .alert
+        )
+        
+        // Add "Don't cancel" action
+        let dontCancelAction = UIAlertAction(title: "Don't cancel", style: .default, handler: { _ in
+            print("User chose not to cancel.")
+        })
+        
+        // Add "Yes, cancel" action
+        let yesCancelAction = UIAlertAction(title: "Yes, cancel", style: .destructive, handler: { _ in
+            print("User chose to cancel.")
+            let videoId = String(projectId)
+            self.viewModel.deleteVideos(videoId: videoId) { [weak self] success in
+                guard let self = self else { return }
+                
+                if success {
+                    DispatchQueue.main.async {
+                        if let index = self.viewModel.projects.firstIndex(where: { $0.id == Int(videoId) }) {
+                            let indexPath = IndexPath(row: index, section: 0)
+                            self.tblVw_Projects.deleteRows(at: [indexPath], with: .automatic)
+                        } else {
+                            self.tblVw_Projects.reloadData() // fallback
+                        }
+                    }
+                }
+            }
+
+        })
+        
+        // Add actions to the alert controller
+        alertController.addAction(dontCancelAction)
+        alertController.addAction(yesCancelAction)
+        
+        // Present the alert
+        viewController.present(alertController, animated: true, completion: nil)
+    }
+
+
     
     private func setupUI() {
         // Set up empty state UI
@@ -122,50 +186,53 @@ class DashboardVC: UIViewController {
     }
 }
 
-extension DashboardVC: UITableViewDelegate, UITableViewDataSource {
+extension DashboardVC: UITableViewDelegate, UITableViewDataSource,ProjectCellDelegate {
 
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        var count = viewModel.projectCount()
+        let finalProjectsCount = viewModel.projectCount()
 
-        // Get the state safely, defaulting to empty string if nil
+        // Add 1 only if the current state is QUEUED or PROCESSING
         let state = viewModel.getStatus()?.state.uppercased() ?? ""
+        let shouldAddUploadingRow = (state == API.VideoStatus.queued || state == API.VideoStatus.processing)
 
-        // Only add 1 if comesFromSubmitVideo is true AND state is QUEUED or PROCESSING
-        if comesFromSubmitVideo && (state == API.VideoStatus.queued || state == API.VideoStatus.processing) {
-            count += 1
-        }
+      //  let total = finalProjectsCount + (shouldAddUploadingRow ? 1 : 0)
+        print("Debug: Number of rows in tableView - \(finalProjectsCount)")
 
-        print("Debug: Number of rows in tableView - \(count)")
-        return count
+        return finalProjectsCount
     }
 
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell  {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as? ProjectCell else {
-            return UITableViewCell()
-        }
-        cell.selectionStyle = .none
-
-        // Get status state safely
-        let state = viewModel.getStatus()?.state.uppercased() ?? ""
-
-        // First row: StatusCheckModel data if `comesFromSubmitVideo` is true AND state is QUEUED or PROCESSING
-        if comesFromSubmitVideo && indexPath.row == 0 && (state == API.VideoStatus.queued || state == API.VideoStatus.processing) {
-            if let status = viewModel.getStatus() {
-                cell.configure(with: status)
-                return cell
+       
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as? ProjectCell else {
+                return UITableViewCell()
             }
-        }
+            cell.selectionStyle = .none
+        
+        cell.delegate = self
 
-        // Remaining rows: Project data from DashboardModel
-        let adjustedIndex = (comesFromSubmitVideo && (state == API.VideoStatus.queued || state == API.VideoStatus.processing)) ? indexPath.row - 1 : indexPath.row
+            let state = viewModel.getStatus()?.state.uppercased() ?? ""
+            let isShowingUploadingRow = (state == API.VideoStatus.queued || state == API.VideoStatus.processing)
 
-        if let project = viewModel.getProject(at: adjustedIndex) {
-            cell.configure(with: project)
-        }
+            // First row is the uploading status row
+            if isShowingUploadingRow && indexPath.row == 0 {
+                if let status = viewModel.getStatus() {
+                    cell.configure(with: status)
+                    return cell
+                }
+            }
 
-        return cell
+            // Adjust index to skip the upload status row if it's shown
+            //let adjustedIndex = isShowingUploadingRow ? indexPath.row - 1 : indexPath.row
+
+            if let project = viewModel.getProject(at: indexPath.row) {
+                cell.configure(with: project)
+            }
+
+            return cell
+        
+
     }
 
 //    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -232,6 +299,26 @@ extension DashboardVC: UITableViewDelegate, UITableViewDataSource {
 //            return UISwipeActionsConfiguration(actions: [deleteAction])
 //        }
 
-    
+//    func deleteVideoCode(){
+//        // Ensure videoId is a String
+//        
+//        self.viewModel.deleteVideos(videoId: videoId) { success in
+//            DispatchQueue.main.async {
+//                if success {
+//                    // ✅ STEP 1: Update Data Source BEFORE Table View Updates
+//                    self.viewModel.removeProject(at: 0)
+//                    self.tblVw_Projects.reloadData()
+//                    
+//                    // ✅ STEP 2: Perform Table View Updates
+//                    
+//                    
+//                    // self.showAlert(title: "", message: "Deleted video successfully.")
+//                } else {
+//                    self.showAlert(title: "Error", message: "Failed to delete the video. Please try again.")
+//                }
+//                
+//            }
+//        }
+//    }
 }
 

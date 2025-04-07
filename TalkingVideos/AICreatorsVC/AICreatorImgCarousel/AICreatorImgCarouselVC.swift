@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SDWebImage
 
 class AICreatorImgCarouselVC: UIViewController {
 
@@ -13,7 +14,7 @@ class AICreatorImgCarouselVC: UIViewController {
 
     @IBOutlet weak var imgVw_Carousel: UIImageView!
 
-    private var thumbnails: [Thumbnail] = []
+  
     private var currentIndex = 0
     private var timer: Timer?
 
@@ -102,20 +103,27 @@ class AICreatorImgCarouselVC: UIViewController {
         backgroundImageView.layer.addSublayer(vignetteLayer)
     }
 
-    // MARK: - Get Thumbnails
+
     func getTheThumbnailImages() {
-        
         DispatchQueue.main.async {
             CustomLoader.shared.showLoader(in: self)
-            
         }
+
         viewModel.getTheVideoList { [weak self] success in
-            guard let self = self, success else { return }
+            guard let self = self else { return }
 
-            self.thumbnails = self.viewModel.thumbnails
+            DispatchQueue.main.async {
+                CustomLoader.shared.hideLoader()
+            }
 
-            guard !self.thumbnails.isEmpty else {
-                print("No thumbnails available")
+            guard success else {
+                print("Failed to fetch video list")
+                return
+            }
+
+            // Check if videoDetails is empty
+            guard !self.viewModel.videoDetails.isEmpty else {
+                print("No video details available")
                 return
             }
 
@@ -124,39 +132,32 @@ class AICreatorImgCarouselVC: UIViewController {
             }
         }
     }
-
     // MARK: - Start Carousel
     private func startThumbnailCarousel() {
         updateImage()
-        timer = Timer.scheduledTimer(timeInterval: 3.0, target: self, selector: #selector(updateImage), userInfo: nil, repeats: true)
+        timer = Timer.scheduledTimer(timeInterval: 2.0, target: self, selector: #selector(updateImage), userInfo: nil, repeats: true)
     }
 
     @objc private func updateImage() {
-        guard !thumbnails.isEmpty else { return }
+        guard !viewModel.videoDetails.isEmpty else { return }
 
-        let imageUrlString = thumbnails[currentIndex].imageURL
+        let imageUrlString = viewModel.videoDetails[currentIndex].thumbnail.imageURL
+        print("Displaying image at index \(currentIndex): \(imageUrlString)")
+
         loadImage(from: imageUrlString)
 
-        currentIndex = (currentIndex + 1) % thumbnails.count
+        currentIndex = (currentIndex + 1) % viewModel.videoDetails.count
     }
 
-    // MARK: - Load Image
     private func loadImage(from urlString: String) {
         guard let url = URL(string: urlString) else { return }
 
-        URLSession.shared.dataTask(with: url) { [weak self] data, _, error in
-            guard let self = self, let data = data, error == nil, let image = UIImage(data: data) else {
-                print("Error loading image: \(String(describing: error))")
-                return
+        DispatchQueue.main.async {
+            UIView.transition(with: self.containerView, duration: 0.8, options: .transitionCrossDissolve) {
+                self.backgroundImageView.sd_setImage(with: url, placeholderImage: UIImage(named: "placeholder"))
+                self.characterImageView.sd_setImage(with: url, placeholderImage: UIImage(named: "placeholder"))
             }
-
-            DispatchQueue.main.async {
-                UIView.transition(with: self.containerView, duration: 0.8, options: .transitionCrossDissolve, animations: {
-                    self.backgroundImageView.image = image
-                    self.characterImageView.image = image
-                })
-            }
-        }.resume()
+        }
     }
 
     deinit {
@@ -168,8 +169,25 @@ class AICreatorImgCarouselVC: UIViewController {
         
     }
     @IBAction func acn_BackBtn(_ sender: Any) {
-       navigationController?.popViewController(animated: true)
+     //  navigationController?.popViewController(animated: true)
         
-       // self.dismiss(animated: true, completion: nil)
+//        //self.dismiss(animated: true, completion: nil)
+//        self.navigationController?.popViewController(animated: true)
+////        if let navController = self.navigationController {
+////                navController.popViewController(animated: true)
+////            } else {
+////                self.dismiss(animated: true, completion: nil)
+////            }
+        ///self.navigationController?.popViewController(animated: true)
+        ///
+        ///     let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        if let dashboardVC = storyboard?.instantiateViewController(withIdentifier: "DashboardVC") as? DashboardVC {
+                let navController = UINavigationController(rootViewController: dashboardVC)
+                if let window = UIApplication.shared.windows.first {
+                    window.rootViewController = navController
+                    window.makeKeyAndVisible()
+                }
+            }
+        ///
     }
 }
