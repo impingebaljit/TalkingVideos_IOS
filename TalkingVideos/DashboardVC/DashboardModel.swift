@@ -26,6 +26,7 @@ struct DashboardModel: Codable {
     let createdAt, updatedAt: String
     let creatorImage: String?
     let creatorVideo: String?
+    let size: String?
        
     
     var isUploading: Bool = false
@@ -39,7 +40,7 @@ struct DashboardModel: Codable {
         case state, url, status
         case createdAt = "created_at"
         case updatedAt = "updated_at"
-        case  creatorImage, creatorVideo
+        case  creatorImage, creatorVideo,size
         
        case uploadInProgress = "uploadInProgress"
     }

@@ -111,8 +111,11 @@ class ScriptVC: UIViewController, UITextViewDelegate {
 
     @IBAction func acn_GenerateVideo(_ sender: Any) {
         print("Generate Video tapped")
+        
+        truncateIfNeeded()
+        
         DispatchQueue.main.async {
-            CustomLoader.shared.showLoader(in: self)
+           CustomLoader.shared.showLoader(in: self)
         self.callSubmitVideoApi()
             
 //            guard let detailVC = self.storyboard?.instantiateViewController(withIdentifier: "DashboardVC") as? DashboardVC else {
@@ -134,6 +137,9 @@ class ScriptVC: UIViewController, UITextViewDelegate {
     
     func callSubmitVideoApi() {
         let name = videoModelNew?.creatorName ?? "name"
+        
+        
+        
         
         viewModel.submitVideo(prompt: txtVw_Script.text, creatorName: name, resolution: "fhd") { success, submitModel, errorMessage in
             DispatchQueue.main.async {
@@ -193,4 +199,29 @@ class ScriptVC: UIViewController, UITextViewDelegate {
             updateWordCount()  // Update word count when text changes
         }
     
+    
+    func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
+        let currentText = textView.text ?? ""
+        guard let stringRange = Range(range, in: currentText) else { return false }
+
+        let updatedText = currentText.replacingCharacters(in: stringRange, with: text)
+
+        if updatedText.count > 800 {
+            showCharacterLimitAlert()
+            return false
+        }
+        return true
+    }
+    
+    func truncateIfNeeded() {
+        if let text = txtVw_Script.text, text.count > 800 {
+            txtVw_Script.text = String(text.prefix(800))
+            showCharacterLimitAlert()
+        }
+    }
+    func showCharacterLimitAlert() {
+        let alert = UIAlertController(title: "Limit Reached", message: "Script is longer than the supported length of 800 characters..", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .default))
+        present(alert, animated: true)
+    }
 }

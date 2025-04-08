@@ -37,7 +37,7 @@ class DashboardVC: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
        
        print("View WillAppear called")
-    // comesFromSubmitVideo = true//"kerMMN1YwQUDVmb0sJh3"
+     //comesFromSubmitVideo = true//"kerMMN1YwQUDVmb0sJh3"
         if(comesFromSubmitVideo == true) {
             viewModel.upload(operationId: operationIdSend, from: true)
         }
@@ -188,18 +188,27 @@ class DashboardVC: UIViewController {
 
 extension DashboardVC: UITableViewDelegate, UITableViewDataSource,ProjectCellDelegate {
 
-    
+    func getSortedProjects() -> [DashboardModel] {
+        return viewModel.projects.sorted(by: { $0.createdAt > $1.createdAt })
+    }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        let finalProjectsCount = viewModel.projectCount()
-
-        // Add 1 only if the current state is QUEUED or PROCESSING
-        let state = viewModel.getStatus()?.state.uppercased() ?? ""
-        let shouldAddUploadingRow = (state == API.VideoStatus.queued || state == API.VideoStatus.processing)
-
-      //  let total = finalProjectsCount + (shouldAddUploadingRow ? 1 : 0)
-        print("Debug: Number of rows in tableView - \(finalProjectsCount)")
-
-        return finalProjectsCount
+        
+        let count = self.getSortedProjects().count
+            let state = viewModel.getStatus()?.state.uppercased() ?? ""
+            let isUploading = (state == API.VideoStatus.queued || state == API.VideoStatus.processing)
+          //  return isUploading ? count + 1 : count
+        return count
+        
+//        let finalProjectsCount = viewModel.projectCount()
+//
+//        // Add 1 only if the current state is QUEUED or PROCESSING
+//        let state = viewModel.getStatus()?.state.uppercased() ?? ""
+//        let shouldAddUploadingRow = (state == API.VideoStatus.queued || state == API.VideoStatus.processing)
+//
+//      //  let total = finalProjectsCount + (shouldAddUploadingRow ? 1 : 0)
+//        print("Debug: Number of rows in tableView - \(finalProjectsCount)")
+//
+//        return finalProjectsCount
     }
 
 
@@ -218,39 +227,53 @@ extension DashboardVC: UITableViewDelegate, UITableViewDataSource,ProjectCellDel
             // First row is the uploading status row
             if isShowingUploadingRow && indexPath.row == 0 {
                 if let status = viewModel.getStatus() {
-                    cell.configure(with: status)
+                   // cell.configure(with: status)
+                 
+                    let firstProject = self.getSortedProjects()[safe: indexPath.row]
+                    cell.configure(with: status, and: firstProject!)
+                    
                     return cell
                 }
             }
 
-            // Adjust index to skip the upload status row if it's shown
-            //let adjustedIndex = isShowingUploadingRow ? indexPath.row - 1 : indexPath.row
-
-            if let project = viewModel.getProject(at: indexPath.row) {
-                cell.configure(with: project)
-            }
+       
+        
+        if let project = self.getSortedProjects()[safe: indexPath.row] {
+            cell.configure(with: project)
+        }
+//
+//            if let project = viewModel.getProject(at: indexPath.row) {
+//                cell.configure(with: project)
+//            }
 
             return cell
         
 
     }
 
-//    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        let project = viewModel.getProject(at: indexPath.row)
-//        guard let videoURL = URL(string: project?.url ?? "fdf") else {
-//            print("Invalid video URL")
-//            return
-//        }
-//
-//        DispatchQueue.main.async {
-//            guard let detailVC = self.storyboard?.instantiateViewController(withIdentifier: "VideoPlayVC") as? VideoPlayVC else {
-//                print("Failed to instantiate VideoPlayVC")
-//                return
-//            }
-//            detailVC.videoURL = videoURL
-//            self.navigationController?.pushViewController(detailVC, animated: true)
-//        }
-//    }
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        guard let project = self.getSortedProjects()[safe: indexPath.row] else {
+            print("❌ Project not found at index \(indexPath.row)")
+            return
+        }
+
+        guard let projectUrlString = project.url else {
+            print("❌ URL not found in selected project")
+            return
+        }
+
+        print("✅ Selected video URL: \(projectUrlString)")
+        
+        DispatchQueue.main.async {
+            guard let detailVC = self.storyboard?.instantiateViewController(withIdentifier: "VideoPlayVC") as? VideoPlayVC else {
+                print("Failed to instantiate VideoPlayVC")
+                return
+            }
+            detailVC.videoURL = projectUrlString
+            detailVC.imageURL = project.creatorImage
+            self.navigationController?.pushViewController(detailVC, animated: true)
+        }
+    }
 
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 102
@@ -322,3 +345,8 @@ extension DashboardVC: UITableViewDelegate, UITableViewDataSource,ProjectCellDel
 //    }
 }
 
+extension Collection {
+    subscript(safe index: Index) -> Element? {
+        return indices.contains(index) ? self[index] : nil
+    }
+}

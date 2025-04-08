@@ -14,6 +14,7 @@
 		A51A98452D9552AF0081C0B1 /* GoogleLoginModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A51A98442D9552A30081C0B1 /* GoogleLoginModel.swift */; };
 		A51A984F2D9A62E30081C0B1 /* VideoPlayVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A51A984E2D9A62E30081C0B1 /* VideoPlayVC.swift */; };
 		A51A98532D9AA28D0081C0B1 /* UIImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A51A98522D9AA2870081C0B1 /* UIImageView.swift */; };
+		A5342AAA2DA4E1EC0042F2EB /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A5342AA92DA4E1EC0042F2EB /* GoogleService-Info.plist */; };
 		A54CAC402D7EF377008BA05E /* SignInVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A54CAC3C2D7EF377008BA05E /* SignInVC.swift */; };
 		A54CAC412D7EF377008BA05E /* SignInViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A54CAC3D2D7EF377008BA05E /* SignInViewModel.swift */; };
 		A54CAC422D7EF377008BA05E /* SignInModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A54CAC3E2D7EF377008BA05E /* SignInModel.swift */; };
@@ -126,6 +127,7 @@
 		A51A98442D9552A30081C0B1 /* GoogleLoginModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleLoginModel.swift; sourceTree = "<group>"; };
 		A51A984E2D9A62E30081C0B1 /* VideoPlayVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoPlayVC.swift; sourceTree = "<group>"; };
 		A51A98522D9AA2870081C0B1 /* UIImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageView.swift; sourceTree = "<group>"; };
+		A5342AA92DA4E1EC0042F2EB /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		A54CAC3C2D7EF377008BA05E /* SignInVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignInVC.swift; sourceTree = "<group>"; };
 		A54CAC3D2D7EF377008BA05E /* SignInViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignInViewModel.swift; sourceTree = "<group>"; };
 		A54CAC3E2D7EF377008BA05E /* SignInModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignInModel.swift; sourceTree = "<group>"; };
@@ -439,6 +441,7 @@
 		A5B968EE2D7E9B7900CEC10B /* TalkingVideos */ = {
 			isa = PBXGroup;
 			children = (
+				A5342AA92DA4E1EC0042F2EB /* GoogleService-Info.plist */,
 				A585F93C2D93B2240086ADC7 /* TalkingVideos.entitlements */,
 				A5B968EF2D7E9B7900CEC10B /* AppDelegate.swift */,
 				A5B968F12D7E9B7900CEC10B /* SceneDelegate.swift */,
@@ -671,6 +674,7 @@
 				A5838B2F2D9EA51A001A9430 /* sf-pro-display_light.ttf in Resources */,
 				A5838B302D9EA51A001A9430 /* sf-pro-display_ultralight-italic.ttf in Resources */,
 				A5838B312D9EA51A001A9430 /* sf-pro-display_heavy-italic.ttf in Resources */,
+				A5342AAA2DA4E1EC0042F2EB /* GoogleService-Info.plist in Resources */,
 				A5838B322D9EA51A001A9430 /* sf-pro-display_bold-italic.ttf in Resources */,
 				A5838B332D9EA51A001A9430 /* sf-pro-display_regular-italic.ttf in Resources */,
 				A5EEDD9B2D9CF78800C03322 /* SFPRODISPLAYULTRALIGHTITALIC.OTF in Resources */,
@@ -1041,7 +1045,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = TalkingVideos/TalkingVideos.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 13;
+				CURRENT_PROJECT_VERSION = 14;
 				DEVELOPMENT_TEAM = 4TDHV4HWL2;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = TalkingVideos/Info.plist;
@@ -1051,6 +1055,7 @@
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1072,7 +1077,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = TalkingVideos/TalkingVideos.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 13;
+				CURRENT_PROJECT_VERSION = 14;
 				DEVELOPMENT_TEAM = 4TDHV4HWL2;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = TalkingVideos/Info.plist;
@@ -1082,6 +1087,7 @@
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

@@ -68,7 +68,7 @@ class AICreatorsVC: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = UIColor.clear.withAlphaComponent(0.2)
+        view.backgroundColor = UIColor(red: 28/255, green: 29/255, blue:34/255, alpha: 1.0)//UIColor.clear.withAlphaComponent(0.8)
         setupOptionsUI()
     }
 
@@ -107,10 +107,10 @@ class AICreatorsVC: UIViewController {
 
         stackView.addArrangedSubview(makeCancelButton())
     }
-
-    private func makeOption(title: String, subtitle: String, imageName: String, action: @escaping () -> Void) -> UIView {
+        
+    func makeOption(title: String, subtitle: String, imageName: String, action: @escaping () -> Void) -> UIView {
         let container = UIView()
-        container.backgroundColor =  UIColor(red: 41/255, green: 42/255, blue:48/255, alpha: 1.0)
+        container.backgroundColor = UIColor(red: 41/255, green: 42/255, blue: 48/255, alpha: 1.0)
         container.layer.cornerRadius = 12
         container.translatesAutoresizingMaskIntoConstraints = false
         container.heightAnchor.constraint(equalToConstant: 70).isActive = true
@@ -135,7 +135,15 @@ class AICreatorsVC: UIViewController {
         labelStack.axis = .vertical
         labelStack.spacing = 2
 
-        let hStack = UIStackView(arrangedSubviews: [icon, labelStack])
+        let arrowImageView = UIImageView(image: UIImage(systemName: "chevron.right"))
+        arrowImageView.tintColor = .lightGray
+        arrowImageView.translatesAutoresizingMaskIntoConstraints = false
+        arrowImageView.widthAnchor.constraint(equalToConstant: 12).isActive = true
+        arrowImageView.heightAnchor.constraint(equalToConstant: 20).isActive = true
+
+        let spacer = UIView() // Pushes the arrow to the far right
+
+        let hStack = UIStackView(arrangedSubviews: [icon, labelStack, spacer, arrowImageView])
         hStack.axis = .horizontal
         hStack.alignment = .center
         hStack.spacing = 12
@@ -149,11 +157,12 @@ class AICreatorsVC: UIViewController {
         ])
 
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleTap(_:)))
-      //  tapGesture.userInfo = ["action": action]
+        // You'll need a way to connect the gesture to `action`, e.g. via a dictionary or custom subclass
         container.addGestureRecognizer(tapGesture)
 
         return container
     }
+
 
     @objc private func handleTap(_ gesture: UITapGestureRecognizer) {
         print("fdggfdgdfgfd")

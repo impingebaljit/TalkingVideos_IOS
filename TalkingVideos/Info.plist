@@ -2,38 +2,8 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>UIAppFonts</key>
-	<array>
-		<string>SFPRODISPLAYBLACKITALIC.OTF</string>
-        <string>SFPRODISPLAYBOLD.OTF</string>
-        <string>SFPRODISPLAYHEAVYITALIC.OTF</string>
-        <string>SFPRODISPLAYLIGHTITALIC.OTF</string>
-        <string>SFPRODISPLAYMEDIUM.OTF</string>
-        <string>SFPRODISPLAYREGULAR.OTF</string>
-        <string>SFPRODISPLAYSEMIBOLDITALIC.OTF</string>
-        <string>SFPRODISPLAYTHINITALIC.OTF</string>
-        <string>sf-pro-display_black-italic.ttf</string>
-        <string>sf-pro-display_black.ttf</string>
-        <string>sf-pro-display_bold-italic.ttf</string>
-        <string>sf-pro-display_bold.ttf</string>
-        <string>sf-pro-display_heavy-italic.ttf</string>
-        <string>sf-pro-display_heavy.ttf</string>
-        <string>sf-pro-display_light-italic.ttf</string>
-        <string>sf-pro-display_light.ttf</string>
-        <string>sf-pro-display_medium-italic.ttf</string>
-        <string>sf-pro-display_regular-italic.ttf</string>
-        <string>sf-pro-display_regular.ttf</string>
-        <string>sf-pro-display_semibold-italic.ttf</string>
-        <string>sf-pro-display_semibold.ttf</string>
-        <string>sf-pro-display_thin-italic.ttf</string>
-        <string>sf-pro-display_thin.ttf</string>
-        <string>sf-pro-display_ultralight-italic.ttf</string>
-        <string>sf-pro-display_ultralight.ttf</string>
-	</array>
-	<key>NSPrivacyAccessedAPICategories</key>
-	<array>
-		<string>Networking</string>
-	</array>
+	<key>CFBundleIconName</key>
+	<string>AppIcon</string>
 	<key>CFBundleURLTypes</key>
 	<array>
 		<dict>
@@ -43,16 +13,49 @@
 			</array>
 		</dict>
 	</array>
+    <key>NSAppTransportSecurity</key>
+    <dict>
+      <key>NSAllowsArbitraryLoads</key>
+      <true/>
+    </dict>
 	<key>LSApplicationQueriesSchemes</key>
 	<array>
 		<string>googlechrome</string>
 	</array>
-	<key>UIUserInterfaceStyle</key>
-	<string>Light</string>
-	<key>CFBundleIconName</key>
-	<string>AppIcon</string>
 	<key>NSAppTransportSecurity</key>
 	<dict/>
+	<key>NSPrivacyAccessedAPICategories</key>
+	<array>
+		<string>Networking</string>
+	</array>
+	<key>UIAppFonts</key>
+	<array>
+		<string>SFPRODISPLAYBLACKITALIC.OTF</string>
+		<string>SFPRODISPLAYBOLD.OTF</string>
+		<string>SFPRODISPLAYHEAVYITALIC.OTF</string>
+		<string>SFPRODISPLAYLIGHTITALIC.OTF</string>
+		<string>SFPRODISPLAYMEDIUM.OTF</string>
+		<string>SFPRODISPLAYREGULAR.OTF</string>
+		<string>SFPRODISPLAYSEMIBOLDITALIC.OTF</string>
+		<string>SFPRODISPLAYTHINITALIC.OTF</string>
+		<string>sf-pro-display_black-italic.ttf</string>
+		<string>sf-pro-display_black.ttf</string>
+		<string>sf-pro-display_bold-italic.ttf</string>
+		<string>sf-pro-display_bold.ttf</string>
+		<string>sf-pro-display_heavy-italic.ttf</string>
+		<string>sf-pro-display_heavy.ttf</string>
+		<string>sf-pro-display_light-italic.ttf</string>
+		<string>sf-pro-display_light.ttf</string>
+		<string>sf-pro-display_medium-italic.ttf</string>
+		<string>sf-pro-display_regular-italic.ttf</string>
+		<string>sf-pro-display_regular.ttf</string>
+		<string>sf-pro-display_semibold-italic.ttf</string>
+		<string>sf-pro-display_semibold.ttf</string>
+		<string>sf-pro-display_thin-italic.ttf</string>
+		<string>sf-pro-display_thin.ttf</string>
+		<string>sf-pro-display_ultralight-italic.ttf</string>
+		<string>sf-pro-display_ultralight.ttf</string>
+	</array>
 	<key>UIApplicationSceneManifest</key>
 	<dict>
 		<key>UIApplicationSupportsMultipleScenes</key>
@@ -72,5 +75,9 @@
 			</array>
 		</dict>
 	</dict>
+	<key>UIBackgroundModes</key>
+	<array>
+		<string>audio</string>
+	</array>
 </dict>
 </plist>

@@ -45,8 +45,16 @@ class SignUpVC: UIViewController {
             //self?.navigateToDashboard()
             
             // Call appleLoginApi
+            
+            guard let fcmtoken = UserDefaults.standard.string(forKey: "fcmToken") else {
+                print("Missing Fcm Token")
+             
+                return
+            }
+            
+            
             let authService = AuthService()
-            authService.appleLoginApi(identity_token: identityToken) { result in
+            authService.appleLoginApi(identity_token: identityToken,fcmToken:fcmtoken) { result in
                 switch result {
                 case .success(let user):
                     print("🎉 Successfully logged in: \(user)")
@@ -98,9 +106,17 @@ class SignUpVC: UIViewController {
             showAlert(errorMessage)
             return
         }
+        
+        guard let fcmtoken = UserDefaults.standard.string(forKey: "fcmToken") else {
+            print("Missing Fcm Token")
+         
+            return
+        }
+        
+        
 
         // Call the sign-up function
-        viewModel.signUp(name: name, email: email, password: password) { [weak self] success, message in
+        viewModel.signUp(name: name, email: email, password: password,fcmToken:fcmtoken) { [weak self] success, message in
             guard let self = self else { return }
 
             if success {
@@ -156,8 +172,15 @@ class SignUpVC: UIViewController {
     
     
     func loginWithGoogleToken(idToken: String) {
+        guard let fcmtoken = UserDefaults.standard.string(forKey: "fcmToken") else {
+            print("Missing Fcm Token")
+         
+            return
+        }
+        
+        
         let authService = AuthService()
-        authService.googleLoginApi(identity_token: idToken) { result in
+        authService.googleLoginApi(identity_token: idToken,fcmToken:fcmtoken) { result in
             DispatchQueue.main.async {
                 switch result {
                 case .success(let user):

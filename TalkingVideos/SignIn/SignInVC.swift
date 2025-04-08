@@ -43,10 +43,16 @@ class SignInVC: UIViewController {
         
             signInViewModel.onAppleSignInSuccess = { [weak self] name, email, identityToken in
                 self?.tf_Email.text = email
+                
+                guard let fcmtoken = UserDefaults.standard.string(forKey: "fcmToken") else {
+                    print("Missing Fcm Token")
+                 
+                    return
+                }
 
                 // Call appleLoginApi
                 let authService = AuthService()
-                authService.appleLoginApi(identity_token: identityToken) { result in
+                authService.appleLoginApi(identity_token: identityToken, fcmToken:fcmtoken) { result in
                     switch result {
                     case .success(let user):
                         print("🎉 Successfully logged in: \(user)")
@@ -103,8 +109,15 @@ class SignInVC: UIViewController {
 
     
     func loginWithGoogleToken(idToken: String) {
+        
+        guard let fcmtoken = UserDefaults.standard.string(forKey: "fcmToken") else {
+            print("Missing Fcm Token")
+         
+            return
+        }
+        
         let authService = AuthService()
-        authService.googleLoginApi(identity_token: idToken) { result in
+        authService.googleLoginApi(identity_token: idToken,fcmToken: fcmtoken) { result in
             DispatchQueue.main.async {
                 switch result {
                 case .success(let user):
@@ -193,9 +206,14 @@ class SignInVC: UIViewController {
             return
         }
 
-       
+        guard let fcmtoken = UserDefaults.standard.string(forKey: "fcmToken") else {
+            print("Missing Fcm Token")
+         
+            return
+        }
+        
 
-        signInViewModel.signIn(email: email, password: password) { [weak self] success, errorMessage in
+        signInViewModel.signIn(email: email, password: password,fcmToken: fcmtoken) { [weak self] success, errorMessage in
             guard let self = self else { return }
 
             DispatchQueue.main.async {

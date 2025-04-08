@@ -13,6 +13,9 @@ pod 'SDWebImage'
 pod 'IQKeyboardToolbarManager'
 pod 'GoogleSignIn'
 pod 'SDWebImage'
+#pod 'FirebaseMessaging'
+pod 'Firebase/Core'
+pod 'Firebase/Messaging'
 
   # Pods for TalkingVideos
 

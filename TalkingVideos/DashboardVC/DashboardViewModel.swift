@@ -79,6 +79,7 @@ class DashboardViewModel {
             updatedAt: Date().description,
             creatorImage: "Img",
             creatorVideo: nil,
+            size:"24",
             uploadInProgress: true
         )
         

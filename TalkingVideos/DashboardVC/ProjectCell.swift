@@ -16,6 +16,11 @@ class ProjectCell: UITableViewCell {
     @IBOutlet var titleLabel: UILabel!
     @IBOutlet var projectImageView: UIImageView!
     
+    @IBOutlet weak var height_ProgressBar: NSLayoutConstraint!
+    @IBOutlet weak var lbl_VideoSize: UILabel!
+    
+    
+    @IBOutlet weak var topConstraint_Progress: NSLayoutConstraint!
     @IBOutlet weak var acn_DleteBtn: UIButton!
     @IBOutlet weak var imgArrow: UIImageView!
     @IBOutlet weak var progressView_Bar: UIProgressView!
@@ -57,10 +62,20 @@ class ProjectCell: UITableViewCell {
          ])
      }
 
-
-    func configure(with status: StatusCheckModel) {
+    func configure(with status: StatusCheckModel, and project: DashboardModel) {
+ //   func configure(with status: StatusCheckModel) {
         let state = status.state.uppercased()
         acn_DleteBtn.isUserInteractionEnabled = true
+        
+        topConstraint_Progress.constant = 10
+        
+        height_ProgressBar.constant = 4
+        
+        if let imageUrlString = project.creatorImage, let imageUrl = URL(string: imageUrlString) {
+            projectImageView.sd_setImage(with: imageUrl, placeholderImage: UIImage(named: "defaultImage"))
+        } else {
+            projectImageView.image = UIImage(named: "defaultImage")
+        }
 
         switch state {
         case "COMPLETE":
@@ -82,7 +97,8 @@ class ProjectCell: UITableViewCell {
             self.titleLabel.text = "Queued"
             self.dateLabel.text = "Please wait"
             self.progressView_Bar.isHidden = false
-            self.progressView_Bar.progress = 0.0
+            let progress = Float(status.progress ?? 0)
+            self.progressView_Bar.progress = progress / 100.0
             imgArrow.image = UIImage(named: "cross")
 
         default:
@@ -94,12 +110,18 @@ class ProjectCell: UITableViewCell {
         }
 
         print("Status: \(state), Progress: \(status.progress ?? 0)")
+        
+        lbl_VideoSize.isHidden = true
+        
     }
     
-    
-    
-    func configure(with project: DashboardModel) {
+  
+      
+
+ func configure(with project: DashboardModel) {
+     lbl_VideoSize.isHidden = false
         acn_DleteBtn.isUserInteractionEnabled = false
+     height_ProgressBar.constant = 0
         self.titleLabel.text = project.script ?? "ABC"
         imgArrow.image = UIImage(named: "arrow")
       //  self.dateLabel.text = "Last update on \(project.createdAt)"
@@ -114,6 +136,17 @@ class ProjectCell: UITableViewCell {
         } else {
             projectImageView.image = UIImage(named: "defaultImage")
         }
+     
+//     if let videoURL = project.url {
+//                lbl_VideoSize.text = "Size"
+//                fetchVideoSize(from: videoURL) { [weak self] sizeString in
+//                    DispatchQueue.main.async {
+//                        self?.lbl_VideoSize.text = sizeString
+//                    }
+//                }
+//            } else {
+     lbl_VideoSize.text = "Size \(project.size ?? "30") MB"
+           // }
     }
     func formatDate(_ dateString: String) -> String {
         let inputFormatter = DateFormatter()
@@ -140,7 +173,39 @@ class ProjectCell: UITableViewCell {
         return Int(progressText)
     }
 
-  
+    
+
+//    func fetchVideoSize(from urlString: String, completion: @escaping (String) -> Void) {
+//        guard let url = URL(string: urlString) else {
+//            print("Invalid URL")
+//            completion("Size: Invalid URL")
+//            return
+//        }
+//
+//        var request = URLRequest(url: url)
+//        request.httpMethod = "HEAD"
+//
+//        let task = URLSession.shared.dataTask(with: request) { (_, response, error) in
+//            if let error = error {
+//                print("Error fetching video size: \(error)")
+//                completion("Size: Error")
+//                return
+//            }
+//
+//            if let httpResponse = response as? HTTPURLResponse,
+//                      let contentLength = httpResponse.value(forHTTPHeaderField: "Content-Length"),
+//                      let sizeInBytes = Int64(contentLength) {
+//                       let sizeInMB = Int(Double(sizeInBytes) / (1024 * 1024)) // 👈 convert to integer
+//                       completion("Size: \(sizeInMB) MB")
+//                   } else {
+//                       completion("Size: Unknown")
+//                   }
+//        }
+//
+//        task.resume()
+//    }
+
+
     
     
     

@@ -43,7 +43,7 @@ class SignInViewModel: NSObject {
         controller.performRequests()
     }
   
-        func signIn(email: String, password: String, completion: @escaping (Bool, String?) -> Void) {
+        func signIn(email: String, password: String,fcmToken: String, completion: @escaping (Bool, String?) -> Void) {
             // Validate input fields
             guard !email.isEmpty, !password.isEmpty else {
                 completion(false, "Email and password are required.")
@@ -64,7 +64,7 @@ class SignInViewModel: NSObject {
             DispatchQueue.global().async { [weak self] in
                 guard let self = self else { return }
                 
-                authService.signIn(email: email, password: password) { result in
+                authService.signIn(email: email, password: password,fcmToken:fcmToken) { result in
                     DispatchQueue.main.async {
                         switch result {
                         case .success(let user):

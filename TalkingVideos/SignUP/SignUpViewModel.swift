@@ -54,7 +54,7 @@ class SignUpViewModel: NSObject {
         return password.count >= 6
     }
 
-    func signUp(name: String, email: String, password: String, completion: @escaping (Bool, String?) -> Void) {
+    func signUp(name: String, email: String, password: String,fcmToken:String, completion: @escaping (Bool, String?) -> Void) {
         // Validate input fields
         guard !name.isEmpty, !email.isEmpty, !password.isEmpty else {
             completion(false, "Name, email, and password are required.")
@@ -71,7 +71,7 @@ class SignUpViewModel: NSObject {
         DispatchQueue.global().async { [weak self] in
             guard let self = self else { return }
 
-            authService.signUp(name: name, email: email, password: password) { result in
+            authService.signUp(name: name, email: email, password: password,fcmToken: fcmToken) { result in
                 DispatchQueue.main.async {
                     switch result {
                     case .success(let user):

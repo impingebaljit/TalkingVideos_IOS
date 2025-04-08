@@ -10,7 +10,7 @@ import Foundation
 
 class AuthService {
     
-    func signUp(name: String, email: String, password: String, completion: @escaping (Result<SignUpModel, Error>) -> Void) {
+    func signUp(name: String, email: String, password: String,fcmToken:String, completion: @escaping (Result<SignUpModel, Error>) -> Void) {
         // Construct the sign-up URL
         let signUpURL = "\(API.baseURL)\(API.Endpoints.signUp)"
         
@@ -24,7 +24,8 @@ class AuthService {
         let requestBody: [String: Any] = [
             "name": name,
             "email": email,
-            "password": password
+            "password": password,
+            "fcm_token":fcmToken
         ]
         
         // Serialize the request body to JSON
@@ -74,14 +75,15 @@ class AuthService {
     
     
     
-    func signIn(email: String, password: String, completion: @escaping (Result<SignInModel, Error>) -> Void) {
+    func signIn(email: String, password: String,fcmToken:String, completion: @escaping (Result<SignInModel, Error>) -> Void) {
         // Construct the sign-in URL
         let signInURL = "\(API.baseURL)\(API.Endpoints.signIn)"
         
         // Prepare the request body with email and password
         let requestBody: [String: Any] = [
             "email": email,
-            "password": password
+            "password": password,
+            "fcm_token":fcmToken
         ]
         
         // Serialize the request body to JSON data
@@ -737,7 +739,7 @@ class AuthService {
     }
     
     
-    func appleLoginApi(identity_token: String, completion: @escaping (Result<AppleLoginModel, Error>) -> Void) {
+    func appleLoginApi(identity_token: String,fcmToken:String, completion: @escaping (Result<AppleLoginModel, Error>) -> Void) {
         
         let videoListURL = "\(API.baseURL)\(API.Endpoints.loginApple)"
         guard let url = URL(string: videoListURL) else {
@@ -751,7 +753,7 @@ class AuthService {
         
         
         // Create the request body
-        let requestBody: [String: Any] = ["identity_token": identity_token]
+        let requestBody: [String: Any] = ["identity_token": identity_token,"fcm_token":fcmToken]
         
         // Serialize the request body to JSON
         guard let postData = try? JSONSerialization.data(withJSONObject: requestBody) else {
@@ -790,7 +792,7 @@ class AuthService {
     }
     
     
-    func googleLoginApi(identity_token: String, completion: @escaping (Result<GoogleLoginModel, Error>) -> Void) {
+    func googleLoginApi(identity_token: String,fcmToken:String, completion: @escaping (Result<GoogleLoginModel, Error>) -> Void) {
         
         let videoListURL = "\(API.baseURL)\(API.Endpoints.loginGoogle)"
         guard let url = URL(string: videoListURL) else {
@@ -804,7 +806,7 @@ class AuthService {
         
         
         // Create the request body
-        let requestBody: [String: Any] = ["identity_token": identity_token]
+        let requestBody: [String: Any] = ["identity_token": identity_token,"fcm_token":fcmToken]
         
         // Serialize the request body to JSON
         guard let postData = try? JSONSerialization.data(withJSONObject: requestBody) else {
