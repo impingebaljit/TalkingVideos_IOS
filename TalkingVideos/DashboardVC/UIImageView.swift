@@ -24,14 +24,14 @@ extension UIImageView {
                 for key in assetKeys {
                     let status = asset.statusOfValue(forKey: key, error: &error)
                     if status == .failed {
-                        print("❌ Error: Failed to load \(key) - \(error?.localizedDescription ?? "Unknown error")")
+                        print("Error: Failed to load \(key) - \(error?.localizedDescription ?? "Unknown error")")
                         return
                     }
                 }
 
                 // Ensure the asset is playable and has video tracks
                 guard asset.isPlayable, asset.tracks(withMediaType: .video).count > 0 else {
-                    print("❌ Error: No valid video track found or asset is not playable.")
+                    print("Error: No valid video track found or asset is not playable.")
                     return
                 }
 
@@ -52,7 +52,7 @@ extension UIImageView {
                         self.image = thumbnail // Set extracted thumbnail
                     }
                 } catch {
-                    print("❌ Error generating thumbnail: \(error.localizedDescription)")
+                    print("Error generating thumbnail: \(error.localizedDescription)")
                     DispatchQueue.main.async {
                         self.image = UIImage(named: placeholder) // Show placeholder on failure
                     }

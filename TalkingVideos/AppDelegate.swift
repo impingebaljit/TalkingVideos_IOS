@@ -44,6 +44,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate, MessagingDelegate {
         }
     }
     
+    // This is called when a notification is delivered while app is open
+       func userNotificationCenter(_ center: UNUserNotificationCenter,
+                                   willPresent notification: UNNotification,
+                                   withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
+           
+           print("📬 Notification received while app is open: \(notification.request.content.body)")
+           
+           // Show the notification banner even when app is open
+           completionHandler([.banner, .sound])
+       }
+    
     func messaging(_ messaging: Messaging, didReceiveRegistrationToken fcmToken: String?) {
         print("📦 Refreshed FCM Token: \(fcmToken ?? "")")
         // Send to server if needed
@@ -51,19 +62,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate, MessagingDelegate {
         UserDefaults.standard.set(fcmToken, forKey: "fcmToken")
         UserDefaults.standard.synchronize()
         
-        Messaging.messaging().token { token, error in
-            if let token = token {
-                print("🔥 FCM Token: \(token)")
-            } else if let error = error {
-                print("❌ Error getting FCM token: \(error.localizedDescription)")
-            }
-        }
+//        Messaging.messaging().token { token, error in
+//            if let token = token {
+//                print("FCM Token: \(token)")
+//            } else if let error = error {
+//                print("Error getting FCM token: \(error.localizedDescription)")
+//            }
+//        }
     }
 
     // Called when APNs failed to register the device
     func application(_ application: UIApplication,
                      didFailToRegisterForRemoteNotificationsWithError error: Error) {
-        print("❌ Failed to register: \(error.localizedDescription)")
+        print("Failed to register: \(error.localizedDescription)")
     }
     
     // MARK: UISceneSession Lifecycle

@@ -260,9 +260,6 @@ import SDWebImage
 
 
 
- import UIKit
-import AVFoundation
-import SDWebImage
 
 class VideoPlayVC: UIViewController {
 
@@ -275,7 +272,6 @@ class VideoPlayVC: UIViewController {
     private var player: AVPlayer?
     private var playerLayer: AVPlayerLayer?
     private var isPlaying = false
-    private var playWhenReady = false
     private static var playerItemContext = 0
 
     override func viewDidLoad() {
@@ -285,17 +281,15 @@ class VideoPlayVC: UIViewController {
         setupAudioSession()
         setupImageView()
         setupTapGesture()
-        preparePlayerAsync()
+        preparePlayerInstantly()
     }
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-
-        if let player = player, player.currentItem?.status == .readyToPlay {
-            player.play()
-            isPlaying = true
-        } else {
-            playWhenReady = true
+        // Nothing needed here — playback is handled in observer once ready
+        
+        DispatchQueue.main.async {
+            CustomLoader.shared.showLoader(in: self)
         }
     }
 
@@ -318,50 +312,32 @@ class VideoPlayVC: UIViewController {
         imgVw.sd_setImage(with: url, placeholderImage: nil, options: [.continueInBackground])
     }
 
-    private func preparePlayerAsync() {
+    private func preparePlayerInstantly() {
+        
+        
         guard let urlString = videoURL, let url = URL(string: urlString) else {
-            print("❌ Invalid video URL string: \(videoURL ?? "nil")")
+            print("❌ Invalid video URL: \(videoURL ?? "nil")")
             return
         }
 
-        print("🎥 Loading video from: \(url.absoluteString)")
+        print("🎥 Preparing video from: \(url.absoluteString)")
 
-        let asset = AVURLAsset(url: url)
-        let keys = ["playable"]
+        let item = AVPlayerItem(url: url)
+        item.addObserver(self,
+                         forKeyPath: "status",
+                         options: [.new, .initial],
+                         context: &Self.playerItemContext)
 
-        asset.loadValuesAsynchronously(forKeys: keys) { [weak self] in
-            guard let self = self else { return }
+        let player = AVPlayer(playerItem: item)
+        player.automaticallyWaitsToMinimizeStalling = false
+        self.player = player
 
-            var error: NSError?
-            let status = asset.statusOfValue(forKey: "playable", error: &error)
-
-            switch status {
-            case .loaded:
-                DispatchQueue.main.async {
-                    let item = AVPlayerItem(asset: asset)
-                    item.addObserver(self,
-                                     forKeyPath: "status",
-                                     options: [.new, .initial],
-                                     context: &Self.playerItemContext)
-
-                    let player = AVPlayer(playerItem: item)
-                    player.automaticallyWaitsToMinimizeStalling = false
-                    self.player = player
-
-                    self.setupPlayerLayer()
-
-                    if self.playWhenReady {
-                        player.play()
-                        self.isPlaying = true
-                    }
-                }
-            default:
-                print("❌ Video asset is not playable: \(error?.localizedDescription ?? "Unknown error")")
-            }
-        }
+        setupPlayerLayer()
     }
 
     private func setupPlayerLayer() {
+        
+       
         guard let player = player else { return }
 
         let layer = AVPlayerLayer(player: player)
@@ -408,7 +384,8 @@ class VideoPlayVC: UIViewController {
 
     override func observeValue(forKeyPath keyPath: String?, of object: Any?,
                                change: [NSKeyValueChangeKey: Any]?, context: UnsafeMutableRawPointer?) {
-        guard context == &Self.playerItemContext, keyPath == "status",
+        guard context == &Self.playerItemContext,
+              keyPath == "status",
               let item = object as? AVPlayerItem else {
             super.observeValue(forKeyPath: keyPath, of: object, change: change, context: context)
             return
@@ -416,13 +393,12 @@ class VideoPlayVC: UIViewController {
 
         switch item.status {
         case .readyToPlay:
-            print("✅ Video ready to play")
-            if playWhenReady {
-                player?.play()
-                isPlaying = true
-            }
+            print("✅ Video ready to play instantly")
+            CustomLoader.shared.hideLoader()
+            player?.play()
+            isPlaying = true
         case .failed:
-            print("❌ Failed to load video: \(item.error?.localizedDescription ?? "Unknown error")")
+            print("❌ Video failed to load: \(item.error?.localizedDescription ?? "Unknown error")")
         default:
             break
         }
@@ -432,4 +408,5 @@ class VideoPlayVC: UIViewController {
         navigationController?.popViewController(animated: false)
     }
 }
+
 

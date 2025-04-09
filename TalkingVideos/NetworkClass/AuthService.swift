@@ -849,7 +849,7 @@ class AuthService {
         
         // Retrieve token
         guard let token = UserDefaults.standard.string(forKey: "authToken"), !token.isEmpty else {
-            print("❌ Missing Bearer Token")
+            print("Missing Bearer Token")
             completion(.failure(NetworkErrorr.invalidToken))
             return
         }
@@ -858,7 +858,7 @@ class AuthService {
         print("➡️ DELETE URL: \(deleteVideoURL)")
         
         guard let url = URL(string: deleteVideoURL) else {
-            print("❌ Invalid URL: \(deleteVideoURL)")
+            print("Invalid URL: \(deleteVideoURL)")
             completion(.failure(NetworkErrorr.invalidURL))
             return
         }
@@ -869,25 +869,25 @@ class AuthService {
         
         let task = URLSession.shared.dataTask(with: request) { data, response, error in
             if let error = error {
-                print("❌ Request error: \(error.localizedDescription)")
+                print("Request error: \(error.localizedDescription)")
                 completion(.failure(error))
                 return
             }
             
             guard let httpResponse = response as? HTTPURLResponse else {
-                print("❌ Invalid response")
+                print("Invalid response")
                 completion(.failure(NetworkErrorr.invalidResponse))
                 return
             }
             
             guard (200...299).contains(httpResponse.statusCode) else {
-                print("❌ Request failed with status code: \(httpResponse.statusCode)")
+                print("Request failed with status code: \(httpResponse.statusCode)")
                 completion(.failure(NetworkErrorr.requestFailed(statusCode: httpResponse.statusCode)))
                 return
             }
             
             guard let data = data else {
-                print("❌ No data received")
+                print("No data received")
                 completion(.failure(NetworkErrorr.noData))
                 return
             }
@@ -896,7 +896,7 @@ class AuthService {
                 let decodedResponse = try JSONDecoder().decode(DeleteVideoModel.self, from: data)
                 completion(.success(decodedResponse))
             } catch {
-                print("❌ Decoding error: \(error.localizedDescription)")
+                print("Decoding error: \(error.localizedDescription)")
                 completion(.failure(NetworkErrorr.decodingError))
             }
         }

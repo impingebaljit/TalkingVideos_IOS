@@ -38,10 +38,13 @@ class DashboardViewModel {
     }
   
     
-    func fetchProjects() {
+  //  func fetchProjects() {
+    func fetchProjects(completion: (() -> Void)? = nil) {
         authService.fetchFinalVideos { [weak self] result in
             guard let self = self else { return }
-
+            DispatchQueue.main.async {
+                CustomLoader.shared.hideLoader()
+            }
             switch result {
             case .success(let videos):
                 self.projects.removeAll()
@@ -61,6 +64,8 @@ class DashboardViewModel {
             case .failure(let error):
                 print("Error fetching videos: \(error)")
             }
+            
+            completion?()
         }
     }
     
@@ -203,6 +208,44 @@ class DashboardViewModel {
         projects.remove(at: index)
     }
     
-  
+    func processIncompleteVideos() {
+        authService.fetchFinalVideos { [weak self] result in
+            guard let self = self else { return }
+            DispatchQueue.main.async {
+                CustomLoader.shared.hideLoader()
+            }
+            switch result {
+            case .success(let videos):
+                self.projects = videos
 
+                // 1. Get all operation IDs for videos that are not COMPLETE
+                let incompleteOperationIds = videos.compactMap { video -> String? in
+                    // Treat nil or any state other than COMPLETE as incomplete
+                    let state = video.state?.uppercased() ?? ""
+                    
+                    guard state != API.VideoStatus.complete,
+                          let operationId = video.operationID else {
+                        return nil
+                    }
+
+                    return operationId
+                }
+
+                print("Incomplete Operation IDs: \(incompleteOperationIds)")
+
+                // 2. Upload each incomplete operation
+                for operationId in incompleteOperationIds {
+                    self.upload(operationId: operationId, from: true)
+                }
+
+            case .failure(let error):
+                print("Error fetching videos: \(error)")
+            }
+        }
+    }
+
+    func upload(operationId: String) {
+        print("Uploading for operationId: \(operationId)")
+        self.upload(operationId: operationId, from: true)
+    }
 }

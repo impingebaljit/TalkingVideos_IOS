@@ -16,6 +16,7 @@ class ProjectCell: UITableViewCell {
     @IBOutlet var titleLabel: UILabel!
     @IBOutlet var projectImageView: UIImageView!
     
+    @IBOutlet weak var dateTop: NSLayoutConstraint!
     @IBOutlet weak var height_ProgressBar: NSLayoutConstraint!
     @IBOutlet weak var lbl_VideoSize: UILabel!
     
@@ -67,7 +68,9 @@ class ProjectCell: UITableViewCell {
         let state = status.state.uppercased()
         acn_DleteBtn.isUserInteractionEnabled = true
         
-        topConstraint_Progress.constant = 10
+        topConstraint_Progress.constant = 11
+        
+        dateTop.constant = 4
         
         height_ProgressBar.constant = 4
         
@@ -122,6 +125,7 @@ class ProjectCell: UITableViewCell {
      lbl_VideoSize.isHidden = false
         acn_DleteBtn.isUserInteractionEnabled = false
      height_ProgressBar.constant = 0
+     dateTop.constant = -1
         self.titleLabel.text = project.script ?? "ABC"
         imgArrow.image = UIImage(named: "arrow")
       //  self.dateLabel.text = "Last update on \(project.createdAt)"

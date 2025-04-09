@@ -137,24 +137,30 @@ class ScriptVC: UIViewController, UITextViewDelegate {
     
     func callSubmitVideoApi() {
         let name = videoModelNew?.creatorName ?? "name"
+        let promptText = txtVw_Script.text ?? ""
         
         
         
-        
-        viewModel.submitVideo(prompt: txtVw_Script.text, creatorName: name, resolution: "fhd") { success, submitModel, errorMessage in
+        viewModel.submitVideo(prompt: promptText, creatorName: name, resolution: "fhd") { success, submitModel, errorMessage in
             DispatchQueue.main.async {
+               
                 CustomLoader.shared.hideLoader()
                 if success, let model = submitModel {
-                   // self.showSuccessAlert {
+                  
                         guard let detailVC = self.storyboard?.instantiateViewController(withIdentifier: "DashboardVC") as? DashboardVC else {
                             self.showAlert(message: "Failed to instantiate DashboardVC")
                             return
                         }
                         detailVC.operationIdSend = model.operationID
                         detailVC.comesFromSubmitVideo = true
+                    
+                    
+                    UserDefaults.standard.set(model.operationID, forKey: "operationIdSend")
+                    UserDefaults.standard.synchronize()
+                    
                         print("OperationID:-\(model.operationID)")
                         self.navigationController?.pushViewController(detailVC, animated: true)
-                  //  }
+                  
                 } else {
                     self.showAlert(message: errorMessage ?? "Video submission failed")
                 }

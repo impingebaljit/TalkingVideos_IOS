@@ -768,7 +768,7 @@
                                                     </userDefinedRuntimeAttributes>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hey there. Ever had one of those..." lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="V33-sP-iTY">
-                                                    <rect key="frame" x="104" y="16" width="253" height="20"/>
+                                                    <rect key="frame" x="104" y="18" width="253" height="20"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="20" id="vpl-c1-AH2"/>
                                                     </constraints>
@@ -777,14 +777,14 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="vUe-3j-V5D">
-                                                    <rect key="frame" x="104" y="38" width="253" height="4"/>
+                                                    <rect key="frame" x="104" y="40" width="253" height="4"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="4" id="82A-U7-Ief"/>
                                                     </constraints>
                                                     <color key="progressTintColor" red="0.54901960780000003" green="0.12549019610000001" blue="0.97254901959999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 </progressView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Last update on Mar 18,2025" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="THX-6h-1gi">
-                                                    <rect key="frame" x="104" y="44" width="263" height="20"/>
+                                                    <rect key="frame" x="104" y="46" width="263" height="20"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="20" id="E7z-pH-uc3"/>
                                                     </constraints>
@@ -812,7 +812,7 @@
                                                     </connections>
                                                 </button>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Video size 230 MB" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1Zb-CO-SiM">
-                                                    <rect key="frame" x="104" y="66" width="263" height="17"/>
+                                                    <rect key="frame" x="104" y="69" width="263" height="17"/>
                                                     <fontDescription key="fontDescription" name="SFProDisplay-Regular" family="SF Pro Display" pointSize="14"/>
                                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
@@ -825,14 +825,14 @@
                                                 <constraint firstItem="1Zb-CO-SiM" firstAttribute="leading" secondItem="THX-6h-1gi" secondAttribute="leading" id="8Ue-Jg-Kum"/>
                                                 <constraint firstItem="IXK-hy-YlQ" firstAttribute="top" secondItem="4WR-Rn-Zlu" secondAttribute="top" constant="21" id="Axu-3K-tbB"/>
                                                 <constraint firstItem="1Zb-CO-SiM" firstAttribute="trailing" secondItem="THX-6h-1gi" secondAttribute="trailing" id="Row-ve-mze"/>
-                                                <constraint firstItem="1Zb-CO-SiM" firstAttribute="top" secondItem="THX-6h-1gi" secondAttribute="bottom" constant="2" id="S8z-xW-pCk"/>
+                                                <constraint firstItem="1Zb-CO-SiM" firstAttribute="top" secondItem="THX-6h-1gi" secondAttribute="bottom" constant="3" id="S8z-xW-pCk"/>
                                                 <constraint firstItem="6R5-ZI-rb7" firstAttribute="trailing" secondItem="4WR-Rn-Zlu" secondAttribute="trailingMargin" id="Xqp-VC-958"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="THX-6h-1gi" secondAttribute="trailing" constant="15" id="Xzr-IG-5dY"/>
                                                 <constraint firstItem="a2t-gu-Esm" firstAttribute="leading" secondItem="4WR-Rn-Zlu" secondAttribute="leadingMargin" id="bKh-8E-68z"/>
                                                 <constraint firstItem="6R5-ZI-rb7" firstAttribute="centerY" secondItem="a2t-gu-Esm" secondAttribute="centerY" id="bxB-rb-7l1"/>
                                                 <constraint firstItem="a2t-gu-Esm" firstAttribute="top" secondItem="4WR-Rn-Zlu" secondAttribute="topMargin" constant="4" id="cR3-Lh-eMG"/>
                                                 <constraint firstItem="V33-sP-iTY" firstAttribute="leading" secondItem="a2t-gu-Esm" secondAttribute="trailing" constant="18" id="hGf-LG-Mqi"/>
-                                                <constraint firstItem="V33-sP-iTY" firstAttribute="top" secondItem="4WR-Rn-Zlu" secondAttribute="topMargin" constant="5" id="kaS-Pe-pGi"/>
+                                                <constraint firstItem="V33-sP-iTY" firstAttribute="top" secondItem="4WR-Rn-Zlu" secondAttribute="topMargin" constant="7" id="kaS-Pe-pGi"/>
                                                 <constraint firstItem="THX-6h-1gi" firstAttribute="leading" secondItem="a2t-gu-Esm" secondAttribute="trailing" constant="18" id="odn-nI-st2"/>
                                                 <constraint firstItem="vUe-3j-V5D" firstAttribute="trailing" secondItem="V33-sP-iTY" secondAttribute="trailing" id="owC-6a-Ri5"/>
                                                 <constraint firstItem="vUe-3j-V5D" firstAttribute="leading" secondItem="V33-sP-iTY" secondAttribute="leading" id="shD-8c-Dfa"/>
@@ -843,6 +843,7 @@
                                         <connections>
                                             <outlet property="acn_DleteBtn" destination="IXK-hy-YlQ" id="RmN-Ah-Zk6"/>
                                             <outlet property="dateLabel" destination="THX-6h-1gi" id="ksn-V7-dZW"/>
+                                            <outlet property="dateTop" destination="0V3-hr-sC5" id="nSa-zh-VkW"/>
                                             <outlet property="height_ProgressBar" destination="82A-U7-Ief" id="SXW-cS-f1h"/>
                                             <outlet property="imgArrow" destination="6R5-ZI-rb7" id="ruJ-SP-ReV"/>
                                             <outlet property="lbl_VideoSize" destination="1Zb-CO-SiM" id="kgP-xa-GjO"/>

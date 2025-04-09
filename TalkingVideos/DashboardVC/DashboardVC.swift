@@ -34,19 +34,68 @@ class DashboardVC: UIViewController {
 
     }
     
+//    override func viewWillAppear(_ animated: Bool) {
+//       
+//       print("View WillAppear called")
+//     comesFromSubmitVideo = true
+//       // if(comesFromSubmitVideo == true) {
+//      //  viewModel.upload(operationId: operationIdSend, from: true)
+//       // }
+//
+//        
+////        let getOperationIdSend = UserDefaults.standard.string(forKey: "operationIdSend") ?? "abc"
+////        viewModel.upload(operationId: getOperationIdSend, from: true)
+//        
+//        self.viewModel.processIncompleteVideos()
+//        DispatchQueue.main.async {
+//            CustomLoader.shared.showLoader(in: self)
+//          
+//            self.viewModel.fetchProjects()
+//            self.tblVw_Projects.reloadData()
+//        }
+////        self.viewModel.processIncompleteVideos()
+////        viewModel.fetchProjects { [weak self] in
+////            guard let self = self else { return }
+////            
+////            // UI updates once projects are fetched
+////            DispatchQueue.main.async {
+////                self.tblVw_Projects.reloadData()
+////                //CustomLoader.shared.hideLoader()
+////            }
+////        }
+//        //DispatchQueue.global(qos: .background).async {
+//        
+//         //   }
+//       
+//    }
     override func viewWillAppear(_ animated: Bool) {
-       
-       print("View WillAppear called")
-     //comesFromSubmitVideo = true//"kerMMN1YwQUDVmb0sJh3"
-        if(comesFromSubmitVideo == true) {
-            viewModel.upload(operationId: operationIdSend, from: true)
-        }
-        
-        
-        viewModel.fetchProjects()
+        super.viewWillAppear(animated)
+
+        print("View WillAppear called")
+
+        //comesFromSubmitVideo = true
         tblVw_Projects.reloadData()
+        
+        // Process any incomplete video uploads
+        viewModel.processIncompleteVideos()
+        
+        // Start loader immediately
+        DispatchQueue.main.async {
+            CustomLoader.shared.showLoader(in: self)
+        }
+
+        // Start fetching data and reload once complete
+        viewModel.fetchProjects { [weak self] in
+            guard let self = self else { return }
+
+            DispatchQueue.main.async {
+                self.tblVw_Projects.reloadData()
+                CustomLoader.shared.hideLoader()
+            }
+        }
+
+        
     }
-    
     private func setupBindings() {
         viewModel.onProjectsUpdated = { [weak self] in
             DispatchQueue.main.async {
@@ -251,30 +300,61 @@ extension DashboardVC: UITableViewDelegate, UITableViewDataSource,ProjectCellDel
 
     }
 
+//    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+//        guard let project = self.getSortedProjects()[safe: indexPath.row] else {
+//            print("Project not found at index \(indexPath.row)")
+//            return
+//        }
+//
+//        guard let projectUrlString = project.url else {
+//            print("URL not found in selected project")
+//            return
+//        }
+//
+//        print("✅ Selected video URL: \(projectUrlString)")
+//        
+//        DispatchQueue.main.async {
+//            guard let detailVC = self.storyboard?.instantiateViewController(withIdentifier: "VideoPlayVC") as? VideoPlayVC else {
+//                print("Failed to instantiate VideoPlayVC")
+//                return
+//            }
+//            detailVC.videoURL = projectUrlString
+//            detailVC.imageURL = project.creatorImage
+//            self.navigationController?.pushViewController(detailVC, animated: true)
+//        }
+//    }
+
+    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         guard let project = self.getSortedProjects()[safe: indexPath.row] else {
-            print("❌ Project not found at index \(indexPath.row)")
+            print("Project not found at index \(indexPath.row)")
             return
         }
 
-        guard let projectUrlString = project.url else {
-            print("❌ URL not found in selected project")
-            return
+        let videoUrlString = project.url
+        let imageUrl = project.creatorImage
+
+        if let videoUrlString = videoUrlString {
+            print("Selected video URL: \(videoUrlString)")
+        } else {
+            print("No video URL found. Proceeding to VideoPlayVC anyway.")
         }
 
-        print("✅ Selected video URL: \(projectUrlString)")
-        
         DispatchQueue.main.async {
             guard let detailVC = self.storyboard?.instantiateViewController(withIdentifier: "VideoPlayVC") as? VideoPlayVC else {
                 print("Failed to instantiate VideoPlayVC")
                 return
             }
-            detailVC.videoURL = projectUrlString
-            detailVC.imageURL = project.creatorImage
+
+            detailVC.videoURL = videoUrlString
+            detailVC.imageURL = imageUrl
+
             self.navigationController?.pushViewController(detailVC, animated: true)
         }
     }
 
+    
+    
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 102
     }
