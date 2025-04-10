@@ -17,6 +17,8 @@ class DashboardViewModel {
      var uploadingProjects: [DashboardModel] = [] // Store in-progress uploads
     private var retryCount = 3
     
+     var cachedProjects: [DashboardModel] = []
+    
     private var getStatusI: StatusCheckModel?
     
     var onProjectsUpdated: (() -> Void)?
@@ -48,16 +50,20 @@ class DashboardViewModel {
             switch result {
             case .success(let videos):
                 self.projects.removeAll()
+               
+                self.cachedProjects = projects
                 self.projects = videos
+                
+                self.saveVideosToUserDefaults(videos)
 
                 // Insert uploading projects at the top if they're not marked complete
-                let notCompletedUploads = self.uploadingProjects.filter {
-                    $0.uploadInProgress! && (self.getStatusI?.state.uppercased() != API.VideoStatus.complete)
-                }
+//                let notCompletedUploads = self.uploadingProjects.filter {
+//                    $0.uploadInProgress! && (self.getStatusI?.state.uppercased() != API.VideoStatus.complete)
+//                }
 
                 //self.projects.insert(contentsOf: notCompletedUploads, at: 0)
 
-                print("Uploading projects inserted: \(notCompletedUploads.count)")
+//                print("Uploading projects inserted: \(notCompletedUploads.count)")
 
                 self.onProjectsUpdated?()
 
@@ -69,7 +75,16 @@ class DashboardViewModel {
         }
     }
     
-    
+    // Function to save videos to UserDefaults
+    func saveVideosToUserDefaults(_ videos: [DashboardModel]) {
+            do {
+                let encoder = JSONEncoder()
+                let encodedData = try encoder.encode(videos)
+                UserDefaults.standard.set(encodedData, forKey: "offlineVideos")
+            } catch {
+                print("Error encoding videos for UserDefaults: \(error)")
+            }
+        }
     func upload(operationId: String, from submitVideoScreen: Bool) {
         let newProject = DashboardModel(
             id: -1,
@@ -208,7 +223,7 @@ class DashboardViewModel {
         projects.remove(at: index)
     }
     
-    func processIncompleteVideos() {
+    func processIncompleteVideos(completion: (() -> Void)? = nil) {
         authService.fetchFinalVideos { [weak self] result in
             guard let self = self else { return }
             DispatchQueue.main.async {
@@ -242,6 +257,7 @@ class DashboardViewModel {
                 print("Error fetching videos: \(error)")
             }
         }
+        completion?()
     }
 
     func upload(operationId: String) {

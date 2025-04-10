@@ -301,8 +301,8 @@ class SignInVC: UIViewController {
         //iostest@gmail.com
       //   tf_Email.text = "johndoe@example.com"
      //tf_Password.text = "password123"
-       tf_Email.text = "nisha@gmail.com"//"johndoe@example.com"//
-      tf_Password.text = "123456"//"password123"
+      tf_Email.text = "nisha@gmail.com"//"johndoe@example.com"//
+     tf_Password.text = "123456"//"password123"
         
        // tf_Email.text = "brandonking256256@gmail.com"
        // tf_Password.text = "password123"

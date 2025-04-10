@@ -74,28 +74,53 @@ class DashboardVC: UIViewController {
         print("View WillAppear called")
 
         //comesFromSubmitVideo = true
-        tblVw_Projects.reloadData()
+       // tblVw_Projects.reloadData()
+     
+        
+        emptyStateView.isHidden = true
+        CustomLoader.shared.showLoader(in: self)
+        
         
         // Process any incomplete video uploads
-        viewModel.processIncompleteVideos()
+       viewModel.processIncompleteVideos()
         
-        // Start loader immediately
-        DispatchQueue.main.async {
-            CustomLoader.shared.showLoader(in: self)
-        }
+        
+        // Fetch offline data first
+                loadOfflineVideos()
 
         // Start fetching data and reload once complete
         viewModel.fetchProjects { [weak self] in
             guard let self = self else { return }
 
             DispatchQueue.main.async {
-                self.tblVw_Projects.reloadData()
-                CustomLoader.shared.hideLoader()
+           self.tblVw_Projects.reloadData()
+                self.checkEmptyState()
+               CustomLoader.shared.hideLoader()
             }
         }
 
         
     }
+    
+    
+    func loadOfflineVideos() {
+           if let savedVideosData = UserDefaults.standard.data(forKey: "offlineVideos") {
+               do {
+                   // Decode the saved videos from JSON data
+                   let savedVideos = try JSONDecoder().decode([DashboardModel].self, from: savedVideosData)
+                   if !savedVideos.isEmpty {
+                       // If offline videos exist, use them as initial data
+                       viewModel.projects = savedVideos
+                       viewModel.cachedProjects = savedVideos
+                       self.tblVw_Projects.reloadData()  // Reload with cached data
+                   }
+               } catch {
+                   print("Error decoding offline videos: \(error)")
+               }
+           } else {
+               print("No offline data found.")
+           }
+       }
     private func setupBindings() {
         viewModel.onProjectsUpdated = { [weak self] in
             DispatchQueue.main.async {
@@ -222,7 +247,7 @@ class DashboardVC: UIViewController {
     private func setupViewModel() {
         viewModel.onProjectsUpdated = { [weak self] in
             DispatchQueue.main.async {
-                self?.checkEmptyState()
+               self?.checkEmptyState()
                 self?.tblVw_Projects.reloadData()
             }
         }

@@ -118,7 +118,9 @@ class AICreatorVideoListVC: UIViewController, UICollectionViewDataSource, UIColl
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         //return viewModel.thumbnails.count
+        print("Count of avatar:-\(viewModel.videoDetails.count)")
         return viewModel.videoDetails.count
+       
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
