@@ -295,14 +295,14 @@ class SignInVC: UIViewController {
        // tf_Email.placeholder = "Email ID"
        // tf_Password.placeholder = "Password"
         
-        tf_Email.placeholderColor = UIColor.white
-        tf_Password.placeholderColor = UIColor.white
+        tf_Email.placeholderColor = UIColor(red: 156/255, green: 163/255, blue: 175/255, alpha: 1.0)//UIColor.lightGray
+        tf_Password.placeholderColor = UIColor(red: 156/255, green: 163/255, blue: 175/255, alpha: 1.0)//UIColor.white
        
         //iostest@gmail.com
       //   tf_Email.text = "johndoe@example.com"
      //tf_Password.text = "password123"
-      tf_Email.text = "nisha@gmail.com"//"johndoe@example.com"//
-     tf_Password.text = "123456"//"password123"
+     // tf_Email.text = "nisha@gmail.com"//"johndoe@example.com"//
+            //tf_Password.text = "123456"//"password123"
         
        // tf_Email.text = "brandonking256256@gmail.com"
        // tf_Password.text = "password123"
